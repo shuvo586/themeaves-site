@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#F4F5F7;font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#14181F;}
+  a{color:#1B4DFF;text-decoration:none;}
+  a:hover{text-decoration:underline;}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#F4F5F7;">
+
+  <!-- NAV -->
+  <div style="position:sticky;top:0;z-index:20;background:#FFFFFF;border-bottom:1px solid #D3D8E0;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;">
+      <a href="ThemeAves%20Home.dc.html" style="display:flex;align-items:center;gap:12px;color:#14181F;">
+        <span style="width:26px;height:26px;border:1.5px solid #14181F;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8a8f98;">▦</span>
+        <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;letter-spacing:-0.01em;">ThemeAves</span>
+      </a>
+      <div style="display:flex;gap:26px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.04em;color:#4a4f58;">
+        <a href="ThemeAves%20Home.dc.html#products" style="color:#4a4f58;">Products</a>
+        <a href="ThemeAves%20Pricing.dc.html" style="color:#1B4DFF;">Pricing</a>
+        <a href="ThemeAves%20Changelog.dc.html" style="color:#4a4f58;">Changelog</a>
+        <a href="ThemeAves%20Docs.dc.html" style="color:#4a4f58;">Docs</a>
+        <a href="ThemeAves%20Support.dc.html" style="color:#4a4f58;">Support</a>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px;">
+        <span style="border:1px solid #D3D8E0;padding:6px 10px;color:#4a4f58;">◐ theme</span>
+        <a href="ThemeAves%20Pricing.dc.html" style="border:1px solid #14181F;padding:6px 12px;color:#14181F;">My licence</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div style="max-width:1280px;margin:0 auto;padding:0 48px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0 6px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#8a8f98;border-bottom:1px dashed #D3D8E0;">
+      <span>PRICING · SLOTDESK AI</span><span></span>
+    </div>
+    <div style="padding:56px 0 44px;max-width:760px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1B4DFF;">ONE-TIME LICENCE · CODECANYON</div>
+      <h1 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:52px;line-height:1.05;letter-spacing:-0.025em;margin-top:18px;">Pay once. Host it yourself. Own it.</h1>
+      <p style="font-family:'IBM Plex Sans',sans-serif;font-size:18px;line-height:1.6;color:#4a4f58;margin-top:20px;max-width:56ch;">No subscriptions, no per-seat pricing. A single CodeCanyon licence, installed on your own server, with six months of support and every documented update.</p>
+    </div>
+  </div>
+
+  <!-- LICENCE TABLE -->
+  <div style="background:#FFFFFF;border-top:1px solid #D3D8E0;border-bottom:1px solid #D3D8E0;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 48px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#8a8f98;border-bottom:1px dashed #D3D8E0;">
+        <span>CHOOSE A LICENCE</span><span>2 TIERS · CODECANYON TERMS</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;padding:48px 0 56px;">
+        <!-- REGULAR -->
+        <div style="border:1px solid #1B4DFF;padding:36px;position:relative;">
+          <div style="position:absolute;top:0;right:0;background:#1B4DFF;color:#FFFFFF;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;padding:5px 10px;">RECOMMENDED</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:#1B4DFF;">REGULAR LICENCE</div>
+          <div style="display:flex;align-items:flex-end;gap:8px;margin-top:16px;">
+            <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:60px;line-height:0.9;letter-spacing:-0.03em;">$59</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8a8f98;padding-bottom:8px;">ONE-TIME</span>
+          </div>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.6;color:#4a4f58;margin-top:14px;max-width:42ch;">For one end product that is not sold. Perfect for running SlotDesk AI on your own business's server.</p>
+          <a href="#" style="display:block;text-align:center;background:#1B4DFF;color:#FFFFFF;font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;padding:15px;margin-top:24px;">Buy on CodeCanyon — $59 ↗</a>
+          <div style="margin-top:28px;border-top:1px solid #E6E7EA;">
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #E6E7EA;font-family:'IBM Plex Sans',sans-serif;font-size:15px;"><span style="font-family:'IBM Plex Mono',monospace;color:#1B4DFF;">✓</span>Full source, self-hosted install</div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #E6E7EA;font-family:'IBM Plex Sans',sans-serif;font-size:15px;"><span style="font-family:'IBM Plex Mono',monospace;color:#1B4DFF;">✓</span>6 months of support included</div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #E6E7EA;font-family:'IBM Plex Sans',sans-serif;font-size:15px;"><span style="font-family:'IBM Plex Mono',monospace;color:#1B4DFF;">✓</span>Every documented update</div>
+            <div style="display:flex;gap:12px;padding:12px 0;font-family:'IBM Plex Sans',sans-serif;font-size:15px;"><span style="font-family:'IBM Plex Mono',monospace;color:#1B4DFF;">✓</span>Unlimited bookings, no per-seat fee</div>
+          </div>
+        </div>
+        <!-- EXTENDED -->
+        <div style="border:1px solid #D3D8E0;border-left:none;padding:36px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;color:#5A6472;">EXTENDED LICENCE</div>
+          <div style="display:flex;align-items:flex-end;gap:8px;margin-top:16px;">
+            <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:60px;line-height:0.9;letter-spacing:-0.03em;">$295</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8a8f98;padding-bottom:8px;">ONE-TIME</span>
+          </div>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.6;color:#4a4f58;margin-top:14px;max-width:42ch;">For one end product that is sold — a SaaS or client product built on SlotDesk AI where end users are charged.</p>
+          <a href="#" style="display:block;text-align:center;border:1px solid #14181F;color:#14181F;font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;padding:15px;margin-top:24px;">Buy on CodeCanyon — $295 ↗</a>
+          <div style="margin-top:28px;border-top:1px solid #E6E7EA;">
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #E6E7EA;font-family:'IBM Plex Sans',sans-serif;font-size:15px;"><span style="font-family:'IBM Plex Mono',monospace;color:#5A6472;">✓</span>Everything in Regular</div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #E6E7EA;font-family:'IBM Plex Sans',sans-serif;font-size:15px;"><span style="font-family:'IBM Plex Mono',monospace;color:#5A6472;">✓</span>Use in a product end users pay for</div>
+            <div style="display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #E6E7EA;font-family:'IBM Plex Sans',sans-serif;font-size:15px;"><span style="font-family:'IBM Plex Mono',monospace;color:#5A6472;">✓</span>6 months of support included</div>
+            <div style="display:flex;gap:12px;padding:12px 0;font-family:'IBM Plex Sans',sans-serif;font-size:15px;"><span style="font-family:'IBM Plex Mono',monospace;color:#5A6472;">✓</span>Priority issue triage</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT'S INCLUDED -->
+  <div style="max-width:1280px;margin:0 auto;padding:0 48px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#8a8f98;border-bottom:1px dashed #D3D8E0;">
+      <span>WHAT EVERY LICENCE INCLUDES</span><span>NO ASTERISKS</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;padding:48px 0 56px;border-top:1px solid #D3D8E0;">
+      <div style="padding:8px 32px 8px 0;border-right:1px solid #D3D8E0;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#1B4DFF;">SUPPORT</div>
+        <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:19px;margin-top:12px;letter-spacing:-0.01em;">Six months, from a human</h3>
+        <p style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.6;color:#4a4f58;margin-top:10px;">Installation help and bug fixes for six months, extendable on CodeCanyon. Answered by the people who wrote the code.</p>
+      </div>
+      <div style="padding:8px 32px;border-right:1px solid #D3D8E0;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#1B4DFF;">UPDATES</div>
+        <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:19px;margin-top:12px;letter-spacing:-0.01em;">Dated, documented, free</h3>
+        <p style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.6;color:#4a4f58;margin-top:10px;">Every release lands in the <a href="ThemeAves%20Changelog.dc.html">changelog</a> with a date and a version. Updates are free for the life of the licence.</p>
+      </div>
+      <div style="padding:8px 0 8px 32px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#1B4DFF;">HOSTING</div>
+        <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:19px;margin-top:12px;letter-spacing:-0.01em;">Your server, your data</h3>
+        <p style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.6;color:#4a4f58;margin-top:10px;">Runs on standard PHP, Laravel and MySQL. No ThemeAves cloud in the loop — you hold the keys and the database.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div style="background:#FFFFFF;border-top:1px solid #D3D8E0;border-bottom:1px solid #D3D8E0;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 48px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#8a8f98;border-bottom:1px dashed #D3D8E0;">
+        <span>LICENCE QUESTIONS</span><span>FAQ</span>
+      </div>
+      <div style="padding:16px 0 40px;">
+        <div style="display:grid;grid-template-columns:1fr 2fr;gap:32px;padding:26px 0;border-bottom:1px solid #E6E7EA;">
+          <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em;">Which licence do I need?</h3>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:15.5px;line-height:1.62;color:#4a4f58;">Running SlotDesk AI for your own business? Regular at $59. Building a product your own customers pay for? Extended at $295.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 2fr;gap:32px;padding:26px 0;border-bottom:1px solid #E6E7EA;">
+          <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em;">Is it really one-time?</h3>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:15.5px;line-height:1.62;color:#4a4f58;">Yes. You pay once on CodeCanyon and host it yourself. Support renews optionally after six months; the software and updates don't expire.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 2fr;gap:32px;padding:26px 0;border-bottom:1px solid #E6E7EA;">
+          <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em;">What do I need to run it?</h3>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:15.5px;line-height:1.62;color:#4a4f58;">A server with PHP, Laravel-compatible hosting and MySQL, plus a WhatsApp Business number. Standard shared or VPS hosting is enough.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 2fr;gap:32px;padding:26px 0;">
+          <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em;">Can I try it first?</h3>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:15.5px;line-height:1.62;color:#4a4f58;">Yes — the live demo runs the current release. <a href="ThemeAves%20Home.dc.html#products">Open the demo ↗</a> before you buy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA BLUE BAND -->
+  <div style="background:#1B4DFF;color:#FFFFFF;">
+    <div style="max-width:1280px;margin:0 auto;padding:64px 48px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#C8D4FF;">READY WHEN YOU ARE</div>
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:36px;line-height:1.08;letter-spacing:-0.02em;margin-top:14px;max-width:24ch;">One licence, your server, your first booking today.</h2>
+      </div>
+      <a href="#" style="background:#FFFFFF;color:#1B4DFF;font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;padding:16px 26px;white-space:nowrap;">Get SlotDesk AI — $59 ↗</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#F4F5F7;border-top:1px solid #D3D8E0;">
+    <div style="max-width:1280px;margin:0 auto;padding:48px 48px 40px;">
+      <div style="height:8px;background:repeating-linear-gradient(90deg,#D3D8E0 0 1px,transparent 1px 24px);margin-bottom:32px;"></div>
+      <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px;">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:24px;height:24px;border:1.5px solid #14181F;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8a8f98;">▦</span>
+            <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;letter-spacing:-0.01em;">ThemeAves</span>
+          </div>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:14px;line-height:1.6;color:#5A6472;margin-top:14px;max-width:34ch;">Self-hosted software for service businesses. We ship it, we date it, you own it.</p>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a8f98;">PRODUCTS</div>
+          <div style="display:flex;flex-direction:column;gap:9px;margin-top:14px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;">
+            <a href="ThemeAves%20Home.dc.html#products" style="color:#4a4f58;">SlotDesk AI</a>
+            <a href="ThemeAves%20Home.dc.html#products" style="color:#4a4f58;">DeskLedger</a>
+            <a href="ThemeAves%20Home.dc.html#products" style="color:#4a4f58;">QueueMate</a>
+            <a href="ThemeAves%20Home.dc.html#products" style="color:#4a4f58;">FormAtlas</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a8f98;">RESOURCES</div>
+          <div style="display:flex;flex-direction:column;gap:9px;margin-top:14px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;">
+            <a href="ThemeAves%20Changelog.dc.html" style="color:#4a4f58;">Changelog</a>
+            <a href="ThemeAves%20Docs.dc.html" style="color:#4a4f58;">Documentation</a>
+            <a href="ThemeAves%20Pricing.dc.html" style="color:#1B4DFF;">Pricing &amp; licences</a>
+            <a href="ThemeAves%20Support.dc.html" style="color:#4a4f58;">Support</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a8f98;">STUDIO</div>
+          <div style="display:flex;flex-direction:column;gap:9px;margin-top:14px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;">
+            <a href="#" style="color:#4a4f58;">About</a>
+            <a href="#" style="color:#4a4f58;">CodeCanyon portfolio</a>
+            <a href="#" style="color:#4a4f58;">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:40px;border-top:1px solid #D3D8E0;padding-top:18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:#8a8f98;">
+        <span>© 2026 THEMEAVES · ALL RIGHTS RESERVED</span>
+        <span>PHP / LARAVEL / MYSQL · SELF-HOSTED · DOCS PUBLIC</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

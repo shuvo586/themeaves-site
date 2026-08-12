@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#F4F5F7;font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#14181F;}
+  a{color:#1B4DFF;text-decoration:none;}
+  a:hover{text-decoration:underline;}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#F4F5F7;">
+
+  <!-- NAV -->
+  <div style="position:sticky;top:0;z-index:20;background:#FFFFFF;border-bottom:1px solid #D3D8E0;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;">
+      <a href="ThemeAves%20Home.dc.html" style="display:flex;align-items:center;gap:12px;color:#14181F;">
+        <span style="width:26px;height:26px;border:1.5px solid #14181F;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8a8f98;">▦</span>
+        <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;letter-spacing:-0.01em;">ThemeAves</span>
+      </a>
+      <div style="display:flex;gap:26px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.04em;color:#4a4f58;">
+        <a href="ThemeAves%20Home.dc.html#products" style="color:#4a4f58;">Products</a>
+        <a href="ThemeAves%20Pricing.dc.html" style="color:#4a4f58;">Pricing</a>
+        <a href="ThemeAves%20Changelog.dc.html" style="color:#4a4f58;">Changelog</a>
+        <a href="ThemeAves%20Docs.dc.html" style="color:#1B4DFF;">Docs</a>
+        <a href="ThemeAves%20Support.dc.html" style="color:#4a4f58;">Support</a>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px;">
+        <span style="border:1px solid #D3D8E0;padding:6px 10px;color:#4a4f58;">◐ theme</span>
+        <a href="ThemeAves%20Pricing.dc.html" style="border:1px solid #14181F;padding:6px 12px;color:#14181F;">My licence</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div style="max-width:1280px;margin:0 auto;padding:0 48px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0 6px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#8a8f98;border-bottom:1px dashed #D3D8E0;">
+      <span>DOCUMENTATION · SLOTDESK AI</span><span>v1.4.0</span>
+    </div>
+    <div style="padding:56px 0 44px;max-width:760px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1B4DFF;">SETUP &amp; USAGE</div>
+      <h1 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:52px;line-height:1.05;letter-spacing:-0.025em;margin-top:18px;">Everything you need to run SlotDesk AI.</h1>
+      <p style="font-family:'IBM Plex Sans',sans-serif;font-size:18px;line-height:1.6;color:#4a4f58;margin-top:20px;max-width:56ch;">From server requirements to your first WhatsApp booking. Written plainly, kept current with every release, and public — no login required.</p>
+    </div>
+  </div>
+
+  <!-- BODY: SIDEBAR + CONTENT -->
+  <div style="background:#FFFFFF;border-top:1px solid #D3D8E0;border-bottom:1px solid #D3D8E0;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:240px 1fr;">
+
+      <!-- SIDEBAR -->
+      <div style="border-right:1px solid #D3D8E0;padding:44px 32px 56px 0;position:sticky;top:65px;align-self:start;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a8f98;">GET STARTED</div>
+        <div style="display:flex;flex-direction:column;gap:9px;margin-top:14px;font-family:'IBM Plex Sans',sans-serif;font-size:14.5px;">
+          <a href="#requirements" style="color:#1B4DFF;">Requirements</a>
+          <a href="#install" style="color:#4a4f58;">Installation</a>
+          <a href="#whatsapp" style="color:#4a4f58;">Connect WhatsApp</a>
+          <a href="#configure" style="color:#4a4f58;">Configuration</a>
+        </div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a8f98;margin-top:28px;">OPERATE</div>
+        <div style="display:flex;flex-direction:column;gap:9px;margin-top:14px;font-family:'IBM Plex Sans',sans-serif;font-size:14.5px;">
+          <a href="#availability" style="color:#4a4f58;">Availability rules</a>
+          <a href="#updating" style="color:#4a4f58;">Updating</a>
+          <a href="#backups" style="color:#4a4f58;">Backups</a>
+        </div>
+        <div style="border-top:1px solid #E6E7EA;margin-top:28px;padding-top:20px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8a8f98;">STUCK?</div>
+          <a href="ThemeAves%20Support.dc.html" style="display:inline-block;font-family:'IBM Plex Sans',sans-serif;font-size:14px;margin-top:8px;">Contact support ↗</a>
+        </div>
+      </div>
+
+      <!-- CONTENT -->
+      <div style="padding:44px 0 56px 48px;max-width:760px;">
+
+        <div id="requirements" style="scroll-margin-top:80px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#1B4DFF;">01 · REQUIREMENTS</div>
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:30px;letter-spacing:-0.02em;margin-top:12px;">Server requirements</h2>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.62;color:#4a4f58;margin-top:14px;">SlotDesk AI runs on a standard PHP stack. Shared hosting works for a single location; a small VPS is recommended for multi-branch setups.</p>
+          <div style="border:1px solid #D3D8E0;background:#FFFFFF;margin-top:20px;font-family:'IBM Plex Mono',monospace;font-size:13px;">
+            <div style="display:flex;justify-content:space-between;padding:12px 20px;border-bottom:1px solid #E6E7EA;"><span style="color:#8a8f98;">PHP</span><span>8.1 or newer</span></div>
+            <div style="display:flex;justify-content:space-between;padding:12px 20px;border-bottom:1px solid #E6E7EA;"><span style="color:#8a8f98;">database</span><span>MySQL 8 / MariaDB 10.4+</span></div>
+            <div style="display:flex;justify-content:space-between;padding:12px 20px;border-bottom:1px solid #E6E7EA;"><span style="color:#8a8f98;">extensions</span><span>cURL, mbstring, PDO, OpenSSL</span></div>
+            <div style="display:flex;justify-content:space-between;padding:12px 20px;"><span style="color:#8a8f98;">whatsapp</span><span>WhatsApp Business API number</span></div>
+          </div>
+        </div>
+
+        <div id="install" style="scroll-margin-top:80px;margin-top:48px;border-top:1px solid #E6E7EA;padding-top:44px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#1B4DFF;">02 · INSTALLATION</div>
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:30px;letter-spacing:-0.02em;margin-top:12px;">Install in five steps</h2>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.62;color:#4a4f58;margin-top:14px;">Upload the package, point a database at it, and run the guided installer. Most setups are live in under twenty minutes.</p>
+          <div style="background:#14181F;color:#E8EBF0;font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.9;padding:20px 22px;margin-top:20px;overflow-x:auto;">
+            <div><span style="color:#6E92FF;">$</span> unzip slotdesk-ai.zip -d /var/www/slotdesk</div>
+            <div><span style="color:#6E92FF;">$</span> cd /var/www/slotdesk &amp;&amp; cp .env.example .env</div>
+            <div><span style="color:#6E92FF;">$</span> php artisan key:generate</div>
+            <div><span style="color:#6E92FF;">$</span> php artisan migrate --seed</div>
+            <div><span style="color:#8a94a6;"># open https://your-server/install to finish</span></div>
+          </div>
+        </div>
+
+        <div id="whatsapp" style="scroll-margin-top:80px;margin-top:48px;border-top:1px solid #E6E7EA;padding-top:44px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#1B4DFF;">03 · CONNECT WHATSAPP</div>
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:30px;letter-spacing:-0.02em;margin-top:12px;">Connect your number</h2>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.62;color:#4a4f58;margin-top:14px;">Paste your WhatsApp Business API token and phone-number ID into Settings → Channels, then set your webhook URL. SlotDesk verifies the connection and sends a test message.</p>
+          <div style="border:1px solid #D3D8E0;padding:20px;margin-top:20px;font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.6;color:#2b2f37;">
+            <b style="font-weight:600;">Webhook URL</b><br>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#1B4DFF;">https://your-server/webhooks/whatsapp</span>
+          </div>
+        </div>
+
+        <div id="configure" style="scroll-margin-top:80px;margin-top:48px;border-top:1px solid #E6E7EA;padding-top:44px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#1B4DFF;">04 · CONFIGURATION</div>
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:30px;letter-spacing:-0.02em;margin-top:12px;">Services &amp; staff</h2>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.62;color:#4a4f58;margin-top:14px;">Define the services you offer, their durations, and which staff perform them. SlotDesk only offers slots that satisfy every rule you set.</p>
+        </div>
+
+        <div id="availability" style="scroll-margin-top:80px;margin-top:48px;border-top:1px solid #E6E7EA;padding-top:44px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#1B4DFF;">05 · AVAILABILITY RULES</div>
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:30px;letter-spacing:-0.02em;margin-top:12px;">Buffers, lead times, blackouts</h2>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.62;color:#4a4f58;margin-top:14px;">Set a buffer between appointments, a minimum booking lead time, and blackout dates per service. The rules engine applies these before any slot is ever offered.</p>
+        </div>
+
+        <div id="updating" style="scroll-margin-top:80px;margin-top:48px;border-top:1px solid #E6E7EA;padding-top:44px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#1B4DFF;">06 · UPDATING</div>
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:30px;letter-spacing:-0.02em;margin-top:12px;">Staying current</h2>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.62;color:#4a4f58;margin-top:14px;">Every release is dated in the <a href="ThemeAves%20Changelog.dc.html">changelog</a>. Back up your database, replace the package, and run <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#1B4DFF;">php artisan migrate</span>. No data is lost between versions.</p>
+        </div>
+
+        <div id="backups" style="scroll-margin-top:80px;margin-top:48px;border-top:1px solid #E6E7EA;padding-top:44px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#1B4DFF;">07 · BACKUPS</div>
+          <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:30px;letter-spacing:-0.02em;margin-top:12px;">Backups are yours</h2>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.62;color:#4a4f58;margin-top:14px;">Because SlotDesk runs on your server, backups follow your own routine — a nightly MySQL dump plus the uploads folder is enough to restore anywhere.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA BLUE BAND -->
+  <div style="background:#1B4DFF;color:#FFFFFF;">
+    <div style="max-width:1280px;margin:0 auto;padding:64px 48px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#C8D4FF;">CAN'T FIND IT?</div>
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:36px;line-height:1.08;letter-spacing:-0.02em;margin-top:14px;max-width:22ch;">Our team answers the docs they wrote.</h2>
+      </div>
+      <a href="ThemeAves%20Support.dc.html" style="background:#FFFFFF;color:#1B4DFF;font-family:'Archivo',sans-serif;font-weight:700;font-size:16px;padding:16px 26px;white-space:nowrap;">Contact support ↗</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#F4F5F7;border-top:1px solid #D3D8E0;">
+    <div style="max-width:1280px;margin:0 auto;padding:48px 48px 40px;">
+      <div style="height:8px;background:repeating-linear-gradient(90deg,#D3D8E0 0 1px,transparent 1px 24px);margin-bottom:32px;"></div>
+      <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px;">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:24px;height:24px;border:1.5px solid #14181F;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8a8f98;">▦</span>
+            <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;letter-spacing:-0.01em;">ThemeAves</span>
+          </div>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:14px;line-height:1.6;color:#5A6472;margin-top:14px;max-width:34ch;">Self-hosted software for service businesses. We ship it, we date it, you own it.</p>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a8f98;">PRODUCTS</div>
+          <div style="display:flex;flex-direction:column;gap:9px;margin-top:14px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;">
+            <a href="ThemeAves%20Home.dc.html#products" style="color:#4a4f58;">SlotDesk AI</a>
+            <a href="ThemeAves%20Home.dc.html#products" style="color:#4a4f58;">DeskLedger</a>
+            <a href="ThemeAves%20Home.dc.html#products" style="color:#4a4f58;">QueueMate</a>
+            <a href="ThemeAves%20Home.dc.html#products" style="color:#4a4f58;">FormAtlas</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a8f98;">RESOURCES</div>
+          <div style="display:flex;flex-direction:column;gap:9px;margin-top:14px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;">
+            <a href="ThemeAves%20Changelog.dc.html" style="color:#4a4f58;">Changelog</a>
+            <a href="ThemeAves%20Docs.dc.html" style="color:#1B4DFF;">Documentation</a>
+            <a href="ThemeAves%20Pricing.dc.html" style="color:#4a4f58;">Pricing &amp; licences</a>
+            <a href="ThemeAves%20Support.dc.html" style="color:#4a4f58;">Support</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a8f98;">STUDIO</div>
+          <div style="display:flex;flex-direction:column;gap:9px;margin-top:14px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;">
+            <a href="#" style="color:#4a4f58;">About</a>
+            <a href="#" style="color:#4a4f58;">CodeCanyon portfolio</a>
+            <a href="#" style="color:#4a4f58;">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:40px;border-top:1px solid #D3D8E0;padding-top:18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:#8a8f98;">
+        <span>© 2026 THEMEAVES · ALL RIGHTS RESERVED</span>
+        <span>PHP / LARAVEL / MYSQL · SELF-HOSTED · DOCS PUBLIC</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

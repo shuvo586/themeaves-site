@@ -1,0 +1,13 @@
+{
+  "name": "themeaves",
+  "version": "0.0.0",
+  "private": true,
+  "description": "ThemeAves brand site - design stage",
+  "scripts": {
+    "verify": "node tools/verify-home.cjs",
+    "shot": "node tools/shot.cjs design/home.html"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}

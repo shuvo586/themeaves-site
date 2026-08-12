@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#F4F5F7;font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#14181F;}
+  a{color:#1B4DFF;text-decoration:none;}
+  a:hover{text-decoration:underline;}
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#F4F5F7;">
+
+  <!-- NAV -->
+  <div style="position:sticky;top:0;z-index:20;background:#FFFFFF;border-bottom:1px solid #D3D8E0;">
+    <div style="max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;">
+      <a href="ThemeAves%20Home.dc.html" style="display:flex;align-items:center;gap:12px;color:#14181F;">
+        <span style="width:26px;height:26px;border:1.5px solid #14181F;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8a8f98;">▦</span>
+        <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;letter-spacing:-0.01em;">ThemeAves</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8a8f98;border:1px solid #D3D8E0;padding:3px 7px;margin-inline-start:6px;">DESIGN SYSTEM</span>
+      </a>
+      <div style="display:flex;gap:26px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.04em;color:#4a4f58;">
+        <a href="ThemeAves%20Home.dc.html" style="color:#4a4f58;">Home</a>
+        <a href="ThemeAves%20Pricing.dc.html" style="color:#4a4f58;">Pricing</a>
+        <a href="ThemeAves%20Changelog.dc.html" style="color:#4a4f58;">Changelog</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <div style="max-width:1280px;margin:0 auto;padding:0 48px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0 6px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#8a8f98;border-bottom:1px dashed #D3D8E0;">
+      <span>BLUEPRINT · COMPONENT SHEET</span><span></span>
+    </div>
+    <div style="padding:56px 0 44px;max-width:820px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1B4DFF;">DRAWN TO SPEC</div>
+      <h1 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:52px;line-height:1.05;letter-spacing:-0.025em;margin-top:18px;">The parts, on one sheet.</h1>
+      <p style="font-family:'IBM Plex Sans',sans-serif;font-size:18px;line-height:1.6;color:#4a4f58;margin-top:20px;max-width:56ch;">Every reusable element in the Blueprint system — colour, type, buttons, cards, forms, tables and footer — measured and labelled so the site stays consistent as it grows.</p>
+    </div>
+  </div>
+
+  <!-- COLOUR + TYPE -->
+  <div style="background:#FFFFFF;border-top:1px solid #D3D8E0;border-bottom:1px solid #D3D8E0;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 48px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#8a8f98;border-bottom:1px dashed #D3D8E0;">
+        <span>FOUNDATIONS</span><span>COLOUR · TYPE · SPACING</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:44px 0 56px;">
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#8a8f98;">COLOUR — LIGHT</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px;">
+            <div><div style="height:64px;background:#F4F5F7;border:1px solid #D3D8E0;"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;margin-top:7px;color:#14181F;">paper</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a8f98;">#F4F5F7</div></div>
+            <div><div style="height:64px;background:#FFFFFF;border:1px solid #D3D8E0;"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;margin-top:7px;color:#14181F;">surface</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a8f98;">#FFFFFF</div></div>
+            <div><div style="height:64px;background:#14181F;"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;margin-top:7px;color:#14181F;">ink</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a8f98;">#14181F</div></div>
+            <div><div style="height:64px;background:#5A6472;"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;margin-top:7px;color:#14181F;">muted</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a8f98;">#5A6472</div></div>
+            <div><div style="height:64px;background:#D3D8E0;"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;margin-top:7px;color:#14181F;">line</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a8f98;">#D3D8E0</div></div>
+            <div><div style="height:64px;background:#1B4DFF;"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;margin-top:7px;color:#14181F;">accent</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a8f98;">#1B4DFF</div></div>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#8a8f98;margin-top:26px;">SPACING — 8px BASE</div>
+          <div style="display:flex;align-items:flex-end;gap:12px;margin-top:16px;">
+            <div style="text-align:center;"><div style="width:8px;height:8px;background:#1B4DFF;"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8a8f98;margin-top:6px;">8</div></div>
+            <div style="text-align:center;"><div style="width:16px;height:16px;background:#1B4DFF;"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8a8f98;margin-top:6px;">16</div></div>
+            <div style="text-align:center;"><div style="width:24px;height:24px;background:#1B4DFF;"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8a8f98;margin-top:6px;">24</div></div>
+            <div style="text-align:center;"><div style="width:48px;height:48px;background:#1B4DFF;"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8a8f98;margin-top:6px;">48</div></div>
+            <div style="text-align:center;"><div style="width:64px;height:64px;background:#1B4DFF;"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8a8f98;margin-top:6px;">64</div></div>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#8a8f98;">TYPE — ARCHIVO + IBM PLEX MONO</div>
+          <div style="margin-top:16px;border-top:1px solid #E6E7EA;">
+            <div style="padding:14px 0;border-bottom:1px solid #E6E7EA;"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8a8f98;">DISPLAY / 48 / 800</div><div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:40px;letter-spacing:-0.025em;line-height:1.05;margin-top:4px;">On your server.</div></div>
+            <div style="padding:14px 0;border-bottom:1px solid #E6E7EA;"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8a8f98;">H2 / 26 / 700</div><div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:24px;letter-spacing:-0.01em;margin-top:4px;">Dated and on the record.</div></div>
+            <div style="padding:14px 0;border-bottom:1px solid #E6E7EA;"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8a8f98;">BODY / 16 / 400</div><p style="font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.6;color:#2b2f37;margin-top:4px;max-width:52ch;">SlotDesk AI turns a WhatsApp message into a confirmed booking without a third-party queue.</p></div>
+            <div style="padding:14px 0;"><div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#8a8f98;">LABEL / MONO 12 / .12em UPPER</div><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;font-weight:500;color:#1B4DFF;margin-top:6px;">CODECANYON · PHP-SCRIPT · v1.4.0</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUTTONS + FORMS -->
+  <div style="max-width:1280px;margin:0 auto;padding:0 48px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#8a8f98;border-bottom:1px dashed #D3D8E0;">
+      <span>CONTROLS</span><span>BUTTONS · INPUTS</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:44px 0 56px;">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#8a8f98;">BUTTONS</div>
+        <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:18px;">
+          <span style="background:#1B4DFF;color:#FFFFFF;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;padding:14px 22px;">Primary ↗</span>
+          <span style="border:1px solid #14181F;color:#14181F;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;padding:14px 22px;">Secondary ↗</span>
+          <span style="color:#1B4DFF;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.06em;border-bottom:1px solid #1B4DFF;padding-bottom:2px;">TEXT LINK ↗</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:18px;">
+          <span style="background:#1B4DFF;color:#FFFFFF;font-family:'Archivo',sans-serif;font-weight:600;font-size:13px;padding:10px 16px;">Small</span>
+          <span style="background:#D3D8E0;color:#8a8f98;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;padding:14px 22px;">Disabled</span>
+          <span style="background:#1B4DFF;color:#FFFFFF;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;padding:14px 22px;outline:2px solid #1B4DFF;outline-offset:2px;">Focus</span>
+        </div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#8a8f98;margin-top:32px;">STATUS PILLS</div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;">
+          <span style="border:1px solid #1B4DFF;color:#1B4DFF;padding:5px 10px;">FEATURE</span>
+          <span style="border:1px solid #D3D8E0;color:#5A6472;padding:5px 10px;">FIX</span>
+          <span style="border:1px solid #B23A1E;color:#B23A1E;padding:5px 10px;">SECURITY</span>
+          <span style="border:1px solid #14181F;background:#14181F;color:#FFFFFF;padding:5px 10px;">RELEASE</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#8a8f98;">FORM FIELDS</div>
+        <div style="margin-top:18px;max-width:420px;display:flex;flex-direction:column;gap:18px;">
+          <div>
+            <label style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;color:#5A6472;">EMAIL</label>
+            <div style="border:1px solid #D3D8E0;background:#FFFFFF;padding:12px 14px;margin-top:7px;font-family:'IBM Plex Sans',sans-serif;font-size:15px;color:#14181F;">you@studio.com</div>
+          </div>
+          <div>
+            <label style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;color:#1B4DFF;">WHATSAPP NUMBER — FOCUSED</label>
+            <div style="border:1px solid #1B4DFF;background:#FFFFFF;padding:12px 14px;margin-top:7px;font-family:'IBM Plex Sans',sans-serif;font-size:15px;color:#14181F;outline:2px solid #1B4DFF;outline-offset:1px;">+1 415 <span style="display:inline-block;width:1px;height:16px;background:#1B4DFF;vertical-align:-2px;"></span></div>
+          </div>
+          <div>
+            <label style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;color:#B23A1E;">SERVER URL — ERROR</label>
+            <div style="border:1px solid #B23A1E;background:#FFFFFF;padding:12px 14px;margin-top:7px;font-family:'IBM Plex Sans',sans-serif;font-size:15px;color:#14181F;">not-a-url</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#B23A1E;margin-top:6px;">Must be a valid https:// address.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARDS + TABLE -->
+  <div style="background:#FFFFFF;border-top:1px solid #D3D8E0;border-bottom:1px solid #D3D8E0;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 48px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#8a8f98;border-bottom:1px dashed #D3D8E0;">
+        <span>CONTAINERS</span><span>CARDS · SPEC TABLE · CHANGELOG ROW</span>
+      </div>
+      <div style="padding:44px 0 56px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#8a8f98;">PRODUCT CARD</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:18px;">
+          <div style="border:1px solid #D3D8E0;padding:24px;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#8a8f98;">PHP-SCRIPT · v1.4</div>
+            <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:20px;margin-top:12px;letter-spacing:-0.01em;">SlotDesk AI</h3>
+            <p style="font-family:'IBM Plex Sans',sans-serif;font-size:14.5px;line-height:1.58;color:#4a4f58;margin-top:8px;">Self-hosted WhatsApp booking agent for service businesses.</p>
+          </div>
+          <div style="border:1px solid #1B4DFF;padding:24px;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#1B4DFF;">SELECTED STATE</div>
+            <h3 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:20px;margin-top:12px;letter-spacing:-0.01em;">DeskLedger</h3>
+            <p style="font-family:'IBM Plex Sans',sans-serif;font-size:14.5px;line-height:1.58;color:#4a4f58;margin-top:8px;">Card selection is a 1px accent border — no shadow, no lift.</p>
+          </div>
+          <div style="border:1px dashed #D3D8E0;padding:24px;display:flex;align-items:center;justify-content:center;min-height:120px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8a8f98;text-align:center;">EMPTY / PLACEHOLDER<br>screenshot slot</div>
+        </div>
+
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#8a8f98;margin-top:36px;">SPEC TABLE</div>
+        <div style="border:1px solid #D3D8E0;background:#FFFFFF;margin-top:18px;max-width:520px;font-family:'IBM Plex Mono',monospace;font-size:13px;">
+          <div style="display:flex;justify-content:space-between;padding:12px 20px;border-bottom:1px solid #E6E7EA;"><span style="color:#8a8f98;">stack</span><span>PHP · Laravel · MySQL</span></div>
+          <div style="display:flex;justify-content:space-between;padding:12px 20px;border-bottom:1px solid #E6E7EA;"><span style="color:#8a8f98;">licence</span><span>Regular — $59</span></div>
+          <div style="display:flex;justify-content:space-between;padding:12px 20px;"><span style="color:#8a8f98;">updates</span><span style="color:#1B4DFF;">Documented changelog</span></div>
+        </div>
+
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;color:#8a8f98;margin-top:36px;">CHANGELOG ROW</div>
+        <div style="margin-top:18px;border-top:1px solid #D3D8E0;max-width:820px;">
+          <div style="display:grid;grid-template-columns:150px 90px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid #E6E7EA;font-family:'IBM Plex Sans',sans-serif;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#5A6472;">2026-07-28</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#1B4DFF;">v1.4.0</div>
+            <div><b style="font-weight:600;">Multi-location routing</b> — one number serves several branches.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGNATURE DEVICE -->
+  <div style="max-width:1280px;margin:0 auto;padding:0 48px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#8a8f98;border-bottom:1px dashed #D3D8E0;">
+      <span>SIGNATURE DEVICE</span><span>THE MEASUREMENT RULE</span>
+    </div>
+    <div style="padding:44px 0 56px;">
+      <p style="font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.6;color:#4a4f58;max-width:60ch;">Every section opens with a coordinate label and a hairline rule — the grid made visible, the way a drawing is dimensioned. It is what makes the site recognisable in one glance.</p>
+      <div style="margin-top:28px;">
+        <div style="display:flex;align-items:center;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#8a8f98;border-bottom:1px dashed #D3D8E0;padding-bottom:8px;"><span>A—0n · SECTION LABEL</span><span></span></div>
+        <div style="height:10px;background:repeating-linear-gradient(90deg,#D3D8E0 0 1px,transparent 1px 24px);margin-top:14px;"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8a8f98;margin-top:6px;">tick every 24px · 8px base grid</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#F4F5F7;border-top:1px solid #D3D8E0;">
+    <div style="max-width:1280px;margin:0 auto;padding:48px 48px 40px;">
+      <div style="height:8px;background:repeating-linear-gradient(90deg,#D3D8E0 0 1px,transparent 1px 24px);margin-bottom:32px;"></div>
+      <div style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px;">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="width:24px;height:24px;border:1.5px solid #14181F;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8a8f98;">▦</span>
+            <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;letter-spacing:-0.01em;">ThemeAves</span>
+          </div>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:14px;line-height:1.6;color:#5A6472;margin-top:14px;max-width:34ch;">Self-hosted software for service businesses. We ship it, we date it, you own it.</p>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a8f98;">PRODUCTS</div>
+          <div style="display:flex;flex-direction:column;gap:9px;margin-top:14px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;">
+            <a href="ThemeAves%20Home.dc.html#products" style="color:#4a4f58;">SlotDesk AI</a>
+            <a href="ThemeAves%20Home.dc.html#products" style="color:#4a4f58;">DeskLedger</a>
+            <a href="ThemeAves%20Home.dc.html#products" style="color:#4a4f58;">QueueMate</a>
+            <a href="ThemeAves%20Home.dc.html#products" style="color:#4a4f58;">FormAtlas</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a8f98;">RESOURCES</div>
+          <div style="display:flex;flex-direction:column;gap:9px;margin-top:14px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;">
+            <a href="ThemeAves%20Changelog.dc.html" style="color:#4a4f58;">Changelog</a>
+            <a href="ThemeAves%20Docs.dc.html" style="color:#4a4f58;">Documentation</a>
+            <a href="ThemeAves%20Pricing.dc.html" style="color:#4a4f58;">Pricing &amp; licences</a>
+            <a href="ThemeAves%20Support.dc.html" style="color:#4a4f58;">Support</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;color:#8a8f98;">STUDIO</div>
+          <div style="display:flex;flex-direction:column;gap:9px;margin-top:14px;font-family:'IBM Plex Sans',sans-serif;font-size:14px;">
+            <a href="#" style="color:#4a4f58;">About</a>
+            <a href="#" style="color:#4a4f58;">CodeCanyon portfolio</a>
+            <a href="#" style="color:#4a4f58;">Contact</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:40px;border-top:1px solid #D3D8E0;padding-top:18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:#8a8f98;">
+        <span>© 2026 THEMEAVES · ALL RIGHTS RESERVED</span>
+        <span>PHP / LARAVEL / MYSQL · SELF-HOSTED · DOCS PUBLIC</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

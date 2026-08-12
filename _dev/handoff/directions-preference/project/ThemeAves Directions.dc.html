@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="design_doc_mode" content="canvas">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#e9e9ec;font-family:'Public Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+  a{color:#1B4DFF;text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  @keyframes caret{0%,49%{opacity:1;}50%,100%{opacity:0;}}
+</style>
+</helmet>
+
+<section style="padding:64px 64px 40px;">
+  <div style="max-width:1120px;font-family:'Public Sans',sans-serif;color:#1a1c22;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6a6e78;">ThemeAves · Section 5 design proposal · Turn 1</div>
+    <h1 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:40px;line-height:1.08;letter-spacing:-0.02em;margin-top:14px;max-width:900px;">Three ways this studio could look, none of them a template.</h1>
+    <p style="font-size:17px;line-height:1.6;color:#41454e;max-width:820px;margin-top:16px;">Three genuinely distinct systems, not one layout in three colourways. Each states its concept, its full colour and type system with <strong>computed</strong> AA contrast ratios, its spacing, shape, signature device and motion, and renders the home hero at 1440 in light and dark. Every ratio below was measured, not eyeballed. Nothing is built past these heroes — pick one and I build the token layer next. Reference a direction in chat by its id: <a href="#1a">1a</a> Blueprint, <a href="#1b">1b</a> Console, <a href="#1c">1c</a> Press.</p>
+    <div style="display:flex;gap:28px;flex-wrap:wrap;margin-top:22px;font-size:13.5px;line-height:1.55;color:#41454e;">
+      <div style="flex:1;min-width:240px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#6a6e78;">CONSTRAINT HELD</span><br>Section 3: nothing reads as a marketplace preview. No gradients, glass, waves, blobs, carousels, isometric art, icon-circle trios, or the marketplace default fonts.</div>
+      <div style="flex:1;min-width:240px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#6a6e78;">FAILURE MODES ADDRESSED</span><br>Each direction publishes a colour discipline (5.3) that sits between the 24-tiny-moments wall and the tall-empty-plane wall, and defends its number.</div>
+      <div style="flex:1;min-width:240px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:#6a6e78;">HERO STORY</span><br>All three heroes tell the flagship's one story: a WhatsApp message arrives, a booking appears, on your server. Image slots are placeholders — the system has to look finished empty.</div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:36px;flex-wrap:nowrap;margin-top:48px;">
+
+    <!-- =============== 1a BLUEPRINT =============== -->
+    <div id="1a" style="width:1440px;flex:none;background:#fff;border:1px solid #d7d8dd;">
+      <div style="padding:40px 48px;border-bottom:1px solid #e6e7ea;">
+        <div style="display:flex;align-items:baseline;gap:14px;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.12em;background:#14181F;color:#fff;padding:4px 9px;">1a</span>
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;letter-spacing:-0.01em;color:#14181F;">Blueprint</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6a6e78;">cool neutral · signal blue · light-first</span>
+        </div>
+        <p style="font-family:'Archivo',sans-serif;font-weight:600;font-size:22px;line-height:1.3;letter-spacing:-0.01em;color:#14181F;margin-top:20px;max-width:940px;">A precision engineering document you happen to buy software from.</p>
+        <p style="font-size:15px;line-height:1.62;color:#4a4f58;margin-top:12px;max-width:940px;">Developer buyers trust things that look measured and drawn to spec. Structure is carried by a visible modular grid and hairline rules, never cards or shadows, so the page reads as a drawing sheet rather than a landing page. It looks finished with only a wordmark because the grid and the type do the work, and it stays calm while every screenshot slot is a placeholder.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;">
+        <!-- colour -->
+        <div style="padding:32px 48px;border-right:1px solid #e6e7ea;border-bottom:1px solid #e6e7ea;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6a6e78;">01 · COLOUR — one accent</div>
+          <p style="font-size:13.5px;line-height:1.55;color:#4a4f58;margin:10px 0 16px;">One accent, a signal blue, plus a cool-neutral ink/paper ramp. One accent because a spec sheet marks one thing at a time; a second hue would compete with the grid for the eye.</p>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a8f98;margin-bottom:8px;">LIGHT</div>
+          <div style="display:flex;flex-direction:column;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;">
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#F4F5F7;border:1px solid #d7d8dd;"></span><b style="width:74px;color:#14181F;">paper</b><span style="color:#6a6e78;">#F4F5F7</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#FFFFFF;border:1px solid #d7d8dd;"></span><b style="width:74px;color:#14181F;">surface</b><span style="color:#6a6e78;">#FFFFFF</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#14181F;"></span><b style="width:74px;color:#14181F;">ink</b><span style="color:#6a6e78;">#14181F · 16.3:1 / 17.8:1</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#5A6472;"></span><b style="width:74px;color:#14181F;">muted</b><span style="color:#6a6e78;">#5A6472 · 5.5:1</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#D3D8E0;"></span><b style="width:74px;color:#14181F;">line</b><span style="color:#6a6e78;">#D3D8E0</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#1B4DFF;"></span><b style="width:74px;color:#14181F;">accent</b><span style="color:#6a6e78;">#1B4DFF · white 5.9:1</span></div>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a8f98;margin:16px 0 8px;">DARK</div>
+          <div style="display:flex;flex-direction:column;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;">
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#0C0F14;border:1px solid #2a2f38;"></span><b style="width:74px;color:#14181F;">bg</b><span style="color:#6a6e78;">#0C0F14</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#141922;border:1px solid #2a2f38;"></span><b style="width:74px;color:#14181F;">surface</b><span style="color:#6a6e78;">#141922</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#E8EBF0;"></span><b style="width:74px;color:#14181F;">ink</b><span style="color:#6a6e78;">#E8EBF0 · 16.1:1 / 14.7:1</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#97A0AE;"></span><b style="width:74px;color:#14181F;">muted</b><span style="color:#6a6e78;">#97A0AE · 7.3:1</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#6E92FF;"></span><b style="width:74px;color:#14181F;">accent-text</b><span style="color:#6a6e78;">#6E92FF · 6.6:1</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#1B4DFF;"></span><b style="width:74px;color:#14181F;">accent-plane</b><span style="color:#6a6e78;">pinned · white 5.9:1</span></div>
+          </div>
+          <p style="font-size:12.5px;line-height:1.5;color:#4a4f58;margin-top:14px;border-top:1px dashed #d7d8dd;padding-top:12px;"><b style="color:#14181F;">Discipline.</b> Two colour moments per page, maximum. One is a full-bleed signal-blue band committing ≥30% of its own height with real content; the rest is ink on paper. The accent-plane blue is pinned in both themes with literal white on it, so it never inverts under its text. Quiet sections carry zero accent by design.</p>
+        </div>
+
+        <!-- type -->
+        <div style="padding:32px 48px;border-bottom:1px solid #e6e7ea;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6a6e78;">02 · TYPE — Archivo + IBM Plex Mono</div>
+          <p style="font-size:13.5px;line-height:1.55;color:#4a4f58;margin:10px 0 18px;">Archivo is a grotesque drawn for signage and tables: even colour, tight caps, honest at 800 without shouting. Plex Mono carries every label, spec value and coordinate, which is what makes the drawing-sheet read legible rather than decorative. Not the marketplace grotesques (Poppins, Manrope), which read soft and consumer.</p>
+          <div style="border-top:1px solid #e6e7ea;padding-top:16px;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a8f98;">DISPLAY / 48 / 1.05 / 800 / -0.02em</div>
+            <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:42px;line-height:1.05;letter-spacing:-0.02em;color:#14181F;margin:6px 0 18px;">Documented software, on your server.</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a8f98;">H2 / 26 / 1.15 / 700</div>
+            <div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:24px;line-height:1.15;letter-spacing:-0.01em;color:#14181F;margin:6px 0 16px;">Every release is dated and on the record.</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a8f98;">BODY / 16 / 1.6 / 400 · measure ≤ 68ch</div>
+            <p style="font-size:16px;line-height:1.6;color:#2b2f37;margin:6px 0 16px;max-width:60ch;">SlotDesk AI turns a WhatsApp message into a confirmed booking without a third-party queue. You host it, you keep the data, and the changelog shows exactly what shipped and when.</p>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a8f98;">LABEL / MONO 12 / .12em / 500 UPPER · tabular</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.12em;font-weight:500;color:#1B4DFF;margin-top:6px;">CODECANYON · PHP-SCRIPT · v—</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px;">
+            <div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6a6e78;">03 · GRID</div>
+              <p style="font-size:12.5px;line-height:1.55;color:#4a4f58;margin-top:8px;">8px base. 12 columns, 1200 container, 24 gutter. Section rhythm 96 / 128. The grid is visible: ticked rules with coordinate labels run the section edges.</p>
+            </div>
+            <div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6a6e78;">04 · SHAPE + DEPTH</div>
+              <p style="font-size:12.5px;line-height:1.55;color:#4a4f58;margin-top:8px;">No shadows anywhere. Radius 2px, near-square. Structure is 1px lines and the grid; the one plane is the blue band. Focus ring: 2px blue offset, legible on paper and on the plane.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;">
+        <div style="padding:24px 48px;border-right:1px solid #e6e7ea;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6a6e78;">05 · SIGNATURE DEVICE</div>
+          <p style="font-size:12.5px;line-height:1.55;color:#4a4f58;margin-top:8px;">The measurement rule. A thin ticked line with coordinate labels frames every section, the way a drawing is dimensioned. It is the grid made visible and it is what makes the site recognisable in one glance.</p>
+        </div>
+        <div style="padding:24px 48px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6a6e78;">06 · MOTION</div>
+          <p style="font-size:12.5px;line-height:1.55;color:#4a4f58;margin-top:8px;">Rules draw in, 160ms linear, on first scroll into view. State changes only otherwise. No parallax, no scroll-jacking, no count-ups. Fully suppressed under prefers-reduced-motion.</p>
+        </div>
+      </div>
+
+      <!-- HERO LIGHT -->
+      <div style="border-top:1px solid #e6e7ea;padding:16px 48px 8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6a6e78;">07 · HOME HERO — 1440 — LIGHT</div>
+      <div style="padding:0 48px 40px;">
+        <div style="width:100%;background:#F4F5F7;border:1px solid #D3D8E0;color:#14181F;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 32px;border-bottom:1px solid #D3D8E0;">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <span style="width:26px;height:26px;border:1.5px solid #14181F;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#8a8f98;">▦</span>
+              <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;letter-spacing:-0.01em;">ThemeAves</span>
+            </div>
+            <div style="display:flex;gap:26px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.04em;color:#4a4f58;">
+              <span>Products</span><span>Demos</span><span>Docs</span><span>Changelog</span><span>Support</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px;">
+              <span style="border:1px solid #D3D8E0;padding:6px 10px;color:#4a4f58;">◐ theme</span>
+              <span style="border:1px solid #14181F;padding:6px 12px;color:#14181F;">My licence</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:64px 32px 72px;position:relative;">
+            <div style="position:absolute;top:56px;bottom:56px;left:calc(50% - 24px);width:1px;background:repeating-linear-gradient(#D3D8E0 0 6px,transparent 6px 12px);"></div>
+            <div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#1B4DFF;">A—01 · SELF-HOSTED SOFTWARE</div>
+              <h1 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:56px;line-height:1.04;letter-spacing:-0.025em;margin-top:20px;">We build software and document every change.</h1>
+              <p style="font-size:18px;line-height:1.6;color:#4a4f58;margin-top:22px;max-width:46ch;">SlotDesk AI turns a WhatsApp message into a confirmed booking, on your server. Every release is dated and on the record.</p>
+              <div style="display:flex;gap:14px;align-items:center;margin-top:32px;">
+                <span style="background:#1B4DFF;color:#FFFFFF;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;padding:14px 22px;">Try the SlotDesk demo&nbsp;↗</span>
+                <span style="border:1px solid #14181F;color:#14181F;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;padding:14px 22px;">Get SlotDesk AI on CodeCanyon&nbsp;↗</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8a8f98;">$—</span>
+              </div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;color:#5A6472;margin-top:34px;border-top:1px solid #D3D8E0;padding-top:14px;">PHP / LARAVEL / MYSQL · SELF-HOSTED · SUPPORT 6 MO · DOCS PUBLIC</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:center;position:relative;">
+              <div style="width:100%;background:#FFFFFF;border:1px solid #D3D8E0;">
+                <div style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid #D3D8E0;">
+                  <span style="width:9px;height:9px;border:1px solid #D3D8E0;"></span><span style="width:9px;height:9px;border:1px solid #D3D8E0;"></span>
+                  <span style="margin-inline-start:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8a8f98;">demo.slotdesk.app/dashboard</span>
+                </div>
+                <div style="height:236px;background:repeating-linear-gradient(135deg,#eef0f3 0 11px,#F4F5F7 11px 22px);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#8a8f98;">SlotDesk dashboard — screenshot</div>
+              </div>
+              <div style="width:150px;background:#FFFFFF;border:1px solid #14181F;border-radius:14px;padding:6px;margin-top:-56px;margin-inline-end:12px;box-shadow:none;">
+                <div style="height:214px;border-radius:9px;background:repeating-linear-gradient(135deg,#eef0f3 0 9px,#F4F5F7 9px 18px);display:flex;align-items:flex-end;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#8a8f98;text-align:center;padding-bottom:12px;">WhatsApp booking<br>9:19.5</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HERO DARK -->
+      <div style="border-top:1px solid #e6e7ea;padding:16px 48px 8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6a6e78;">08 · HOME HERO — 1440 — DARK</div>
+      <div style="padding:0 48px 48px;">
+        <div style="width:100%;background:#0C0F14;border:1px solid #232A35;color:#E8EBF0;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 32px;border-bottom:1px solid #232A35;">
+            <div style="display:flex;align-items:center;gap:14px;">
+              <span style="width:26px;height:26px;border:1.5px solid #E8EBF0;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#6b7484;">▦</span>
+              <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;letter-spacing:-0.01em;">ThemeAves</span>
+            </div>
+            <div style="display:flex;gap:26px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:.04em;color:#97A0AE;">
+              <span>Products</span><span>Demos</span><span>Docs</span><span>Changelog</span><span>Support</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px;">
+              <span style="border:1px solid #232A35;padding:6px 10px;color:#97A0AE;">◐ theme</span>
+              <span style="border:1px solid #E8EBF0;padding:6px 12px;color:#E8EBF0;">My licence</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;padding:64px 32px 72px;position:relative;">
+            <div style="position:absolute;top:56px;bottom:56px;left:calc(50% - 24px);width:1px;background:repeating-linear-gradient(#232A35 0 6px,transparent 6px 12px);"></div>
+            <div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:#6E92FF;">A—01 · SELF-HOSTED SOFTWARE</div>
+              <h1 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:56px;line-height:1.04;letter-spacing:-0.025em;margin-top:20px;">We build software and document every change.</h1>
+              <p style="font-size:18px;line-height:1.6;color:#97A0AE;margin-top:22px;max-width:46ch;">SlotDesk AI turns a WhatsApp message into a confirmed booking, on your server. Every release is dated and on the record.</p>
+              <div style="display:flex;gap:14px;align-items:center;margin-top:32px;">
+                <span style="background:#1B4DFF;color:#FFFFFF;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;padding:14px 22px;">Try the SlotDesk demo&nbsp;↗</span>
+                <span style="border:1px solid #E8EBF0;color:#E8EBF0;font-family:'Archivo',sans-serif;font-weight:600;font-size:15px;padding:14px 22px;">Get SlotDesk AI on CodeCanyon&nbsp;↗</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6b7484;">$—</span>
+              </div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;color:#97A0AE;margin-top:34px;border-top:1px solid #232A35;padding-top:14px;">PHP / LARAVEL / MYSQL · SELF-HOSTED · SUPPORT 6 MO · DOCS PUBLIC</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:center;position:relative;">
+              <div style="width:100%;background:#141922;border:1px solid #232A35;">
+                <div style="display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid #232A35;">
+                  <span style="width:9px;height:9px;border:1px solid #2f3744;"></span><span style="width:9px;height:9px;border:1px solid #2f3744;"></span>
+                  <span style="margin-inline-start:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6b7484;">demo.slotdesk.app/dashboard</span>
+                </div>
+                <div style="height:236px;background:repeating-linear-gradient(135deg,#171d27 0 11px,#141922 11px 22px);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6b7484;">SlotDesk dashboard — screenshot</div>
+              </div>
+              <div style="width:150px;background:#141922;border:1px solid #E8EBF0;border-radius:14px;padding:6px;margin-top:-56px;margin-inline-end:12px;">
+                <div style="height:214px;border-radius:9px;background:repeating-linear-gradient(135deg,#171d27 0 9px,#141922 9px 18px);display:flex;align-items:flex-end;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#6b7484;text-align:center;padding-bottom:12px;">WhatsApp booking<br>9:19.5</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =============== 1b CONSOLE =============== -->
+    <div id="1b" style="width:1440px;flex:none;background:#fff;border:1px solid #d7d8dd;">
+      <div style="padding:40px 48px;border-bottom:1px solid #e6e7ea;">
+        <div style="display:flex;align-items:baseline;gap:14px;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.08em;background:#0B0C0E;color:#F2A93B;padding:4px 9px;">1b</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:26px;letter-spacing:-0.02em;color:#0B0C0E;">Console</span>
+          <span style="font-family:'IBM Plex Sans',sans-serif;font-size:12px;color:#6a6e78;">near-black · phosphor amber · dark-first</span>
+        </div>
+        <p style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:22px;line-height:1.3;letter-spacing:-0.01em;color:#0B0C0E;margin-top:20px;max-width:940px;">The studio's own workbench, not a brochure about it.</p>
+        <p style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.62;color:#4a4f58;margin-top:12px;max-width:940px;">Buyers are developers who live in an editor. A dark-first canvas of bordered panels with a line-number gutter says the people who made this ship code, without a single gradient or glow. It reads as a tool, which is the point: the credibility is in looking like where the work happens. Panels hold empty screenshot slots without looking unfinished because the frame is the content.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;">
+        <div style="padding:32px 48px;border-right:1px solid #e6e7ea;border-bottom:1px solid #e6e7ea;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6a6e78;">01 · COLOUR — one accent</div>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:13.5px;line-height:1.55;color:#4a4f58;margin:10px 0 16px;">One accent, phosphor amber, used only as a plane or a functional marker — active tab, caret, one panel header. Never as thin text, which is what keeps it AA-safe in both themes and stops it becoming confetti.</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#8a8f98;margin-bottom:8px;">DARK (primary)</div>
+          <div style="display:flex;flex-direction:column;gap:7px;font-family:'JetBrains Mono',monospace;font-size:12px;">
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#0B0C0E;border:1px solid #2a2f38;"></span><b style="width:78px;color:#0B0C0E;">bg</b><span style="color:#6a6e78;">#0B0C0E</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#14161A;border:1px solid #2a2f38;"></span><b style="width:78px;color:#0B0C0E;">panel</b><span style="color:#6a6e78;">#14161A</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#E6E7E9;"></span><b style="width:78px;color:#0B0C0E;">ink</b><span style="color:#6a6e78;">#E6E7E9 · 15.8:1 / 14.6:1</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#898E96;"></span><b style="width:78px;color:#0B0C0E;">muted</b><span style="color:#6a6e78;">#898E96 · 5.9:1</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#262A30;"></span><b style="width:78px;color:#0B0C0E;">line</b><span style="color:#6a6e78;">#262A30</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#F2A93B;"></span><b style="width:78px;color:#0B0C0E;">accent</b><span style="color:#6a6e78;">#F2A93B · ink 9.1:1</span></div>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#8a8f98;margin:16px 0 8px;">LIGHT</div>
+          <div style="display:flex;flex-direction:column;gap:7px;font-family:'JetBrains Mono',monospace;font-size:12px;">
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#FAFAF9;border:1px solid #d7d8dd;"></span><b style="width:78px;color:#0B0C0E;">bg</b><span style="color:#6a6e78;">#FAFAF9</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#FFFFFF;border:1px solid #d7d8dd;"></span><b style="width:78px;color:#0B0C0E;">panel</b><span style="color:#6a6e78;">#FFFFFF</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#16181C;"></span><b style="width:78px;color:#0B0C0E;">ink</b><span style="color:#6a6e78;">#16181C · 17.0:1 / 17.8:1</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#5B616A;"></span><b style="width:78px;color:#0B0C0E;">muted</b><span style="color:#6a6e78;">#5B616A · 6.0:1</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#F2A93B;"></span><b style="width:78px;color:#0B0C0E;">accent</b><span style="color:#6a6e78;">#F2A93B · ink 9.1:1</span></div>
+          </div>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:12.5px;line-height:1.5;color:#4a4f58;margin-top:14px;border-top:1px dashed #d7d8dd;padding-top:12px;"><b style="color:#0B0C0E;">Discipline.</b> One accent. At most three amber moments per page and one of them commits ≥25% of a band's area (a panel header, the demo-credentials strip). Amber is the same hex in both themes and always carries near-black ink, so it can never invert to a low-contrast fill. Status never rides on amber alone — it also carries a dot and a word.</p>
+        </div>
+
+        <div style="padding:32px 48px;border-bottom:1px solid #e6e7ea;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6a6e78;">02 · TYPE — JetBrains Mono + IBM Plex Sans</div>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:13.5px;line-height:1.55;color:#4a4f58;margin:10px 0 18px;">JetBrains Mono sets the display and every spec value — it is a real code face, so the workbench read is earned, not costumed. Plex Sans carries body copy at length, where a monospace would tire the eye. Mono headlines are the opposite of the marketplace default and immediately un-template the page.</p>
+          <div style="border-top:1px solid #e6e7ea;padding-top:16px;">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#8a8f98;">DISPLAY / MONO 46 / 1.06 / 800 / -0.02em</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:40px;line-height:1.06;letter-spacing:-0.02em;color:#16181C;margin:6px 0 18px;">./ship --documented</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#8a8f98;">H2 / MONO 24 / 1.2 / 700</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:22px;line-height:1.2;color:#16181C;margin:6px 0 16px;">Every release, dated and on the record.</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#8a8f98;">BODY / SANS 16 / 1.62 / 400</div>
+            <p style="font-family:'IBM Plex Sans',sans-serif;font-size:16px;line-height:1.62;color:#2b2f37;margin:6px 0 16px;max-width:60ch;">SlotDesk AI turns a WhatsApp message into a confirmed booking without a third-party queue. You host it, you keep the data, and the changelog shows exactly what shipped.</p>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#8a8f98;">LABEL / MONO 12 / .1em / 700 · tabular</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;font-weight:700;color:#16181C;margin-top:6px;">01 <span style="color:#b5791a;">●</span> ACTIVE · CODECANYON · v—</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6a6e78;">03 · GRID</div>
+              <p style="font-family:'IBM Plex Sans',sans-serif;font-size:12.5px;line-height:1.55;color:#4a4f58;margin-top:8px;">4px base. Two regions: a 56px line-number gutter and the content column, 1180 container. Panels align to a hard 8px step so borders always meet.</p>
+            </div>
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6a6e78;">04 · SHAPE + DEPTH</div>
+              <p style="font-family:'IBM Plex Sans',sans-serif;font-size:12.5px;line-height:1.55;color:#4a4f58;margin-top:8px;">Bordered panels, radius 6px, no drop shadows. Depth comes from a 1px line plus a one-step panel tint over the bg. Focus ring: 2px amber, which clears every surface.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;">
+        <div style="padding:24px 48px;border-right:1px solid #e6e7ea;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6a6e78;">05 · SIGNATURE DEVICE</div>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:12.5px;line-height:1.55;color:#4a4f58;margin-top:8px;">The gutter rail and caret. A line-number rail runs down the start edge of every major block, and an amber block caret marks the live element. A one-line status footer closes each section with the honest facts.</p>
+        </div>
+        <div style="padding:24px 48px;">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6a6e78;">06 · MOTION</div>
+          <p style="font-family:'IBM Plex Sans',sans-serif;font-size:12.5px;line-height:1.55;color:#4a4f58;margin-top:8px;">The caret blinks. Panels get a 1-frame border-brighten on focus, content fades 80ms. No parallax, no odometers, no marquee. Caret holds steady under prefers-reduced-motion.</p>
+        </div>
+      </div>
+
+      <!-- HERO DARK (primary) -->
+      <div style="border-top:1px solid #e6e7ea;padding:16px 48px 8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6a6e78;">07 · HOME HERO — 1440 — DARK</div>
+      <div style="padding:0 48px 40px;">
+        <div style="width:100%;background:#0B0C0E;border:1px solid #262A30;color:#E6E7E9;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 28px;border-bottom:1px solid #262A30;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="width:24px;height:24px;border:1px solid #3a3f48;border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:#6b7080;">◇</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:17px;letter-spacing:-0.01em;">themeaves</span>
+            </div>
+            <div style="display:flex;gap:22px;font-family:'JetBrains Mono',monospace;font-size:13px;color:#898E96;">
+              <span style="color:#E6E7E9;border-bottom:2px solid #F2A93B;padding-bottom:3px;">Products</span><span>Demos</span><span>Docs</span><span>Changelog</span><span>Support</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12px;">
+              <span style="border:1px solid #262A30;border-radius:5px;padding:6px 10px;color:#898E96;">◐</span>
+              <span style="border:1px solid #3a3f48;border-radius:5px;padding:6px 12px;color:#E6E7E9;">My licence</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:56px 1fr;">
+            <div style="border-inline-end:1px solid #262A30;padding:64px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#4b515c;text-align:center;line-height:2.1;">01<br>02<br>03<br>04<br>05<br>06<br>07</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px;padding:60px 40px 64px;">
+              <div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;color:#F2A93B;">● SELF-HOSTED · PHP-SCRIPT</div>
+                <h1 style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:48px;line-height:1.08;letter-spacing:-0.02em;margin-top:20px;">We build software and document every change.<span style="display:inline-block;width:22px;height:44px;background:#F2A93B;margin-inline-start:8px;transform:translateY(6px);animation:caret 1.1s step-end infinite;"></span></h1>
+                <p style="font-family:'IBM Plex Sans',sans-serif;font-size:18px;line-height:1.6;color:#898E96;margin-top:22px;max-width:46ch;">SlotDesk AI turns a WhatsApp message into a confirmed booking, on your server. Every release is dated and on the record.</p>
+                <div style="display:flex;gap:14px;align-items:center;margin-top:32px;">
+                  <span style="background:#F2A93B;color:#14161A;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;padding:14px 20px;border-radius:6px;">Try the SlotDesk demo ↗</span>
+                  <span style="border:1px solid #3a3f48;color:#E6E7E9;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:14px;padding:14px 20px;border-radius:6px;">Get on CodeCanyon ↗</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#6b7080;">$—</span>
+                </div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#898E96;margin-top:34px;border-top:1px solid #262A30;padding-top:14px;">PHP·LARAVEL·MYSQL / SELF-HOSTED / SUPPORT 6MO / DOCS PUBLIC</div>
+              </div>
+              <div style="position:relative;display:flex;align-items:center;">
+                <div style="width:100%;background:#14161A;border:1px solid #262A30;border-radius:6px;overflow:hidden;">
+                  <div style="display:flex;align-items:center;gap:7px;padding:9px 12px;border-bottom:1px solid #262A30;font-family:'JetBrains Mono',monospace;font-size:11px;color:#6b7080;"><span style="width:8px;height:8px;border-radius:50%;background:#2f3744;"></span><span style="width:8px;height:8px;border-radius:50%;background:#2f3744;"></span> demo.slotdesk.app</div>
+                  <div style="height:238px;background:repeating-linear-gradient(135deg,#191c22 0 11px,#14161A 11px 22px);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:#6b7080;">SlotDesk dashboard — screenshot</div>
+                </div>
+                <div style="position:absolute;bottom:-14px;inset-inline-end:8px;width:132px;background:#14161A;border:1px solid #3a3f48;border-radius:16px;padding:6px;">
+                  <div style="height:196px;border-radius:11px;background:repeating-linear-gradient(135deg,#191c22 0 9px,#14161A 9px 18px);display:flex;align-items:flex-end;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;color:#6b7080;text-align:center;padding-bottom:10px;">WhatsApp booking<br>9:19.5</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="border-top:1px solid #262A30;padding:10px 28px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#4b515c;display:flex;justify-content:space-between;"><span>~/themeaves — home</span><span>UTF-8 · LF · AA ✓</span></div>
+        </div>
+      </div>
+
+      <!-- HERO LIGHT -->
+      <div style="border-top:1px solid #e6e7ea;padding:16px 48px 8px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#6a6e78;">08 · HOME HERO — 1440 — LIGHT</div>
+      <div style="padding:0 48px 48px;">
+        <div style="width:100%;background:#FAFAF9;border:1px solid #E4E5E8;color:#16181C;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 28px;border-bottom:1px solid #E4E5E8;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="width:24px;height:24px;border:1px solid #cfd1d6;border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:#9a9ea6;">◇</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:17px;letter-spacing:-0.01em;">themeaves</span>
+            </div>
+            <div style="display:flex;gap:22px;font-family:'JetBrains Mono',monospace;font-size:13px;color:#5B616A;">
+              <span style="color:#16181C;border-bottom:2px solid #F2A93B;padding-bottom:3px;">Products</span><span>Demos</span><span>Docs</span><span>Changelog</span><span>Support</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12px;">
+              <span style="border:1px solid #E4E5E8;border-radius:5px;padding:6px 10px;color:#5B616A;">◑</span>
+              <span style="border:1px solid #cfd1d6;border-radius:5px;padding:6px 12px;color:#16181C;">My licence</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:56px 1fr;">
+            <div style="border-inline-end:1px solid #E4E5E8;padding:64px 0 0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#b7bac1;text-align:center;line-height:2.1;">01<br>02<br>03<br>04<br>05<br>06<br>07</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:44px;padding:60px 40px 64px;">
+              <div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;color:#b5791a;">● SELF-HOSTED · PHP-SCRIPT</div>
+                <h1 style="font-family:'JetBrains Mono',monospace;font-weight:800;font-size:48px;line-height:1.08;letter-spacing:-0.02em;margin-top:20px;">We build software and document every change.<span style="display:inline-block;width:22px;height:44px;background:#F2A93B;margin-inline-start:8px;transform:translateY(6px);animation:caret 1.1s step-end infinite;"></span></h1>
+                <p style="font-family:'IBM Plex Sans',sans-serif;font-size:18px;line-height:1.6;color:#5B616A;margin-top:22px;max-width:46ch;">SlotDesk AI turns a WhatsApp message into a confirmed booking, on your server. Every release is dated and on the record.</p>
+                <div style="display:flex;gap:14px;align-items:center;margin-top:32px;">
+                  <span style="background:#F2A93B;color:#14161A;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;padding:14px 20px;border-radius:6px;">Try the SlotDesk demo ↗</span>
+                  <span style="border:1px solid #cfd1d6;color:#16181C;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:14px;padding:14px 20px;border-radius:6px;">Get on CodeCanyon ↗</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#9a9ea6;">$—</span>
+                </div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#5B616A;margin-top:34px;border-top:1px solid #E4E5E8;padding-top:14px;">PHP·LARAVEL·MYSQL / SELF-HOSTED / SUPPORT 6MO / DOCS PUBLIC</div>
+              </div>
+              <div style="position:relative;display:flex;align-items:center;">
+                <div style="width:100%;background:#FFFFFF;border:1px solid #E4E5E8;border-radius:6px;overflow:hidden;">
+                  <div style="display:flex;align-items:center;gap:7px;padding:9px 12px;border-bottom:1px solid #E4E5E8;font-family:'JetBrains Mono',monospace;font-size:11px;color:#9a9ea6;"><span style="width:8px;height:8px;border-radius:50%;background:#e0e2e6;"></span><span style="width:8px;height:8px;border-radius:50%;background:#e0e2e6;"></span> demo.slotdesk.app</div>
+                  <div style="height:238px;background:repeating-linear-gradient(135deg,#f0f0ee 0 11px,#FAFAF9 11px 22px);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:#9a9ea6;">SlotDesk dashboard — screenshot</div>
+                </div>
+                <div style="position:absolute;bottom:-14px;inset-inline-end:8px;width:132px;background:#FFFFFF;border:1px solid #16181C;border-radius:16px;padding:6px;">
+                  <div style="height:196px;border-radius:11px;background:repeating-linear-gradient(135deg,#f0f0ee 0 9px,#FAFAF9 9px 18px);display:flex;align-items:flex-end;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;color:#9a9ea6;text-align:center;padding-bottom:10px;">WhatsApp booking<br>9:19.5</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="border-top:1px solid #E4E5E8;padding:10px 28px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#b7bac1;display:flex;justify-content:space-between;"><span>~/themeaves — home</span><span>UTF-8 · LF · AA ✓</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =============== 1c PRESS =============== -->
+    <div id="1c" style="width:1440px;flex:none;background:#fff;border:1px solid #d7d8dd;">
+      <div style="padding:40px 48px;border-bottom:1px solid #e6e7ea;">
+        <div style="display:flex;align-items:baseline;gap:14px;">
+          <span style="font-family:'Public Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:.06em;background:#1C1A17;color:#F7F4EF;padding:4px 9px;">1c</span>
+          <span style="font-family:'Newsreader',serif;font-weight:700;font-size:28px;letter-spacing:-0.01em;color:#1C1A17;">Press</span>
+          <span style="font-family:'Public Sans',sans-serif;font-size:12px;color:#6a6e78;">warm paper · one clay band · light-first</span>
+        </div>
+        <p style="font-family:'Newsreader',serif;font-weight:600;font-size:24px;line-height:1.28;letter-spacing:-0.01em;color:#1C1A17;margin-top:20px;max-width:940px;">A studio journal — editorial confidence, set in type, not decorated.</p>
+        <p style="font-family:'Public Sans',sans-serif;font-size:15px;line-height:1.62;color:#4a4f58;margin-top:12px;max-width:940px;">The furthest thing from a marketplace preview is a well-set publication. Structure is carried by whitespace, hairline rules and oversized numerals — a serif display face gives the studio a voice with authority, which is exactly the trust argument the brief needs when tenure is off the table. It reads as considered, and it needs no imagery to feel complete because the typography is the composition.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;">
+        <div style="padding:32px 48px;border-right:1px solid #e6e7ea;border-bottom:1px solid #e6e7ea;">
+          <div style="font-family:'Public Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6a6e78;">01 · Colour — one accent</div>
+          <p style="font-family:'Public Sans',sans-serif;font-size:13.5px;line-height:1.55;color:#4a4f58;margin:10px 0 16px;">One saturated clay against a warm ink/paper ramp. One accent because an editorial page earns impact by spending colour rarely and large — a single band per page, not a scatter of ticks.</p>
+          <div style="font-family:'Public Sans',sans-serif;font-size:11px;color:#8a8f98;margin-bottom:8px;letter-spacing:.08em;">LIGHT</div>
+          <div style="display:flex;flex-direction:column;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;">
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#F7F4EF;border:1px solid #e0dccf;"></span><b style="width:80px;color:#1C1A17;">paper</b><span style="color:#6a6e78;">#F7F4EF</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#FFFDF9;border:1px solid #e0dccf;"></span><b style="width:80px;color:#1C1A17;">surface</b><span style="color:#6a6e78;">#FFFDF9</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#1C1A17;"></span><b style="width:80px;color:#1C1A17;">ink</b><span style="color:#6a6e78;">#1C1A17 · 15.8:1 / 17.1:1</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#6B6459;"></span><b style="width:80px;color:#1C1A17;">muted</b><span style="color:#6a6e78;">#6B6459 · 5.3:1</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#E4DED3;"></span><b style="width:80px;color:#1C1A17;">line</b><span style="color:#6a6e78;">#E4DED3</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#B23A1E;"></span><b style="width:80px;color:#1C1A17;">clay</b><span style="color:#6a6e78;">#B23A1E · on-clay 5.6:1</span></div>
+          </div>
+          <div style="font-family:'Public Sans',sans-serif;font-size:11px;color:#8a8f98;margin:16px 0 8px;letter-spacing:.08em;">DARK</div>
+          <div style="display:flex;flex-direction:column;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:12px;">
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#14120F;border:1px solid #2c2822;"></span><b style="width:80px;color:#1C1A17;">bg</b><span style="color:#6a6e78;">#14120F</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#1C1A16;border:1px solid #2c2822;"></span><b style="width:80px;color:#1C1A17;">surface</b><span style="color:#6a6e78;">#1C1A16</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#EEEAE2;"></span><b style="width:80px;color:#1C1A17;">ink</b><span style="color:#6a6e78;">#EEEAE2 · 15.6:1 / 14.5:1</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#9A9284;"></span><b style="width:80px;color:#1C1A17;">muted</b><span style="color:#6a6e78;">#9A9284 · 6.1:1</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#E8785A;"></span><b style="width:80px;color:#1C1A17;">clay-text</b><span style="color:#6a6e78;">#E8785A · 6.5:1</span></div>
+            <div style="display:flex;align-items:center;gap:10px;"><span style="width:26px;height:26px;background:#B23A1E;"></span><b style="width:80px;color:#1C1A17;">clay-plane</b><span style="color:#6a6e78;">pinned · on-clay 5.6:1</span></div>
+          </div>
+          <p style="font-family:'Public Sans',sans-serif;font-size:12.5px;line-height:1.5;color:#4a4f58;margin-top:14px;border-top:1px dashed #e0dccf;padding-top:12px;"><b style="color:#1C1A17;">Discipline.</b> One saturated clay, spent as a single full-bleed band per page that fills 100% of its height with real content, plus the wordmark. Two colour moments maximum. The clay plane is pinned in both themes and always carries pinned off-white text at 5.6:1, so it never inverts. Everything else is warm ink on paper.</p>
+        </div>
+
+        <div style="padding:32px 48px;border-bottom:1px solid #e6e7ea;">
+          <div style="font-family:'Public Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6a6e78;">02 · Type — Newsreader + Public Sans</div>
+          <p style="font-family:'Public Sans',sans-serif;font-size:13.5px;line-height:1.55;color:#4a4f58;margin:10px 0 18px;">Newsreader is a screen-native text serif with real optical sizes — authoritative at display, comfortable in a pull-quote, and nothing like the marketplace grotesques. Public Sans (a neutral, open-licence workhorse) carries UI, labels and captions so the serif stays reserved for voice. Two families, four files, within budget.</p>
+          <div style="border-top:1px solid #e6e7ea;padding-top:16px;">
+            <div style="font-family:'Public Sans',sans-serif;font-size:11px;color:#8a8f98;letter-spacing:.06em;">DISPLAY / NEWSREADER 52 / 1.04 / 600 / -0.02em</div>
+            <div style="font-family:'Newsreader',serif;font-weight:600;font-size:46px;line-height:1.04;letter-spacing:-0.02em;color:#1C1A17;margin:6px 0 18px;">Documented software, on your own server.</div>
+            <div style="font-family:'Public Sans',sans-serif;font-size:11px;color:#8a8f98;letter-spacing:.06em;">H2 / NEWSREADER 26 / 1.18 / 500 italic</div>
+            <div style="font-family:'Newsreader',serif;font-weight:500;font-style:italic;font-size:24px;line-height:1.18;color:#1C1A17;margin:6px 0 16px;">Every release is dated and on the record.</div>
+            <div style="font-family:'Public Sans',sans-serif;font-size:11px;color:#8a8f98;letter-spacing:.06em;">BODY / PUBLIC SANS 16.5 / 1.62 / 400 · measure ≤ 66ch</div>
+            <p style="font-family:'Public Sans',sans-serif;font-size:16.5px;line-height:1.62;color:#2b2f37;margin:6px 0 16px;max-width:60ch;">SlotDesk AI turns a WhatsApp message into a confirmed booking without a third-party queue. You host it, you keep the data, and the changelog shows exactly what shipped and when.</p>
+            <div style="font-family:'Public Sans',sans-serif;font-size:11px;color:#8a8f98;letter-spacing:.06em;">LABEL / PUBLIC SANS 12 / .14em / 600 UPPER · tabular</div>
+            <div style="font-family:'Public Sans',sans-serif;font-size:12px;letter-spacing:.14em;font-weight:600;text-transform:uppercase;color:#B23A1E;margin-top:6px;">CodeCanyon · PHP script · v—</div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px;">
+            <div>
+              <div style="font-family:'Public Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6a6e78;">03 · Grid</div>
+              <p style="font-family:'Public Sans',sans-serif;font-size:12.5px;line-height:1.55;color:#4a4f58;margin-top:8px;">4px baseline. Single 720 measure for prose, 1120 container. Generous section rhythm at 160, so whitespace is the structure. Oversized numerals sit in the outer margin.</p>
+            </div>
+            <div>
+              <div style="font-family:'Public Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6a6e78;">04 · Shape + depth</div>
+              <p style="font-family:'Public Sans',sans-serif;font-size:12.5px;line-height:1.55;color:#4a4f58;margin-top:8px;">Radius 0. No cards, no shadows. Structure is hairline rules and space; the one plane is the clay band. Focus ring: 2px ink, or off-white when on the clay band.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;">
+        <div style="padding:24px 48px;border-right:1px solid #e6e7ea;">
+          <div style="font-family:'Public Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6a6e78;">05 · Signature device</div>
+          <p style="font-family:'Public Sans',sans-serif;font-size:12.5px;line-height:1.55;color:#4a4f58;margin-top:8px;">The margin numeral and running index. Each section opens with an oversized outlined numeral in the outer margin and a short index line, the way a printed journal paginates itself. It gives the site a spine you can feel scrolling.</p>
+        </div>
+        <div style="padding:24px 48px;">
+          <div style="font-family:'Public Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6a6e78;">06 · Motion</div>
+          <p style="font-family:'Public Sans',sans-serif;font-size:12.5px;line-height:1.55;color:#4a4f58;margin-top:8px;">Type-led and quiet. Rules extend under links on hover; the clay band fades up 200ms once on entry. No parallax, no scroll-jacking. Everything stills under prefers-reduced-motion.</p>
+        </div>
+      </div>
+
+      <!-- HERO LIGHT -->
+      <div style="border-top:1px solid #e6e7ea;padding:16px 48px 8px;font-family:'Public Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6a6e78;">07 · Home hero — 1440 — light</div>
+      <div style="padding:0 48px 40px;">
+        <div style="width:100%;background:#F7F4EF;border:1px solid #E4DED3;color:#1C1A17;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 36px;border-bottom:1px solid #E4DED3;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="width:24px;height:24px;border:1.5px solid #B23A1E;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-size:13px;color:#B23A1E;">◆</span>
+              <span style="font-family:'Newsreader',serif;font-weight:700;font-size:22px;letter-spacing:-0.01em;color:#B23A1E;">ThemeAves</span>
+            </div>
+            <div style="display:flex;gap:26px;font-family:'Public Sans',sans-serif;font-size:14px;color:#4a4438;">
+              <span>Products</span><span>Demos</span><span>Docs</span><span>Changelog</span><span>Support</span>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center;font-family:'Public Sans',sans-serif;font-size:13px;">
+              <span style="color:#6B6459;">◐ Theme</span>
+              <span style="border-bottom:1.5px solid #1C1A17;color:#1C1A17;padding-bottom:2px;">My licence</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.15fr 0.85fr;min-height:520px;">
+            <div style="padding:64px 20px 64px 56px;position:relative;">
+              <div style="font-family:'Newsreader',serif;font-weight:600;font-size:150px;line-height:0.8;color:transparent;-webkit-text-stroke:1.5px #E0D3C6;position:absolute;top:36px;left:-6px;">01</div>
+              <div style="position:relative;padding-top:96px;">
+                <div style="font-family:'Public Sans',sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#B23A1E;">The studio</div>
+                <h1 style="font-family:'Newsreader',serif;font-weight:600;font-size:62px;line-height:1.02;letter-spacing:-0.025em;margin-top:18px;max-width:14ch;">We build software and document every change.</h1>
+                <p style="font-family:'Public Sans',sans-serif;font-size:19px;line-height:1.58;color:#4a4438;margin-top:24px;max-width:44ch;">SlotDesk AI turns a WhatsApp message into a confirmed booking, on your server. Every release is dated and on the record.</p>
+                <div style="display:flex;gap:16px;align-items:center;margin-top:34px;">
+                  <span style="background:#1C1A17;color:#F7F4EF;font-family:'Public Sans',sans-serif;font-weight:600;font-size:15px;padding:14px 24px;">Try the SlotDesk demo ↗</span>
+                  <span style="font-family:'Public Sans',sans-serif;font-weight:600;font-size:15px;color:#1C1A17;border-bottom:1.5px solid #1C1A17;padding-bottom:3px;">Get SlotDesk AI on CodeCanyon ↗</span>
+                </div>
+                <div style="font-family:'Public Sans',sans-serif;font-size:13px;letter-spacing:.02em;color:#6B6459;margin-top:36px;border-top:1px solid #E4DED3;padding-top:14px;">PHP / Laravel / MySQL · Self-hosted · Support 6 months · Docs public · <span style="font-variant-numeric:tabular-nums;">$—</span></div>
+              </div>
+            </div>
+            <div style="background:#B23A1E;color:#FFF7F2;padding:48px 40px;display:flex;flex-direction:column;justify-content:center;position:relative;">
+              <div style="font-family:'Public Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#F6C9BC;">A message arrives · a booking appears</div>
+              <div style="width:168px;background:#FFF7F2;border-radius:20px;padding:8px;margin-top:22px;">
+                <div style="height:284px;border-radius:13px;background:repeating-linear-gradient(135deg,#f4e6df 0 10px,#FFF7F2 10px 20px);display:flex;align-items:flex-end;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#b07a6a;text-align:center;padding-bottom:14px;">WhatsApp booking<br>9:19.5</div>
+              </div>
+              <div style="font-family:'Newsreader',serif;font-style:italic;font-size:17px;line-height:1.4;margin-top:22px;max-width:26ch;">Self-hosted. Your server, your data, your WhatsApp number.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HERO DARK -->
+      <div style="border-top:1px solid #e6e7ea;padding:16px 48px 8px;font-family:'Public Sans',sans-serif;font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6a6e78;">08 · Home hero — 1440 — dark</div>
+      <div style="padding:0 48px 48px;">
+        <div style="width:100%;background:#14120F;border:1px solid #2C2822;color:#EEEAE2;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 36px;border-bottom:1px solid #2C2822;">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="width:24px;height:24px;border:1.5px solid #E8785A;display:flex;align-items:center;justify-content:center;font-family:'Newsreader',serif;font-size:13px;color:#E8785A;">◆</span>
+              <span style="font-family:'Newsreader',serif;font-weight:700;font-size:22px;letter-spacing:-0.01em;color:#E8785A;">ThemeAves</span>
+            </div>
+            <div style="display:flex;gap:26px;font-family:'Public Sans',sans-serif;font-size:14px;color:#b3ab9d;">
+              <span>Products</span><span>Demos</span><span>Docs</span><span>Changelog</span><span>Support</span>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center;font-family:'Public Sans',sans-serif;font-size:13px;">
+              <span style="color:#9A9284;">◑ Theme</span>
+              <span style="border-bottom:1.5px solid #EEEAE2;color:#EEEAE2;padding-bottom:2px;">My licence</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.15fr 0.85fr;min-height:520px;">
+            <div style="padding:64px 20px 64px 56px;position:relative;">
+              <div style="font-family:'Newsreader',serif;font-weight:600;font-size:150px;line-height:0.8;color:transparent;-webkit-text-stroke:1.5px #34302a;position:absolute;top:36px;left:-6px;">01</div>
+              <div style="position:relative;padding-top:96px;">
+                <div style="font-family:'Public Sans',sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#E8785A;">The studio</div>
+                <h1 style="font-family:'Newsreader',serif;font-weight:600;font-size:62px;line-height:1.02;letter-spacing:-0.025em;margin-top:18px;max-width:14ch;">We build software and document every change.</h1>
+                <p style="font-family:'Public Sans',sans-serif;font-size:19px;line-height:1.58;color:#b3ab9d;margin-top:24px;max-width:44ch;">SlotDesk AI turns a WhatsApp message into a confirmed booking, on your server. Every release is dated and on the record.</p>
+                <div style="display:flex;gap:16px;align-items:center;margin-top:34px;">
+                  <span style="background:#EEEAE2;color:#14120F;font-family:'Public Sans',sans-serif;font-weight:600;font-size:15px;padding:14px 24px;">Try the SlotDesk demo ↗</span>
+                  <span style="font-family:'Public Sans',sans-serif;font-weight:600;font-size:15px;color:#EEEAE2;border-bottom:1.5px solid #EEEAE2;padding-bottom:3px;">Get SlotDesk AI on CodeCanyon ↗</span>
+                </div>
+                <div style="font-family:'Public Sans',sans-serif;font-size:13px;letter-spacing:.02em;color:#9A9284;margin-top:36px;border-top:1px solid #2C2822;padding-top:14px;">PHP / Laravel / MySQL · Self-hosted · Support 6 months · Docs public · <span style="font-variant-numeric:tabular-nums;">$—</span></div>
+              </div>
+            </div>
+            <div style="background:#B23A1E;color:#FFF7F2;padding:48px 40px;display:flex;flex-direction:column;justify-content:center;position:relative;">
+              <div style="font-family:'Public Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#F6C9BC;">A message arrives · a booking appears</div>
+              <div style="width:168px;background:#FFF7F2;border-radius:20px;padding:8px;margin-top:22px;">
+                <div style="height:284px;border-radius:13px;background:repeating-linear-gradient(135deg,#f4e6df 0 10px,#FFF7F2 10px 20px);display:flex;align-items:flex-end;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#b07a6a;text-align:center;padding-bottom:14px;">WhatsApp booking<br>9:19.5</div>
+              </div>
+              <div style="font-family:'Newsreader',serif;font-style:italic;font-size:17px;line-height:1.4;margin-top:22px;max-width:26ch;">Self-hosted. Your server, your data, your WhatsApp number.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+</x-dc>
+</body>
+</html>
