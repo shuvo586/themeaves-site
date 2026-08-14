@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 721.23 543.79" role="img" aria-label="ThemeAves">
+  <title>ThemeAves</title>
+  <!--
+    The bird, full detail, retoned for direction 1a Blueprint. Use above about
+    64px. Below that use bird-compact.svg; the interior detail here collapses
+    into a smudge at lockup size, which is the failure the previous system
+    shipped and then had to correct.
+
+    The geometry is brand/mark.svg untouched, coordinate for coordinate. What
+    changed is only which shape takes which role, because the four hexes the
+    original was drawn in belong to the retired palette:
+
+      structure, eye, fold shadows      --ta-mark-ink     currentColor
+      body and wing knockouts           --ta-mark-field   the surface behind
+      head, tail, the three wing bars   --ta-mark-accent  currentColor
+
+    The three wing bars were sun, tide and flare. Collapsing them to one role
+    is the whole point: 1a runs a single accent, and three hues in a mark that
+    sits in the header on every route is precisely the confetti that got the
+    first two rounds rejected.
+
+    --ta-mark-accent defaults to currentColor, so out of the box the mark is
+    monochrome and spends none of the page's colour budget. Set it to
+    var(--color-accent) for the places that should carry the accent, such as
+    the about page and the 512px app icon.
+
+    Written for INLINE use, as a React component, which is how it will ship.
+    currentColor and custom properties both need the mark to be part of the
+    document. Dropped into an <img> it degrades to black on paper, which is
+    acceptable for the rare static case and is not how the site uses it.
+  -->
+  <!--
+    The bird faces RIGHT, which is the live ThemeAves identity as published on
+    the ThemeForest profile. `brand/mark.svg` is drawn facing left, so this file
+    mirrors it rather than re-drawing it. The transform is an exact reflection
+    about the horizontal centre of the viewBox (0 + 721.23), so the geometry
+    stays identical to the master coordinate for coordinate.
+  -->
+  <g transform="translate(721.23 0) scale(-1 1)">
+
+  <g fill="currentColor">
+    <!-- upper wing, drawn as a ring: outer triangle less the inner one -->
+    <path fill-rule="evenodd" d="m269.53,399.59L100.17,144.58,599.95,10.67l-330.43,388.93Zm-140.1-243.95l141.89,213.65L548.15,43.45l-418.72,112.2Z"/>
+    <!-- the flash inside the upper wing -->
+    <path fill="var(--ta-mark-accent, currentColor)" d="M311.37,122.91 L542.62,63.87 L494.16,106.99 L352.35,150.11 Z"/>
+  </g>
+
+  <!-- body, knocked out so the upper wing does not read through it -->
+  <path fill="var(--ta-mark-field, #F4F5F7)" d="m175.44,32.66C114.8-10.99,65.39,13.17,48.18,47.88l-27.06,54.6-4.36,8.79c9.51-2.2,21.38-.35,32.24,5.03l66.3,32.86-.49.96,107.92,266.62-86.28,117.93h132.27l66.1-182.3,17.54-202.25L175.44,32.66Z"/>
+  <path fill="var(--ta-mark-accent, currentColor)" d="m286.71,121.37h12.2L131.68,17.23S58.41,8.54,44.58,55.15h0c73.33,43.35,156.95,66.22,242.14,66.22Z"/>
+  <path fill="var(--ta-mark-accent, currentColor)" d="M203.92,482.71 L180.1,534.66 L268.71,534.66 L305.83,432.3 Z"/>
+
+  <g fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="18.26">
+    <path d="M340.38,153.02 L504.61,110.38"/>
+    <path d="m175.44,32.66C114.8-10.99,65.39,13.17,48.18,47.88l-27.06,54.6-4.36,8.79c9.51-2.2,21.38-.35,32.24,5.03l66.3,32.86-.49.96,107.92,266.62-86.28,117.93h132.27l66.1-182.3,17.54-202.25L175.44,32.66Z"/>
+  </g>
+
+  <g fill="currentColor">
+    <path d="M203.92,482.71 L180.1,530.45 L196.29,538.88 L224.5,482.71 Z"/>
+    <path d="M240.12,482.71 L218.79,531.01 L235.52,538.32 L260.05,482.71 Z"/>
+    <path d="m110.6,63.87c0,5.76-4.67,10.44-10.44,10.44s-10.44-4.67-10.44-10.44,4.67-10.44,10.44-10.44,10.44,4.67,10.44,10.44Z"/>
+  </g>
+
+  <!-- lower wing, knocked out, then its three bars and their fold shadows -->
+  <path fill="var(--ta-mark-field, #F4F5F7)" d="M222.72,416.74 L114.8,150.11 L687.01,150.11 Z"/>
+  <g fill="var(--ta-mark-accent, currentColor)">
+    <path d="M642.9,175.44 L579.42,211.9 L223.56,211.9 L220.28,202.77 L210.51,175.44 Z"/>
+    <path d="M533.96,238 L469.39,274.46 L245.96,274.46 L242.67,265.33 L232.9,238 Z"/>
+    <path d="M415.23,304 L355.53,336.59 L348.44,340.46 L269.57,340.46 L266.31,331.33 L256.52,304 Z"/>
+  </g>
+  <g fill="currentColor">
+    <path d="M579.42,202.77 L579.42,221.02 L226.82,221.02 L223.56,211.9 L220.28,202.77 Z"/>
+    <path d="M468.97,265.33 L468.97,283.59 L249.21,283.59 L245.96,274.46 L242.67,265.33 Z"/>
+    <path d="M355.53,331.33 L355.53,349.58 L272.83,349.58 L266.31,331.33 Z"/>
+  </g>
+  <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="18.26" d="M222.72,416.74 L114.8,150.11 L687.01,150.11 Z"/>
+
+  </g>
+</svg>

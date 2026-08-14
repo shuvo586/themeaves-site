@@ -1,0 +1,511 @@
+/* ==========================================================================
+   ThemeAves token layer
+   Direction 1a "Blueprint": a precision engineering document you happen to
+   buy software from. Structure is carried by a visible grid and hairline
+   rules. No cards, no shadows, no gradients.
+
+   Naming follows Tailwind v4 conventions (--color-*, --font-*, --text-*,
+   --radius-*, --spacing-*) so this file drops into an `@theme` block
+   unchanged when the stack is scaffolded. Nothing here depends on Tailwind.
+
+   Every ratio in the comments was computed, not eyeballed. `_dev/tokens.html`
+   recomputes them live from these values, so the page fails loudly if a token
+   is edited without rechecking. Do not trust these comments over that page.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. PRIMITIVES
+   Raw values. Never reference these from a component. They exist so the
+   semantic layer below has something to point at, and so a hue can be
+   retuned in one place.
+   -------------------------------------------------------------------------- */
+:root {
+  --bp-paper:        #F4F5F7;
+  --bp-white:        #FFFFFF;
+  --bp-ink:          #14181F;
+  --bp-slate:        #5A6472;
+  --bp-line-light:   #D3D8E0;
+  --bp-line-light-2: #767D89;
+
+  --bp-void:         #0C0F14;
+  --bp-panel:        #141922;
+  --bp-chalk:        #E8EBF0;
+  --bp-ash:          #97A0AE;
+  --bp-line-dark:    #232A35;
+  --bp-line-dark-2:  #606A79;
+
+  /* ------------------------------------------------------------------------
+     BRAND MARK PALETTE
+
+     The four hexes the ThemeAves bird is actually drawn in, as published on
+     the ThemeForest profile. The page palette below is derived FROM these
+     rather than invented alongside them, which is the whole correction: the
+     brief opened by asserting there was no logo and no palette to inherit,
+     and there was.
+
+     Contrast on --bp-paper, computed:
+       mark-navy  10.20   safe for text, and the page accent
+       mark-flare  3.32   large text and UI edges only
+       mark-tide   2.08   FILL ONLY, never text on a light ground
+       mark-sun    1.48   FILL ONLY, never text on a light ground
+     Which is exactly how the mark uses them: solid bars on a navy body.
+
+     sun and flare stay mark-only for now, by decision. Only navy and tide
+     were promoted to page roles.
+     ------------------------------------------------------------------------ */
+  --bp-mark-navy:  #243D59;
+  --bp-mark-sun:   #FBD101;
+  --bp-mark-tide:  #33BFB3;
+  --bp-mark-flare: #FD4717;
+
+  /* ------------------------------------------------------------------------
+     PAGE ACCENT
+
+     Was #1B4DFF, an invented signal blue that belonged to a system built on
+     the premise that no brand colour existed. It is the mark's own navy, so
+     the page and the logo agree.
+
+     A green pass on 2026-08-13 was reverted the same day: it collided with
+     SlotDesk's own green, and the product theme stopped reading as a
+     deliberate switch. Navy against leaf is the contrast that makes a manual
+     obviously the product's. Do not make the page accent green again without
+     also solving `.theme-slotdesk` in section 4b.
+
+     --bp-signal-lift is DERIVED, not given: navy at the same hue (212deg) and
+     saturation, lifted in lightness until it clears AA on both dark grounds.
+     #243D59 as text on --bp-void is 1.72:1, so dark cannot use the navy
+     itself. Same rule the old palette followed, same reason.
+       signal       10.20 on paper  ·  11.13 on surface
+       signal-lift   6.71 on void   ·   6.16 on panel
+     ------------------------------------------------------------------------ */
+  --bp-signal:       var(--bp-mark-navy);
+  --bp-signal-lift:  #759CC7;
+
+  /* ------------------------------------------------------------------------
+     SECONDARY
+
+     Tide, from the mark. Note the inversion, because it is easy to get wrong:
+     on a LIGHT ground tide is a fill and never text (2.08:1 on paper). On a
+     DARK ground it is a perfectly good text colour (8.45:1 on void).
+
+     A tide plane takes NAVY text at 4.90:1 and white text at 2.27:1, so the
+     pairing is navy-on-tide, never white-on-tide. That is how the mark uses
+     it too: a tide bar against navy structure.
+     ------------------------------------------------------------------------ */
+  --bp-secondary:    var(--bp-mark-tide);
+}
+
+/* --------------------------------------------------------------------------
+   2. SEMANTIC COLOUR, LIGHT (default)
+
+   These flip with the theme. A token here is a role, not a colour, and a
+   component may only ever name the role.
+   -------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+
+  --color-bg:          var(--bp-paper);
+  --color-surface:     var(--bp-white);
+  --color-ink:         var(--bp-ink);        /* 16.31 on bg · 17.79 on surface */
+  --color-muted:       var(--bp-slate);      /*  5.50 on bg ·  6.00 on surface */
+  --color-accent:      var(--bp-signal);     /* 10.20 on bg · 11.13 on surface */
+
+  /* Fill only in light. Never set text in this colour on a light ground. */
+  --color-secondary:    var(--bp-secondary);  /*  2.08 on bg · FILL ONLY */
+  --color-on-secondary: var(--bp-mark-navy);  /*  4.90 on the tide plane */
+
+  /* Two line weights, and the distinction is not cosmetic.
+     --color-line is decorative: dividers, the ticked measurement rule, section
+     edges. It is 1.31:1 against the page and that is correct, because WCAG
+     1.4.11 does not apply to decoration.
+     --color-line-strong is for anything that bounds a control: input borders,
+     the secondary button, checkbox and radio edges. Those DO need 3:1, so they
+     get their own token. 1a's published table has only one line value, which
+     would have put form borders at 1.31:1. */
+  --color-line:        var(--bp-line-light);   /* decorative only */
+  --color-line-strong: var(--bp-line-light-2); /* 3.80 on bg · 4.15 on surface */
+
+  --color-ring:        var(--bp-signal);     /* 10.20 on bg, clears 3:1 */
+}
+
+/* --------------------------------------------------------------------------
+   3. SEMANTIC COLOUR, DARK
+
+   Toggled by a .dark class on <html>. The class is what the screenshot tool
+   drives, so it is the source of truth; the media query below only sets the
+   first-paint default for a visitor who has expressed a system preference.
+   -------------------------------------------------------------------------- */
+.dark {
+  color-scheme: dark;
+
+  --color-bg:          var(--bp-void);
+  --color-surface:     var(--bp-panel);
+  --color-ink:         var(--bp-chalk);      /* 16.06 on bg · 14.74 on surface */
+  --color-muted:       var(--bp-ash);        /*  7.27 on bg ·  6.67 on surface */
+
+  /* Not the same navy as light. #243D59 as text on #0C0F14 is 1.72:1, which
+     is not a colour at all at that point. The accent LIFTS to carry text in
+     dark. The plane it sits on does not lift; see section 4. */
+  --color-accent:      var(--bp-signal-lift); /* 6.71 on bg · 6.16 on surface */
+
+  /* Tide inverts with the theme. It is a fill in light and a legitimate text
+     colour here, so dark is the one place --color-secondary may set type. */
+  --color-secondary:    var(--bp-secondary);  /* 8.45 on bg · 7.76 on surface */
+  --color-on-secondary: var(--bp-mark-navy);  /* 4.90 on the tide plane */
+
+  --color-line:        var(--bp-line-dark);   /* decorative only */
+  --color-line-strong: var(--bp-line-dark-2); /* 3.51 on bg · 3.22 on surface */
+
+  --color-ring:        var(--bp-signal-lift); /* 6.71 on bg, clears 3:1 */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light):not(.dark) {
+    color-scheme: dark;
+    --color-bg:          var(--bp-void);
+    --color-surface:     var(--bp-panel);
+    --color-ink:         var(--bp-chalk);
+    --color-muted:       var(--bp-ash);
+    --color-accent:      var(--bp-signal-lift);
+    --color-secondary:   var(--bp-secondary);
+    --color-line:        var(--bp-line-dark);
+    --color-line-strong: var(--bp-line-dark-2);
+    --color-ring:        var(--bp-signal-lift);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. PINNED TOKENS
+   Identical in both themes, deliberately, and declared outside the flipping
+   blocks so the decision is visible rather than implied.
+
+   This is where the previous system broke: a fill token flipped with the
+   theme while its text partner stayed white, and the primary button landed at
+   1.05:1. The rule that prevents it: a surface whose job is to carry text is
+   pinned, and its text partner is pinned with it. On a pinned plane a literal
+   #FFFFFF is correct, not a token violation.
+   -------------------------------------------------------------------------- */
+:root,
+.dark {
+  --color-accent-plane:   var(--bp-signal);  /* pinned */
+  --color-on-accent:      #FFFFFF;           /* pinned · 11.13 on the plane */
+
+  /* The code plane, for a console transcript in the docs. Pinned for the same
+     reason the accent plane is: its job is to carry text, so it and its text
+     partner are pinned together. A terminal that inverted with the theme would
+     stop being a terminal in light, and the pair would have to be re-measured
+     twice instead of once. 14.89:1, computed. */
+  --color-code-plane:     var(--bp-ink);
+  --color-on-code:        var(--bp-chalk);   /* pinned · 14.89 on the plane */
+  --color-ring-on-accent: #FFFFFF;           /* the accent ring is invisible on
+                                                the accent plane, so the ring
+                                                inverts there · 11.13 */
+
+  /* The plane is navy, so it is 10.20:1 against paper and only 1.72:1
+     against --bp-void. That number looks alarming and is the wrong test: 1.72
+     would fail for text, but this is a large surface transition, which WCAG
+     1.4.11 does not govern and which the eye reads from area, not ratio.
+     Rendered and checked in both themes: the closing band separates cleanly
+     from the page in dark. It is quieter there than the old #1B4DFF was, which
+     is the point rather than a defect. Do not "fix" it with a border. */
+}
+
+/* --------------------------------------------------------------------------
+   4b. PRODUCT THEMES
+
+   A manual reads in the colours of the product it documents. `.theme-slotdesk`
+   reassigns the semantic roles, so every component inside it re-skins with no
+   component change: the roles are the only thing anything names.
+
+   Scope, deliberately: the header and the footer sit outside it and stay
+   ThemeAves, so the site frame is constant and the band between it belongs to
+   the product.
+
+   VALUES ARE SLOTDESK'S OWN, from `codecanyon/resources/css/brand.css`, except
+   where they failed our contrast law. Three did, and each replacement is
+   derived from the original at fixed hue and saturation rather than invented:
+
+     --fg-muted #6B7A73  is 4.22 on their canvas, under 4.5. Darkened.
+     --field-bd #DFE3E0  is 1.21 on canvas, and it bounds controls, so it needs
+                         3.0 under 1.4.11. Darkened.
+     --leaf     #17B890  is 2.37 as text on canvas. Same law as tide: it is a
+                         FILL in light and a text colour only in dark, where it
+                         measures 9.96. Light gets a darkened leaf for text and
+                         keeps the real leaf for the plane.
+
+   Every ratio below was computed, not eyeballed.
+   -------------------------------------------------------------------------- */
+.theme-slotdesk {
+  --sd-canvas:   #FAF7F2;
+  --sd-surface:  #FFFFFF;
+  --sd-fg:       #1A2320;
+  --sd-spruce:   #0E2E28;
+  --sd-leaf:     #17B890;  /* the plane, and every fill */
+  --sd-leaf-deep:#108064;  /* derived · 4.58 on canvas · 4.89 on surface */
+  --sd-muted:    #66756E;  /* derived · 4.53 on canvas · 4.84 on surface */
+  --sd-line:     #ECEDF1;
+  --sd-line-2:   #849387;  /* derived · 3.02 on canvas · 3.23 on surface */
+
+  --color-bg:          var(--sd-canvas);
+  --color-surface:     var(--sd-surface);
+  --color-ink:         var(--sd-fg);        /* 15.06 on canvas · 16.09 on surface */
+  --color-muted:       var(--sd-muted);
+  --color-accent:      var(--sd-leaf-deep);
+  --color-secondary:   var(--sd-leaf);      /* FILL ONLY in light, at 2.37 */
+  --color-line:        var(--sd-line);      /* decorative only */
+  --color-line-strong: var(--sd-line-2);
+  --color-ring:        var(--sd-leaf-deep);
+
+  /* Pinned, both themes. The plane is SlotDesk's spruce and its text partner
+     is white, at 14.58:1.
+
+     This was leaf carrying spruce text. It measured 5.76:1 and still read
+     wrong: a saturated mid-green plane with near-black type on it, and a
+     near-black button with green type inside that. Changed 2026-08-13 after
+     looking at it. Inverting the pair is what makes the text white, which is
+     the thing a closing band wants; leaf is 2.53:1 under white and could
+     never carry it, so the plane is the half that had to move.
+
+     Leaf keeps every other job it had: --color-secondary, the eyebrow tick,
+     and every fill in the manual. It is the product's colour, it is just not
+     the plane. */
+  --color-accent-plane:   var(--sd-spruce);
+  --color-on-accent:      #FFFFFF;           /* 14.58 on the plane */
+  --color-ring-on-accent: #FFFFFF;
+
+  /* The code plane follows the product too: spruce carrying the light canvas.
+
+     ⚠️ The text partner is the LITERAL #FAF7F2, not var(--sd-canvas), and the
+     difference is not stylistic. `--sd-canvas` is redefined in
+     `.dark .theme-slotdesk` to #101815, while `--sd-spruce` is not redefined
+     anywhere and so is pinned. Naming the flipping token here put near-black
+     type on a near-black plane in dark: **1.24:1**, measured, which made every
+     command in every SlotDesk chapter unreadable in one theme. Caught
+     2026-08-13 while rendering the cron chapter.
+
+     This is the exact failure the pinning rule in section 4 exists to prevent,
+     repeated inside a product theme: a pinned surface whose text partner was
+     free to flip. **A pinned pair may only name primitives that never flip, or
+     literals.** Check that before adding one. */
+  --color-code-plane:  var(--sd-spruce);
+  --color-on-code:     #FAF7F2;              /* pinned · 13.65 on the plane */
+
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+/* On the plane, secondary IS the plane, so the eyebrow tick and anything else
+   filled with it disappears. It becomes the text partner instead.
+
+   ThemeAves does not need this and must not get it: there the plane is navy
+   and secondary is tide at 4.90:1, which is the mark's own pairing and is the
+   point. */
+.theme-slotdesk [data-on-accent] { --color-secondary: var(--color-on-accent); }
+
+.dark .theme-slotdesk {
+  --sd-canvas:  #101815;
+  --sd-surface: #17211D;
+  --sd-fg:      #E7F0EC;
+  --sd-leaf:    #2BD9A8;
+  --sd-muted:   #90A79C;   /* 7.04 on canvas · 6.44 on surface */
+  --sd-line:    #26322C;
+  --sd-line-2:  #556F65;   /* derived · 3.31 on canvas · 3.03 on surface */
+
+  /* Leaf inverts exactly as tide does: a fill in light, a legitimate text
+     colour here at 9.96 on canvas. Dark needs no darkened variant. */
+  --color-accent:    var(--sd-leaf);
+  --color-secondary: var(--sd-leaf);
+  --color-ring:      var(--sd-leaf);
+}
+
+/* --------------------------------------------------------------------------
+   5. TYPE
+
+   Archivo for everything that speaks, IBM Plex Sans for body copy, IBM Plex
+   Mono for everything that measures: labels, spec values, coordinates,
+   versions, prices.
+
+   Font budget is 4 files against a ceiling of 4 (brief section 9), so it is
+   full. Adding a family or a weight means removing one.
+     Archivo variable, wght 400..800   1 file
+     IBM Plex Sans 400                 1 file
+     IBM Plex Mono 400, 500            2 files
+
+   Plex Sans carries body copy because the handoff prototypes set every
+   paragraph in it, and the body face decides the colour and rhythm of every
+   block of text on the page. The families below are fallback strings;
+   globals.css repoints all three at the real next/font faces.
+   -------------------------------------------------------------------------- */
+:root {
+  --font-display: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body:    'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:    'IBM Plex Mono', ui-monospace, 'Cascadia Mono', 'Consolas', monospace;
+
+  /* size / line-height / weight / tracking */
+
+  /* Display is fluid. 1a publishes a single 56px display size, which is right
+     at 1440 and unusable at 390, where it costs six lines for one sentence.
+     The clamp lands on 32px at 390, 45px at 768 and the published 56px from
+     about 1100 up. */
+  --text-display:    clamp(2rem, 1.2rem + 3.4vw, 3.5rem); /* 32 .. 56 */
+  --text-display-lh: 1.04;
+  --text-display-ws: 800;
+  --text-display-ls: -0.025em;
+
+  --text-h2:         1.625rem; /* 26 */
+  --text-h2-lh:      1.15;
+  --text-h2-ws:      700;
+  --text-h2-ls:      -0.01em;
+
+  --text-h3:         1.25rem;  /* 20 */
+  --text-h3-lh:      1.25;
+  --text-h3-ws:      700;
+  --text-h3-ls:      -0.005em;
+
+  --text-body:       1rem;     /* 16 */
+  --text-body-lh:    1.6;
+  --text-body-ws:    400;
+
+  --text-small:      0.875rem; /* 14 */
+  --text-small-lh:   1.55;
+
+  /* Mono labels. Always uppercase, always tabular.
+
+     Two sizes, because the handoff prototypes use two and the split is
+     consistent across all six files: 12px carries a label that speaks (the
+     hero eyebrow, a step marker, the nav), 11px carries one that files (a
+     rail, a panel header, a footer column head, the legal line).
+
+     Weight is 400. An earlier 500 here was invented, not measured: the
+     prototypes never set mono above 400 outside a <b> in a changelog row, and
+     at this size the extra weight closes the counters. */
+  --text-label:      0.75rem;    /* 12 */
+  --text-label-sm:   0.6875rem;  /* 11 */
+  --text-label-lh:   1.4;
+  --text-label-ws:   400;
+  --text-label-ls:   0.12em;
+
+  --measure: 68ch; /* maximum line length for prose */
+}
+
+/* --------------------------------------------------------------------------
+   6. SPACE AND GRID
+   8px base. The grid is not an invisible helper here, it is the signature
+   device: ticked rules with coordinate labels frame the sections.
+   -------------------------------------------------------------------------- */
+:root {
+  --spacing-1:  0.25rem;  /*   4 */
+  --spacing-2:  0.5rem;   /*   8 */
+  --spacing-3:  1rem;     /*  16 */
+  --spacing-4:  1.5rem;   /*  24 */
+  --spacing-5:  2rem;     /*  32 */
+  --spacing-6:  3rem;     /*  48 */
+  --spacing-7:  4rem;     /*  64 */
+  --spacing-8:  6rem;     /*  96 */
+  --spacing-9:  8rem;     /* 128 */
+
+  /* 1280, not 1200. Measured off the handoff prototypes: every rail, divider
+     and column edge in those files derives from it. <Container> in
+     primitives.tsx is the implementation; this token is the record of the
+     number, since a Tailwind arbitrary value cannot read a custom property. */
+  --container:     80rem;  /* 1280 */
+  --grid-columns:  12;
+  --grid-gutter:   var(--spacing-4); /* 24 */
+
+  --section-y:       var(--spacing-8); /*  96, standard section rhythm */
+  --section-y-major: var(--spacing-9); /* 128, section that opens a subject */
+
+  --gutter-x:        var(--spacing-4); /* 24 at 390 */
+  --gutter-x-wide:   var(--spacing-6); /* 48 from 768 up */
+
+  /* ------------------------------------------------------------------------
+     GROUPED LIST RHYTHM
+
+     Every label-over-a-list in the site: the docs rail, the /docs sidebar, the
+     footer columns. Three surfaces that each used to hardcode their own copy
+     of these numbers, so fixing the spacing in one left the other two wrong.
+     They are tokens now, and `.navgroup` / `.navlist` in globals.css are the
+     only things that read them.
+
+     TWO values, not three. The handoff prototypes set 9 between items, 14 from
+     a label to its list and 28 between groups: close enough once line boxes are
+     added that a label renders as one more item and the groups run together.
+     The label binds to its own list at the same 9, and the separation is
+     carried entirely by the gap between groups.
+     ------------------------------------------------------------------------ */
+  --nav-y-item:  9px;   /* between items in one list */
+  --nav-y-label: 9px;   /* from a group label to its list */
+  --nav-y-group: 40px;  /* between one group and the next */
+}
+
+/* Section rhythm tightens on small screens. 96 and 128 are correct at 1440 and
+   read as dead air at 390, which is one half of the failure mode the brief
+   calls the tall empty plane. */
+@media (max-width: 767px) {
+  :root {
+    --section-y:       var(--spacing-6); /* 48 */
+    --section-y-major: var(--spacing-7); /* 64 */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. SHAPE, DEPTH, MOTION
+
+   There are no shadow tokens and that is deliberate. Depth in this system is
+   a 1px line and a one-step surface tint. If a component needs a shadow, the
+   component is wrong, not the token set.
+   -------------------------------------------------------------------------- */
+:root {
+  --radius:      2px;  /* near square, everything */
+  --radius-full: 9999px;
+
+  --border:        1px;
+  --border-strong: 1.5px; /* the wordmark lockup and the measurement rule */
+
+  --ring-width:  2px;
+  --ring-offset: 2px;
+
+  --duration:  160ms;
+  --ease:      linear; /* a drawing instrument does not ease */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --duration: 0ms; }
+}
+
+/* --------------------------------------------------------------------------
+   8. BASE
+   The minimum needed for the tokens to be legible on a bare page. Component
+   styles do not belong in this file.
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--text-body-lh);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Money, versions, dates and counts are always tabular, everywhere. */
+:where(time, data, .tabular) { font-variant-numeric: tabular-nums; }
+
+:where(a) { color: var(--color-accent); }
+
+:where(:focus-visible) {
+  outline: var(--ring-width) solid var(--color-ring);
+  outline-offset: var(--ring-offset);
+}
+
+/* On the pinned plane the ring inverts, because a navy ring on a navy fill
+   is not a ring. */
+:where([data-on-accent]) :where(:focus-visible) {
+  outline-color: var(--color-ring-on-accent);
+}

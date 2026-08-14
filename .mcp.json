@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "figwright": {
+      "command": "C:\\Users\\Shuvo\\AppData\\Roaming\\nvm\\v24.19.0\\node.exe",
+      "args": [
+        "C:\\Users\\Shuvo\\AppData\\Roaming\\nvm\\v24.19.0\\node_modules\\npm\\bin\\npx-cli.js",
+        "-y",
+        "@figwright/mcp@latest"
+      ]
+    }
+  }
+}

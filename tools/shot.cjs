@@ -1,18 +1,20 @@
-// Screenshots a design file at every gate width, both themes.
+// Screenshots a design file or a running route at every gate width, both themes.
 //   node tools/shot.cjs design/home.html [slug]
+//   node tools/shot.cjs http://localhost:3000/_dev/brand brand
 const { chromium } = require('./pw');
 const path = require('path');
 const fs = require('fs');
 
 const FILE = process.argv[2] || 'design/home.html';
-const SLUG = process.argv[3] || path.basename(FILE, path.extname(FILE));
+const IS_URL = /^https?:\/\//.test(FILE);
+const SLUG = process.argv[3] || path.basename(FILE, path.extname(FILE)) || 'route';
 const WIDTHS = [1440, 1024, 768, 390];
 const OUT = path.join(__dirname, '..', 'shots');
 
 (async () => {
   fs.mkdirSync(OUT, { recursive: true });
   const browser = await chromium.launch();
-  const url = 'file://' + path.resolve(FILE);
+  const url = IS_URL ? FILE : 'file://' + path.resolve(FILE);
 
   for (const theme of ['light', 'dark']) {
     for (const w of WIDTHS) {

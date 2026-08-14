@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+.yarn/
+
+# Build output
+dist/
+build/
+out/
+.next/
+.nuxt/
+.output/
+.vercel/
+.svelte-kit/
+*.tsbuildinfo
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Logs and caches
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.cache/
+.parcel-cache/
+.eslintcache
+
+# Editor and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Windows alternate data streams, produced when files cross the WSL share
+*:Zone.Identifier
+
+# Nothing above this line protects the private work, and as of 2026-08-12 the
+# structural protection this file used to claim does not exist: there is one
+# repository and its root is one level up, at /var/www/html/themeaves, with no
+# .gitignore of its own. So ../_dev, ../docs, ../design, ../shots and ../brand
+# ARE inside the repo and can be staged. See the warning at the end of
+# README.md for the two ways to fix that. Until then it is discipline, not
+# structure.

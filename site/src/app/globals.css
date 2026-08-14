@@ -1,0 +1,728 @@
+@import 'tailwindcss';
+
+/* The token layer is the source of truth and is plain CSS custom properties.
+   It is imported, not restated: primitives, the semantic roles that flip, the
+   pinned pair, type, space, shape and the base layer all live there. */
+/* Into the base layer. tokens.css sets `:where(a) { color: accent }`, and left
+   unlayered that rule beat every layered component class, so an ink button
+   rendered blue-on-near-black and a product card's price came out blue inside
+   a card that had asked for ink. Layering it puts the link default where it
+   belongs: a base a component can override. The keyword is on the import, so
+   the file is still correct on its own for _dev/tokens.html. */
+@import '../styles/tokens.css' layer(base);
+
+/* Into the components layer, so a utility can override a component. Unlayered
+   CSS beats every layer, so brand.css left plain meant text-on-accent lost to
+   .label and a mono label on the accent plane rendered muted-on-blue at about
+   1.3:1. The layer keyword on the import keeps brand.css usable on its own. */
+@import '../styles/brand.css' layer(components);
+
+/* Theme is a class on <html>, applied pre-paint by the inline script in
+   layout.tsx, and it is what tools/shot.cjs drives from outside the page. The
+   media query in tokens.css only sets the first-paint default. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* --------------------------------------------------------------------------
+   Registering the tokens with Tailwind
+
+   These names are the ones already declared in tokens.css, so the mapping
+   below repeats a line rather than inventing a value: Tailwind needs to see a
+   declaration inside @theme to generate a utility for it, and it cannot read
+   an imported stylesheet. The values are var() references to the primitives,
+   which is exactly what tokens.css writes, so the two cannot silently drift
+   to different colours.
+
+   The .dark block in tokens.css reassigns these same custom properties, and
+   utilities compile to background-color: var(--color-bg), so a theme flip
+   moves every utility with it. There is no dark: variant to write for colour.
+
+   --color-*: initial drops Tailwind's default 22 hue palette before any of
+   this. Nothing on this site may reach for bg-blue-500, and the brief bans
+   the marketplace look that palette produces. It also keeps the generated CSS
+   to the tokens that were actually contrast-checked.
+
+   REMOVE THIS BLOCK when _dev/tokens.html becomes the /_dev/tokens route.
+   At that point tokens.css can move into @theme wholesale and this repetition
+   goes away. It exists only because a static HTML page still links tokens.css
+   directly and cannot parse @theme.
+   -------------------------------------------------------------------------- */
+@theme {
+  --color-*: initial;
+
+  --color-bg: var(--bp-paper);
+  --color-surface: var(--bp-white);
+  --color-ink: var(--bp-ink);
+  --color-muted: var(--bp-slate);
+  --color-accent: var(--bp-signal);
+  --color-secondary: var(--bp-secondary);
+  --color-on-secondary: var(--bp-mark-navy);
+  --color-line: var(--bp-line-light);
+  --color-line-strong: var(--bp-line-light-2);
+  --color-ring: var(--bp-signal);
+
+  /* Pinned in both themes. See tokens.css section 4. */
+  --color-accent-plane: var(--bp-signal);
+  --color-on-accent: #ffffff;
+  --color-ring-on-accent: #ffffff;
+  --color-code-plane: var(--bp-ink);
+  --color-on-code: var(--bp-chalk);
+
+  --font-display: var(--font-archivo), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: var(--font-archivo), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, 'Cascadia Mono', 'Consolas', monospace;
+
+  --radius-*: initial;
+  --radius: 2px;
+  --radius-full: 9999px;
+
+  --container-page: 80rem; /* 1280, matching <Container> and tokens.css */
+}
+
+/* --------------------------------------------------------------------------
+   Fonts
+
+   next/font hashes the family name into a custom property, so the literal
+   'Archivo' string tokens.css falls back to is re-pointed here at the real
+   loaded face. This runs after the tokens.css import, so it wins.
+
+   Three files against a ceiling of four: Archivo variable 400..800 is one,
+   IBM Plex Mono 400 and 500 are two.
+   -------------------------------------------------------------------------- */
+:root {
+  --font-display: var(--font-archivo), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: var(--font-plex-sans), system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, 'Cascadia Mono', 'Consolas', monospace;
+}
+
+/* Body copy is Plex Sans; display, headings and buttons stay Archivo. The
+   handoff prototypes split it exactly this way and it is why their paragraphs
+   read cooler than their headings. */
+body { font-family: var(--font-body); }
+
+/* --------------------------------------------------------------------------
+   The measurement rule
+
+   1a's signature device: a hairline that dimensions the section it opens,
+   ticked at both ends. It is a component rather than a utility because it
+   recurs on every route and its geometry is part of the system.
+   -------------------------------------------------------------------------- */
+@layer components {
+  .rule {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    padding-block: var(--spacing-3);
+    border-block-start: var(--border) solid var(--color-line);
+  }
+
+  .rule::before,
+  .rule::after {
+    content: '';
+    position: absolute;
+    inset-block-start: 0;
+    inline-size: var(--border);
+    block-size: 7px;
+    background: var(--color-line-strong);
+  }
+
+  .rule::before { inset-inline-start: 0; }
+  .rule::after { inset-inline-end: 0; }
+
+  /* The mono label that rides the rule. Always uppercase, always tabular.
+     Its colour is a default, not a rule: on a saturated plane a utility has
+     to be able to take it, which is why this is layered. */
+  .label {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    line-height: var(--text-label-lh);
+    font-weight: var(--text-label-ws);
+    letter-spacing: var(--text-label-ls);
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-muted);
+  }
+
+  /* The filing size. Panel headers, footer column heads and the legal line,
+     all 11px in the prototypes. Same tracking, one step down. */
+  .label-sm {
+    font-size: var(--text-label-sm);
+  }
+
+  /* ------------------------------------------------------------------------
+     The eyebrow tick
+
+     The sub heading that opens a section, marked with a single tide stripe.
+     This is the only place --color-secondary appears in the page, and it is
+     always a fill and never a word: tide is 2.08:1 on paper, so it may mark a
+     heading but may never set one. See tokens.css section 1.
+
+     3px by 36px on a 12px gap. It was written inline in the hero; it is a
+     class now so the device is one decision rather than six copies, and so
+     the amount of tide on a page stays countable.
+
+     On the pinned plane it is the mark's own pairing, a tide bar against
+     navy, which is how brand/mark.svg uses the two colours together.
+     ------------------------------------------------------------------------ */
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    flex: none;
+    inline-size: 36px;
+    block-size: 3px;
+    background: var(--color-secondary);
+  }
+
+  /* ------------------------------------------------------------------------
+     The section rail
+
+     The handoff prototype's real signature device, and the thing that makes
+     the page read as a specification rather than a landing page: a dotted rule
+     that spans the container with a mono label at each end. The left names the
+     section, the right states a fact about it.
+
+     The prototype set these in #8a8f98, which measures 2.98:1 on paper and is
+     not in 1a's token table at all. They use --color-muted at 5.50:1 here.
+     ------------------------------------------------------------------------ */
+  .rail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-4);
+    padding-block: 14px;
+    border-block-end: var(--border) dashed var(--color-line);
+  }
+
+  .rail > * {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-muted);
+  }
+
+  /* The end label is secondary and drops out below 640, where two mono strings
+     on one line wrap into an unreadable stack. */
+  @media (max-width: 639px) {
+    .rail > :last-child:not(:only-child) { display: none; }
+  }
+
+  /* The hatched image reservation. The prototype fills every empty screenshot
+     box with 45 degree hatching, which is what stops the page reading as
+     broken while every real capture is still missing. */
+  /* The prototype's hatch: 135deg, an 11px stripe of #eef0f3 against 11px of
+     #F4F5F7. #eef0f3 is not a token, and it is the page colour with a little
+     of the line mixed in, so it is expressed that way and follows the theme. */
+  .hatch {
+    position: relative;
+    background-image: repeating-linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-line) 45%, var(--color-bg)) 0 11px,
+      var(--color-bg) 11px 22px
+    );
+  }
+
+  /* The finer weave used inside the phone frame: 9px instead of 11px. */
+  .hatch-fine {
+    background-image: repeating-linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-line) 45%, var(--color-bg)) 0 9px,
+      var(--color-bg) 9px 18px
+    );
+  }
+
+  /* The hero's vertical divider: a dotted 1px column, 6 on 6. */
+  .hero-divider {
+    background-image: repeating-linear-gradient(
+      var(--color-line) 0 6px,
+      transparent 6px 12px
+    );
+  }
+
+  /* The specification panel. A bordered table of term and value pairs, mono
+     throughout, one hairline per row, on the surface so it reads as a plate
+     laid on the page.
+
+     Measured off the prototype: 12 by 20 rows, mono 13px, an 11px panel
+     header above them rather than a first data row. */
+  .spec {
+    border: var(--border) solid var(--color-line-strong);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+  }
+
+  /* The panel's own header. Not a term/value pair: it names the plate. */
+  .spec-head {
+    padding: 12px 20px;
+    border-block-end: var(--border) solid var(--color-line-strong);
+  }
+
+  .spec-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--spacing-4);
+    padding: 12px 20px;
+    border-block-end: var(--border) solid var(--color-line);
+  }
+
+  .spec-row:last-child { border-block-end: 0; }
+
+  .spec-row dt,
+  .spec-row dd {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.5;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .spec-row dt { color: var(--color-muted); }
+
+  .spec-row dd {
+    margin: 0;
+    text-align: end;
+  }
+
+  /* The ghosted ordinal. Set in the line colour so it reads as a printed
+     register mark rather than as content.
+
+     Mono at 34px, which is what the prototype draws. It was Archivo at 56px
+     and 800 here, which is neither the family nor the size the design uses:
+     at 56px the numeral stopped being a register mark and started competing
+     with the heading under it. */
+  .numeral {
+    font-family: var(--font-mono);
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--color-line);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* The tick rail that opens the footer: 8px of 1px ticks on a 24px pitch,
+     in the decorative line colour. It is a scale, not a border. */
+  .ticks {
+    block-size: 8px;
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--color-line) 0 1px,
+      transparent 1px 24px
+    );
+  }
+
+  /* Anything muted is unreadable on the plane. It was --color-muted on #1B4DFF
+     at about 1.3:1; the plane is #243D59 and muted lands at roughly 1.9:1,
+     which is still nowhere near readable. So the plane restates the defaults
+     for everything that carries a muted colour, rather than relying on each
+     call site to remember. A utility still wins over this, because utilities
+     are a later layer. */
+  [data-on-accent] .label,
+  [data-on-accent] .pending,
+  [data-on-accent] .rail > *,
+  [data-on-accent] .spec-row dt {
+    color: var(--color-on-accent);
+  }
+
+  [data-on-accent] .rail,
+  [data-on-accent] .spec,
+  [data-on-accent] .spec-row {
+    border-color: var(--color-on-accent);
+  }
+
+  [data-on-accent] .pending {
+    border-color: var(--color-on-accent);
+  }
+
+  /* ------------------------------------------------------------------------
+     The documentation shell
+
+     The handoff Docs prototype: a 240px sidebar and the content split by one
+     vertical hairline, both inside a band on --color-surface that is ruled top
+     and bottom. The sidebar sticks under the header.
+
+     It collapses to a stack under lg rather than under md. At 768 a 240px rail
+     leaves 44ch for prose, and a documentation column that narrow is worse
+     than no rail at all.
+     ------------------------------------------------------------------------ */
+  .doc-shell {
+    display: grid;
+    gap: var(--spacing-6);
+  }
+
+  /* A grid item defaults to min-width:auto, which is its min-content, so the
+     widest table or command line in a chapter sets the column width and the
+     page picks up a horizontal scroll. This lets the item shrink and hands the
+     overflow back to the scroll containers on `pre` and `table`, which is
+     where it belongs. The lg template below does the same for the content
+     column with minmax(0, 1fr); this covers the stacked case. */
+  .doc-shell > * { min-inline-size: 0; }
+
+  /* Stacked, the rail goes last. Twenty chapters above the heading is roughly
+     600px of links before a reader who landed on a chapter URL sees its title.
+     The chapter is the point of the page, so it goes first and the contents
+     follow it, next to the pager that is already there. */
+  @media (max-width: 1023px) {
+    .doc-rail { order: 2; border-block-start: var(--border) solid var(--color-line); }
+    /* The lg rule below sets this; stacked needs its own, or the heading sits
+       on the crumb rule. */
+    .doc-body { padding-block-start: var(--spacing-6); }
+  }
+
+  @media (min-width: 1024px) {
+    .doc-shell {
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: 0;
+    }
+
+    /* The rule is on the column, not on the sticky element. A sticky box is
+       only as tall as its content, so putting the border there stopped the
+       hairline two thirds of the way down the band and left the rest of the
+       document undivided. The column stretches; the list inside it sticks. */
+    .doc-rail {
+      border-inline-end: var(--border) solid var(--color-line);
+      padding-inline-end: var(--spacing-5);
+      padding-block: var(--spacing-6) var(--spacing-7);
+    }
+
+    .doc-rail-inner {
+      position: sticky;
+      /* The header is 78px. Clearing it by 2 keeps the first item off the rule. */
+      inset-block-start: 80px;
+    }
+
+    .doc-body {
+      padding-inline-start: var(--spacing-6);
+      padding-block: var(--spacing-6) var(--spacing-7);
+    }
+  }
+
+  /* Anchor targets have to clear the sticky header, or a jumped-to heading
+     lands underneath it. */
+  .doc-section { scroll-margin-block-start: 96px; }
+
+  /* ------------------------------------------------------------------------
+     Rendered chapter markdown
+
+     Tailwind's preflight strips heading sizes and list markers, and there is
+     no typography plugin here, so markdown output arrives unstyled. This is
+     the whole contract for it, written in tokens: no new sizes, no new
+     colours, and the same hairlines the rest of the site divides with.
+     ------------------------------------------------------------------------ */
+  .doc-prose { color: var(--color-muted); }
+
+  .doc-prose > :first-child { margin-block-start: 0; }
+
+  .doc-prose h1 {
+    font-family: var(--font-display);
+    font-size: 38px;
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--color-ink);
+    margin-block-end: var(--spacing-4);
+  }
+
+  .doc-prose h2 {
+    font-family: var(--font-display);
+    font-size: 26px;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--color-ink);
+    margin-block: var(--spacing-7) var(--spacing-3);
+  }
+
+  .doc-prose h3 {
+    font-family: var(--font-display);
+    font-size: 19px;
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+    margin-block: var(--spacing-5) var(--spacing-2);
+  }
+
+  .doc-prose p,
+  .doc-prose li { font-size: 16px; line-height: 1.62; }
+
+  .doc-prose p { margin-block: var(--spacing-3); }
+
+  .doc-prose ul,
+  .doc-prose ol {
+    margin-block: var(--spacing-3);
+    padding-inline-start: var(--spacing-4);
+  }
+
+  .doc-prose ul { list-style: disc; }
+  .doc-prose ol { list-style: decimal; }
+  .doc-prose li { margin-block: var(--spacing-1); }
+  .doc-prose li::marker { color: var(--color-line-strong); }
+
+  /* A task list is a checklist the reader ticks, not a bulleted list. */
+  .doc-prose li:has(> input[type='checkbox']) { list-style: none; }
+  .doc-prose input[type='checkbox'] {
+    margin-inline-end: var(--spacing-2);
+    accent-color: var(--color-accent);
+  }
+
+  .doc-prose strong { color: var(--color-ink); font-weight: 600; }
+
+  .doc-prose a { color: var(--color-accent); text-underline-offset: 4px; }
+  .doc-prose a:hover { text-decoration: underline; }
+
+  /* Inline code. A tinted chip rather than the code plane, which at this size
+     would be a row of dark blocks through the paragraph. */
+  .doc-prose :not(pre) > code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    color: var(--color-ink);
+    background: var(--color-bg);
+    border: var(--border) solid var(--color-line);
+    border-radius: var(--radius);
+    padding: 0.1em 0.35em;
+  }
+
+  /* Fenced blocks take the pinned code plane. */
+  .doc-prose pre {
+    background: var(--color-code-plane);
+    color: var(--color-on-code);
+    padding: var(--spacing-4) 22px;
+    margin-block: var(--spacing-4);
+    overflow-x: auto;
+  }
+
+  .doc-prose pre code {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.9;
+  }
+
+  /* Tables scroll inside their own wrapper rather than widening the page. */
+  .doc-prose table {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+    border-collapse: collapse;
+    margin-block: var(--spacing-4);
+    font-size: 15px;
+  }
+
+  .doc-prose th,
+  .doc-prose td {
+    text-align: start;
+    padding: 10px 16px 10px 0;
+    border-block-end: var(--border) solid var(--color-line);
+    vertical-align: baseline;
+  }
+
+  .doc-prose th {
+    font-family: var(--font-mono);
+    font-size: var(--text-label-sm);
+    letter-spacing: var(--text-label-ls);
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--color-muted);
+    border-block-end-color: var(--color-line-strong);
+  }
+
+  .doc-prose blockquote {
+    margin-block: var(--spacing-4);
+    padding-inline-start: var(--spacing-4);
+    border-inline-start: var(--border-strong) solid var(--color-line-strong);
+  }
+
+  .doc-prose hr {
+    border: 0;
+    border-block-start: var(--border) solid var(--color-line);
+    margin-block: var(--spacing-6);
+  }
+
+  /* A figure is a real product screenshot, so it gets the same 1px edge every
+     bounded thing here gets, and its caption is a mono label. */
+  .doc-prose img {
+    display: block;
+    max-inline-size: 100%;
+    block-size: auto;
+    margin-block: var(--spacing-4) var(--spacing-2);
+    border: var(--border) solid var(--color-line-strong);
+    border-radius: var(--radius);
+  }
+
+  /* marked emits the caption as an em paragraph directly after the image. */
+  .doc-prose img + em,
+  .doc-prose p > em:only-child {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-label-sm);
+    letter-spacing: 0.04em;
+    font-style: normal;
+    color: var(--color-muted);
+  }
+
+  /* The console transcript. On the pinned code plane, so it is a terminal in
+     both themes; see tokens.css section 4. Scrolls inside itself, because a
+     command line is the one thing on this site that may not wrap. */
+  .code {
+    background: var(--color-code-plane);
+    color: var(--color-on-code);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.9;
+    padding: var(--spacing-4) 22px;
+    overflow-x: auto;
+  }
+
+  /* The prompt glyph. Muted against the plane rather than accent: the accent
+     is 10.20 on paper and 2.4 on this, so it would be the least readable thing
+     in the block. */
+  .code .prompt {
+    color: var(--color-line-strong);
+    user-select: none;
+  }
+
+  /* A destination that does not exist yet. Not a disabled button: a disabled
+     control implies it will work if you satisfy something, and this will not
+     work until a fact lands. It reads as a note, and it is not focusable. */
+  .pending {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 44px;
+    padding-inline: var(--spacing-4);
+    border: var(--border) dashed var(--color-line-strong);
+    border-radius: var(--radius);
+    color: var(--color-muted);
+  }
+
+  /* ------------------------------------------------------------------------
+     Buttons
+
+     Every one of these is a link element. Nothing on this site is a checkout,
+     so there is no submit button in the purchase path at all (brief 2.2).
+     Square corners, a 1px edge, no shadow: depth in this system is a line.
+     44px minimum target on mobile comes from the padding, not from a media
+     query, so it holds wherever the button lands.
+     ------------------------------------------------------------------------ */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    min-block-size: 44px;
+    /* 14 by 22 at 15px, taken from the prototypes. Archivo, not the body
+       face: buttons are display type in this system. */
+    padding: 14px 22px;
+    border: var(--border) solid transparent;
+    border-radius: var(--radius);
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color var(--duration) var(--ease),
+                color var(--duration) var(--ease),
+                border-color var(--duration) var(--ease);
+  }
+
+  /* The default. Ink, not accent: the accent is spent on the one band that
+     commits a plane, and a page with an accent button in every section is the
+     confetti this system exists to avoid. */
+  .btn-ink {
+    background: var(--color-ink);
+    color: var(--color-bg);
+    border-color: var(--color-ink);
+  }
+
+  .btn-accent {
+    background: var(--color-accent-plane);
+    color: var(--color-on-accent);
+    border-color: var(--color-accent-plane);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--color-ink);
+    border-color: var(--color-line-strong);
+  }
+
+  @media (hover: hover) {
+    .btn-ink:hover { background: var(--color-muted); border-color: var(--color-muted); }
+    .btn-accent:hover { background: var(--color-ink); border-color: var(--color-ink); color: var(--color-bg); }
+    .btn-outline:hover { border-color: var(--color-ink); }
+  }
+
+  /* On the pinned plane the ink button would vanish, so it inverts: a solid
+     white fill with the plane's own blue as its text. Both are pinned, so the
+     pair measures 5.91:1 in either theme. */
+  [data-on-accent] .btn-ink {
+    background: var(--color-on-accent);
+    color: var(--color-accent-plane);
+    border-color: var(--color-on-accent);
+  }
+
+  [data-on-accent] .btn-outline {
+    color: var(--color-on-accent);
+    border-color: var(--color-on-accent);
+  }
+
+  @media (hover: hover) {
+    [data-on-accent] .btn-ink:hover { background: transparent; color: var(--color-on-accent); }
+  }
+
+  /* ------------------------------------------------------------------------
+     The reserved image slot
+
+     Every product image is a placeholder until the real captures land, so the
+     system has to look finished with all of them empty (brief section 12).
+     A dimensioned empty box is the honest answer and it is also on concept:
+     in a technical drawing, a reserved area is drawn, labelled and left blank.
+     It reserves its own aspect ratio, which is what keeps CLS under 0.05.
+     ------------------------------------------------------------------------ */
+  .slot {
+    position: relative;
+    display: flex;
+    align-items: end;
+    padding: var(--spacing-3);
+    border: var(--border) dashed var(--color-line-strong);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    overflow: hidden;
+  }
+
+  .slot::before,
+  .slot::after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inline-size: var(--border);
+    background: var(--color-line);
+  }
+
+  .slot::before { inset-inline-start: 33.333%; }
+  .slot::after { inset-inline-end: 33.333%; }
+
+  /* ------------------------------------------------------------------------
+     GROUPED LISTS
+
+     One label over one list, repeated: the docs rail, the /docs sidebar, the
+     footer columns. These two classes own the rhythm for all of them and read
+     it from the --nav-y-* tokens, so the spacing is changed in one place and
+     every surface moves together. Typography stays with the surface; only the
+     layout is shared.
+     ------------------------------------------------------------------------ */
+  .navlist {
+    display: flex;
+    flex-direction: column;
+    gap: var(--nav-y-item);
+    margin-block-start: var(--nav-y-label);
+  }
+
+  .navgroup + .navgroup { margin-block-start: var(--nav-y-group); }
+}

@@ -36,7 +36,7 @@ Order matters: the ✅ rows unblock the whole build, the ❌ rows in **Blocking*
 | SlotDesk CodeCanyon URL | every buy button | *(item not listed yet - seed as `PENDING`, fail the production build if still `PENDING`)* |
 | SlotDesk price | product page, cards | |
 | SlotDesk Envato item id | licence verification | *(assigned at listing time)* |
-| SlotDesk version at launch | `<ProductFacts>` | |
+| SlotDesk version at launch | `<ProductFacts>` | *(`codecanyon/CHANGELOG.md` says **1.0.0**, dated 2026-08-08, "first public release". Confirm whether that is real or aspirational, then fill it.)* |
 | Aonomy live demo URL | the demo page's whole reason to exist | *(check whether the current ThemeForest preview URL still resolves - it may be broken)* |
 
 ### SlotDesk demo instance (brief §9.5)
@@ -48,6 +48,36 @@ Order matters: the ✅ rows unblock the whole build, the ❌ rows in **Blocking*
 | Super-admin login | email / password |
 | Reset time + timezone | e.g. "03:00 UTC nightly" |
 | Simulated subsystems | WhatsApp, AI, payments *(confirm all three before publishing)* |
+
+### ✅ SlotDesk documentation (`/docs`) - answered 2026-08-13 by reading the app
+
+These were blanks until the SlotDesk source at `/var/www/html/codecanyon` was scanned. **Verified,
+with the source in brackets. Use these, do not re-look-them-up.**
+
+| Field | Value |
+|---|---|
+| Minimum PHP | **8.3.0+** [`composer.json`, installer requirements screen] |
+| Database | **MySQL 8.0+ or MariaDB 10.6+** [`README.md`] |
+| PHP extensions | **pdo_mysql, mbstring, openssl, curl, gd, zip, intl** [installer requirements screen] |
+| Writable paths | `storage/`, `bootstrap/cache/` [installer requirements screen] |
+| Web server | Document root pointed at **`public/`** [`README.md`] |
+| WhatsApp side | **WhatsApp Cloud API** number, not the on-premises Business API [`config/slotdesk.php`, `config/whatsapp.php`] |
+| Install sequence | **A browser wizard, not a console sequence.** Eight screens: welcome, requirements, database, settings, admin, business, services, team [`routes/installer.php`] |
+| WhatsApp webhook path | **`/webhooks/whatsapp/cloud`** [`routes/webhooks.php`] |
+| Stripe webhook path | **`/webhooks/payments/stripe`** [`routes/webhooks.php`] |
+| Cron | required: `* * * * * cd /path/to/slotdesk && php artisan schedule:run` [`README.md`] |
+| Queue worker | required: `php artisan queue:work --tries=3`. Without it the app looks fine and does nothing. [`README.md`] |
+
+⚠️ **The site's console block is wrong in kind, not just in detail.** `site/src/data/docs.ts` has an
+`installSteps` slot built for a command-line install and SlotDesk ships a browser wizard. Replace
+that figure rather than filling it.
+
+Still open: **is v1.0.0 actually released?** `codecanyon/CHANGELOG.md` dates it 2026-08-08 as "first
+public release" but the item is not listed. If the changelog is real, the version blank above is
+also answered.
+
+`/docs` stays off the nav until these are written into `docs.ts` and the version question is
+settled. The chapter plan is `SLOTDESK-DOCS-PLAN.md`.
 
 ### Support (brief §7.6)
 
@@ -73,8 +103,16 @@ Order matters: the ✅ rows unblock the whole build, the ❌ rows in **Blocking*
 
 From the running SlotDesk app, **both light and dark**, at 1440 wide (2× DPR) unless noted. The repo already has a Playwright helper (`_shot.cjs`) and dev credentials.
 
-- [ ] Dashboard - the homepage hero's browser frame
-- [ ] WhatsApp booking conversation in a phone viewport (390×844) - the hero's phone frame
+- [x] Dashboard - the homepage hero's browser frame. Done 2026-08-14:
+      `site/public/products/slotdesk-ai/dashboard.png`, shot at **1120** rather than 1440, because the
+      frame is 568 CSS px wide and a 1440 capture scales to 0.39 and turns every label to mush.
+- [x] The hero's phone frame. Done 2026-08-14: `site/public/products/slotdesk-ai/booking-mobile.png`,
+      which is the **public booking page** at 390, not the WhatsApp thread this line originally asked
+      for. The pair now reads as the two sides of the product: the operator's dashboard and the
+      customer's booking screen. Both by `codecanyon/_dev/tools/_shot-marketing-hero.cjs`.
+- [ ] WhatsApp booking conversation in a phone viewport (390×844). Still wanted, now for the product
+      page and the manual rather than the hero. The plan calls it the one figure the whole product
+      rests on and it is still missing.
 - [ ] Calendar (week view, some AI-booked appointments)
 - [ ] Team Inbox with a handoff
 - [ ] Payments screen with the transaction drawer open *(note: with an overlay open, use a locator screenshot - full-page shots render light even in dark mode)*

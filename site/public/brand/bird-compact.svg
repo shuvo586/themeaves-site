@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="16.76 9.13 670.25 525.54" role="img" aria-label="ThemeAves">
+  <title>ThemeAves</title>
+  <!--
+    The bird, simplified for small sizes. Use this at every size below about
+    64px: the header lockup, the mobile drawer, anywhere the mark is small.
+    Above 64px use bird.svg, which keeps the eye, the outline strokes and the
+    upper wing ring.
+
+    The bird faces RIGHT, which is the live ThemeAves identity as published on
+    the ThemeForest profile. `brand/mark.svg` is drawn facing left, so this file
+    mirrors it rather than re-drawing it. The transform is an exact reflection
+    about the horizontal centre of the viewBox (minX 16.76 + maxX 687.01 =
+    703.77), so the geometry stays identical to the master coordinate for
+    coordinate and the bbox is unchanged.
+
+    WHAT THIS DROPS, AND WHAT IT KEEPS, AND WHY THAT ORDER
+
+    An earlier version of this file was a bare silhouette: the four shapes
+    unioned into one fill, with the wing bars removed along with everything
+    else. That was the wrong trade and it was rejected on sight. A bird
+    silhouette is generic; thousands exist. The three wing bars ARE the mark.
+    Deleting them to survive a small size deletes the reason the mark is worth
+    showing.
+
+    So the order is inverted from that version. What dies first at a small size
+    is the 18.26px outline stroke, the eye, the fold shadows, the two hairlines
+    and the upper wing ring, because they are all thin. What dies last is a
+    solid area of colour. Rendered at 48 / 32 / 24 / 16 and compared: the bars
+    still read at 24 and the hues still read at 16, where a hairline is long
+    gone. Colour survives shrinking better than line does, which is why the
+    ThemeForest avatar works small and the silhouette did not.
+
+    The outline is therefore not drawn at all. The four shapes union into one
+    fill, so the edge of the shape IS the outline, and the three bars are cut
+    back out of it.
+
+    TWO MODES, ONE GEOMETRY
+
+      B, single colour (the default here)
+        Silhouette inherits currentColor; the bars knock out to the surface
+        behind. Ink on paper, chalk in dark, white on the accent plane, with
+        nothing to keep in sync. This is the safe default and the reason the
+        file works dropped into any context.
+
+      C, multicolour (opt in, see brand.css)
+        Set --ta-mark-ink to the mark navy and --ta-bar-1/2/3 to sun, tide and
+        flare. This is the published logo.
+  -->
+  <g transform="translate(703.77 0) scale(-1 1)">
+    <g fill="var(--ta-mark-ink, currentColor)">
+      <path d="M222.72,416.74 L114.8,150.11 L687.01,150.11 Z"/>
+      <path d="m175.44,32.66C114.8-10.99,65.39,13.17,48.18,47.88l-27.06,54.6-4.36,8.79c9.51-2.2,21.38-.35,32.24,5.03l66.3,32.86-.49.96,107.92,266.62-86.28,117.93h132.27l66.1-182.3,17.54-202.25L175.44,32.66Z"/>
+      <path d="m286.71,121.37h12.2L131.68,17.23S58.41,8.54,44.58,55.15h0c73.33,43.35,156.95,66.22,242.14,66.22Z"/>
+      <path d="M203.92,482.71 L180.1,534.66 L268.71,534.66 L305.83,432.3 Z"/>
+    </g>
+
+    <!-- the three bars, cut back out of the silhouette above -->
+    <path fill="var(--ta-bar-1, var(--ta-mark-field, #F4F5F7))" d="M642.9,175.44 L579.42,211.9 L223.56,211.9 L220.28,202.77 L210.51,175.44 Z"/>
+    <path fill="var(--ta-bar-2, var(--ta-mark-field, #F4F5F7))" d="M533.96,238 L469.39,274.46 L245.96,274.46 L242.67,265.33 L232.9,238 Z"/>
+    <path fill="var(--ta-bar-3, var(--ta-mark-field, #F4F5F7))" d="M415.23,304 L355.53,336.59 L348.44,340.46 L269.57,340.46 L266.31,331.33 L256.52,304 Z"/>
+  </g>
+</svg>

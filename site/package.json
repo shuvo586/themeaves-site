@@ -1,0 +1,29 @@
+{
+  "name": "themeaves",
+  "version": "0.0.0",
+  "private": true,
+  "description": "The public website for ThemeAves.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "icons": "node ../tools/icons.cjs"
+  },
+  "dependencies": {
+    "lucide-react": "^1.31.0",
+    "marked": "^18.0.9",
+    "next": "^16.3.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.2.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2"
+  }
+}

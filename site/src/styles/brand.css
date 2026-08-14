@@ -1,0 +1,248 @@
+/* ==========================================================================
+   ThemeAves brand lockup
+   Direction 1a "Blueprint". Depends on tokens.css and names only tokens:
+   there is no hex, no radius and no size literal in this file.
+
+   The mark is the bird from brand/mark.svg. It ships in two variants and the
+   split is not cosmetic:
+
+     bird.svg           the master in full: the outline, the eye, the fold
+                        shadows, the upper wing ring. Above 64px, and this is
+                        what the header and footer lockups run, at 46px.
+     bird-compact.svg   a reduced drawing for below 64px, which in practice
+                        means the generated icon set. Keeps the three wing
+                        bars and drops the outline, because thin dies first
+                        and solid colour dies last.
+
+   The threshold is real in both directions. The reduced drawing small is
+   correct; the full drawing small closes up and reads as a smudge, which is
+   why data-variant="detail" steps --ta-mark-h rather than leaving the mark at
+   the size the reduced one uses.
+   ========================================================================== */
+
+.ta-lockup {
+  /* Everything scales from the wordmark size. Set --ta-size, not the parts. */
+  --ta-size: 1.1875rem; /* 19px, the header default */
+  --ta-mark-h: 1.35em;  /* mark height; em is --ta-size here. Width follows the
+                           bird's own 1.275:1, so the slot is not square. */
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+
+  font-family: var(--font-display);
+  font-size: var(--ta-size);
+  line-height: 1;
+  color: var(--color-ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   The mark
+   -------------------------------------------------------------------------- */
+.ta-mark {
+  block-size: var(--ta-mark-h);
+  inline-size: auto;
+  flex: none;
+  display: block;
+  /* Inherits the lockup's colour, so the bird is ink on paper, chalk in dark
+     and white on the accent plane with no variant files to keep in sync. */
+  color: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   The two colour modes
+
+   B, single colour, is the default and is what every mark gets unless a
+   placement opts out. The silhouette takes currentColor and the three wing
+   bars knock out to whatever is behind, so one file is correct on paper, in
+   dark and on the accent plane with nothing to keep in sync.
+
+   C, multicolour, is the published logo: the mark's own navy carrying sun,
+   tide and flare. Opt in with data-colour.
+
+   Why B is the default rather than C: B inherits, so it cannot be wrong. C
+   pins four literal hexes and is therefore only correct on a surface those
+   four were drawn against. Anything that puts the mark on an unknown ground
+   gets B and stays legible.
+   -------------------------------------------------------------------------- */
+/* The small mark now has knockout bars, so it needs a field like the detailed
+   one already had. The knockout must match the surface behind or the bars
+   stop reading. `.ta-mark-detail` sets its own further down. */
+.ta-mark { --ta-mark-field: var(--color-bg); }
+
+:where([data-on-surface]) .ta-mark,
+.ta-mark[data-on-surface] { --ta-mark-field: var(--color-surface); }
+
+/* On the pinned plane the mark is white, so the bars knock out to the plane. */
+:where([data-on-accent]) .ta-mark { --ta-mark-field: var(--color-accent-plane); }
+
+/* C, the multicolour mode, is declared at the very end of this file. It has to
+   come after the [data-on-surface] and [data-on-accent] rules, which carry the
+   same specificity and would otherwise win on order and drag the knockout back
+   to a theme colour. That exact bug shipped once here: it looked right in light
+   only because --color-surface happens to be #FFFFFF there, and put a dark body
+   on the mark in dark. */
+
+/* Wordmark-only, for chrome too tight for both. Not a placeholder state: a
+   wordmark on its own is a finished lockup. */
+.ta-lockup[data-mark="none"] .ta-mark { display: none; }
+
+/* --------------------------------------------------------------------------
+   The wordmark
+
+   Set to match the published lockup on the ThemeForest profile banner and in
+   `brand/_source/78.jpg`: THEME AVES, all capitals, one weight at 800, widely
+   tracked, with a word space between the halves. One weight, because the
+   banner has no split. Archivo is variable across 400..800, so 800 here costs
+   no extra file.
+
+   Caps need the tracking. Without it, 800-weight capitals close up and the
+   word reads as one dark bar rather than as letters.
+   -------------------------------------------------------------------------- */
+.ta-wordmark {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  /* Tracking is applied after the last letter too, which pushes the optical
+     end of the word past the ink. Pulled back so the lockup measures to the S
+     rather than to the space after it. */
+  margin-inline-end: -0.08em;
+  /* The rule that appears on hover. Reserved at rest so nothing reflows. */
+  border-block-end: var(--border-strong) solid transparent;
+  padding-block-end: 0.12em;
+}
+
+/* Hover draws a rule under the lockup. In a system whose depth is a 1px line,
+   an underline is the native hover, and it costs no colour. */
+@media (hover: hover) {
+  .ta-lockup:hover .ta-wordmark { border-block-end-color: currentColor; }
+}
+
+/* --------------------------------------------------------------------------
+   Sizes
+   Three, because a fourth would be someone eyeballing it. Header, a compact
+   size for tight chrome such as the mobile drawer, and a large one for the
+   footer brand block and error pages.
+   -------------------------------------------------------------------------- */
+.ta-lockup[data-size="sm"] { --ta-size: 0.9375rem; } /* 15 */
+.ta-lockup[data-size="lg"] { --ta-size: 1.5rem; }    /* 24 */
+
+/* Below the 390 the design is drawn at, the lockup steps down on its own.
+   THEME AVES in tracked capitals is about 40px wider than the mixed-case
+   wordmark it replaced, and with the full mark beside it the header outran a
+   320px viewport and put a horizontal scroll on the body. 390 keeps the full
+   size; only narrower widths pay. */
+@media (max-width: 389px) {
+  .ta-lockup { --ta-size: 0.9375rem; }
+}
+
+/* --------------------------------------------------------------------------
+   The detailed variant inside the lockup
+
+   The chrome runs brand/mark.svg in full rather than the reduced drawing, so
+   the mark has to clear the threshold the reduced drawing exists to work
+   below. 2.4em is 46px at the header's 19px and 36px at the drawer's 15px,
+   which is where the outline, the eye and the three fold shadows still
+   separate. At the 1.35em the compact variant uses they close up.
+
+   The header bar grows with it, from 60px to 78px. That is the cost of the
+   full drawing and it is paid on purpose.
+   -------------------------------------------------------------------------- */
+.ta-lockup[data-variant="detail"] { --ta-mark-h: 2.4em; }
+
+/* Inside the lockup the detailed mark is sized by the lockup, not by a utility,
+   and it inherits the lockup's colour like the compact one does. .ta-mark
+   already sets block-size; this only has to undo the standalone defaults that
+   .ta-mark-detail sets for placements that are not in a lockup. */
+.ta-lockup .ta-mark-detail {
+  color: inherit;
+  inline-size: auto;
+}
+
+/* --------------------------------------------------------------------------
+   The detailed variant, standalone
+
+   Defaults for placements outside a lockup: a large mark on a page, the OG
+   image, the 512px app icon. Inside a lockup the block above overrides the
+   colour and the width. --ta-mark-accent stays muted by default, which keeps
+   the mark quiet and spends none of the page's colour budget. Opt into colour
+   per placement.
+   -------------------------------------------------------------------------- */
+.ta-mark-detail {
+  --ta-mark-field: var(--color-bg);
+  /* Not currentColor. The three wing bars sit directly on their own fold
+     shadows, which are structure and therefore currentColor; setting both to
+     the same value merges them and the wing collapses into a solid blob with
+     hairline gaps. Muted keeps the three tones the original drawing had. */
+  --ta-mark-accent: var(--color-muted);
+  display: block;
+  color: var(--color-ink);
+}
+
+.ta-mark-detail[data-on-surface] { --ta-mark-field: var(--color-surface); }
+.ta-mark-detail[data-accent]     { --ta-mark-accent: var(--color-accent); }
+
+/* --------------------------------------------------------------------------
+   On the accent plane
+
+   The lockup sits on the pinned accent plane in the closing band and the
+   footer brand block. The plane and its text partner are pinned in both
+   themes, so a literal white is correct here; see tokens.css section 4.
+   -------------------------------------------------------------------------- */
+[data-on-accent] .ta-lockup { color: var(--color-on-accent); }
+
+[data-on-accent] .ta-mark-detail {
+  color: var(--color-on-accent);
+  --ta-mark-field: var(--color-accent-plane);
+}
+
+/* --------------------------------------------------------------------------
+   C · the multicolour mode
+
+   The published logo: the mark's own navy carrying sun, tide and flare, each
+   hue used twice exactly as brand/mark.svg assigns them. Opt in with
+   data-colour.
+
+   LAST IN THE FILE ON PURPOSE. Every rule above that touches --ta-mark-field
+   is a class plus one attribute, the same specificity this block carries, so
+   order is what decides it. Moving this up puts a dark body on the mark in
+   dark and nothing visibly wrong in light, because --color-surface is #FFFFFF
+   there and hides it.
+
+   This is a LIGHT-GROUND mode. The knockouts are a literal white rather than a
+   theme colour, so the white body carries the shape on either theme, but the
+   navy outline has little to say against a dark page. On dark surfaces prefer
+   B, which inherits and stays legible.
+   -------------------------------------------------------------------------- */
+:where([data-colour]) .ta-mark,
+.ta-mark[data-colour],
+.ta-mark-detail[data-colour] {
+  --ta-mark-ink: var(--bp-mark-navy);
+  --ta-bar-1: var(--bp-mark-sun);
+  --ta-bar-2: var(--bp-mark-tide);
+  --ta-bar-3: var(--bp-mark-flare);
+  --ta-mark-field: #FFFFFF;
+}
+
+/* Dark. The small mark's body is the navy itself rather than a knockout, and
+   navy on --bp-void is 1.72:1, so the body would drop out and leave three
+   coloured bars floating with no bird around them. The body lifts to chalk and
+   the bars stay, which is the same trade the accent makes in section 3 of
+   tokens.css. The detailed mark is excluded: its body is a white knockout, and
+   chalk structure against a white knockout collapses the drawing. */
+.dark .ta-mark[data-colour],
+.dark :where([data-colour]) .ta-mark { --ta-mark-ink: var(--bp-chalk); }
+
+/* On the accent plane, colour is off. The plane IS the mark's navy, so a navy
+   bird on it is not a bird. Fall back to single colour: white body, bars
+   knocked back out to the plane. */
+[data-on-accent] .ta-mark[data-colour],
+[data-on-accent] :where([data-colour]) .ta-mark,
+.dark [data-on-accent] .ta-mark[data-colour] {
+  --ta-mark-ink: var(--color-on-accent);
+  --ta-bar-1: var(--color-accent-plane);
+  --ta-bar-2: var(--color-accent-plane);
+  --ta-bar-3: var(--color-accent-plane);
+}

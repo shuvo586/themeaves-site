@@ -1,88 +1,77 @@
 # ThemeAves
 
-The Envato author brand site. **Design stage** - this is not the shipping site yet.
+The Envato author brand site. Read `CLAUDE.md` for the working rules and **`site/docs/` for the
+reference manual**.
 
 ## What this is right now
 
-A working directory for correcting the homepage design before any real site code exists.
-`design/home.html` is the current homepage mockup (imported from the Claude Design export
-of 2026-08-11 12:51 PM, "attempt 2"). It fails the design gates and is being fixed here,
-section by section, against `docs/CORRECTION-V2.md`.
+The site is built in `site/`, a Next.js 16 + Tailwind v4 app, against direction **1a "Blueprint"**
+chosen 2026-08-12. Eleven artefacts prerender and are reviewed in both themes at four widths: the
+homepage, the product index and template, `/demos`, `/support`, `/license`, `/licenses`, the brand
+proof page, 404 and the manifest.
+
+What is left is blocked on content, not on design: `/docs`, `/changelog`, `/about` and the legal
+pages. Every blocker is a ❌ row in `docs/FACTS.md`.
+
+Everything outside `site/` is private working material: the brief, the research, the design
+commissions, the rejected attempts and the tooling.
 
 ## Layout
 
 ```text
-design/home.html      the homepage being corrected  <- the work
-design/kit.html       the component + token gallery (APPROVED, do not change)
-docs/CORRECTION-V2.md the build sheet - 8 sections, rules B1-B11, done criteria
-docs/FACTS.md         the real-world data blanks; ❌ rows block the real site build
-_dev/brainstorm/      themeaves-site-design-prompt-v2 <- the live brief for the new design;
-                      the v1 brief and CORRECTION-V1 sit beside it as history
-_dev/handoff/         HANDOFF.md, and the raw Claude Design export - read its INDEX.md first
-_dev/reference/       attempt 2 and 3 renders, kept for diffing
-brand/                mark.svg + mark.png (licensed); _source/ holds the originals
+site/                 the deployable site  <- the work
+  docs/               the reference manual <- START HERE
+  src/                app, components, data, styles
+  public/brand/       the mark and the generated icon set
+  BUILD.md            build order, status, every decision and why
+_dev/brainstorm/      themeaves-site-design-prompt-v2 <- the brief
+_dev/handoff/         the design commissions. directions-preference is round 4 and
+                      carries direction 1a. Read each INDEX.md before its README.
+docs/FACTS.md         the real-world data blanks; ❌ rows block the unbuilt pages
+docs/CORRECTION-V2.md the retired page system, history only
+brand/                mark.svg + mark.png, the good master; _source/ holds the
+                      originals, including the published lockup in 78.jpg
 assets/aonomy/        8 demo thumbnails + banner
-tools/verify-home.cjs the gate - exits non-zero on any measurable rule failure
-tools/shot.cjs        screenshots both themes at 1440/1024/768/390
+tools/shot.cjs        screenshots a file or a URL at 4 widths, both themes
+tools/icons.cjs       regenerates the icon set from site/public/brand/favicon.svg
+shots/                rendered output, reproducible, safe to overwrite
 ```
 
 ## The loop
 
 ```bash
-node tools/verify-home.cjs        # measurable rules, exits 1 on failure
-node tools/shot.cjs design/home.html   # then LOOK at shots/*.png
+cd site && npm run build && npx next start -p 3210
+node tools/shot.cjs http://localhost:3210/ home   # then LOOK at shots/*.png
 ```
 
-**Both steps, every time.** Three previous rounds passed the letter of the spec and failed
-on sight, because nothing in the loop ever looked at the output. The script cannot judge
-composition; it only catches what is countable.
+**Both steps, every time.** Four rounds satisfied the letter of their spec and failed on sight,
+because nothing in the loop ever looked at the output. Scripts catch what is countable; they do not
+catch a dead composition or a label that is invisible in one theme only.
 
-## Status
+## The brand
 
-Baseline (attempt 2, unmodified) was **7 gate failures**. Now **0** - `verify-home.cjs`
-prints `PASS`, and every slice was opened and looked at in both themes.
+The bird is the published ThemeAves identity and it is unchanged: `brand/mark.svg` is the master,
+`brand/_source/78.jpg` is the published lockup, and the header and footer render the master in full,
+in its original four hexes.
 
-Build order (from `docs/CORRECTION-V2.md` §4), all three steps done 2026-08-11:
+The **page** palette is a separate thing: cool neutrals plus a single accent, and that accent is
+derived from the mark's own navy rather than invented alongside it.
 
-- [x] **§8 closing CTA.** `--flare-deep` plane, 410px, left-aligned, white text at 4.83:1,
-      no glow.
-- [x] **§2, §4, §5, §6, §7** - the five wrong or missing sections, rebuilt to the §3 table.
-      Rotation is now `SPLIT · LEDGER · GRID · BAND · STACK · RAIL · LEDGER · BAND`.
-- [x] **§3 products + the nav mark.** Both cards in the same placeholder state, price as
-      tabular text, off-palette Aonomy banner deleted. The mark uses a real micro variant.
+## Superseded
 
-Gate reading at 1440x900:
+`docs/CORRECTION-V2.md` and `_dev/handoff/kit-icon-sizing/` describe the retired navy/sun/tide/flare
+**page** system, along with Familjen Grotesk, the `--flare-deep` law, the `<PlaneStripe>` rule and
+B1-B11. They are history. Do not build from them and do not reconcile them against the brief;
+reconciling documents is how three attempts failed.
 
-```text
-biggest plane 45.6% of viewport   flare-deep planes 1   centred 0   sections 8
-colour events 5 (flare 3 · tide 1 · sun 1)             sections with 3 hues 0
-CTA 410px · fills 69.9% · glow 0 · worst contrast 4.83:1
-```
+The mark's four hexes are **not** part of what was retired. See the brand note above.
 
-### Fixed globally along the way
+Prompt v2 section 0 opens "There is no logo. There is no existing brand identity." That claim is
+false and always was. Everything else in the brief survives the correction intact and still governs
+voice, the fact rules and accessibility.
 
-- **Fonts.** The page shipped `Space Grotesk` (banned by name) x18 and `IBM Plex Sans` for
-  body. Now `Familjen Grotesk` + `Inter` + `JetBrains Mono`, verified loading.
-- **Pinned band fills.** `--ink` was doing two incompatible jobs - heading text (must flip
-  with theme) and dark band fill (must not), so the flagship band turned near-white in dark.
-  Added `--band-ink` / `--band-flare`, pinned in both themes, and re-pinned `--on-solid` to
-  white (attempt 2 had it flipping to `#0E141C`, which the brief forbids).
-- **`--on-solid` on a flipping fill.** `.tav-btn-ink` was white-on-`--ink`, which is 1.05:1
-  in dark theme because `--ink` inverts and `--on-solid` does not. An `--ink` fill takes
-  `--paper`; only a *pinned* plane takes `--on-solid`. The band CTA uses `--on-solid` fill
-  with `--on-warm` text, both pinned.
-- **Responsive layer finished.** The file had **zero** media queries. Every section now
-  carries its own rules at 1100 / 900 / 820 / 640, and the footer's 4-column grid - the last
-  thing forcing horizontal scroll at 390 - collapses.
-- **The nav mark.** `#tav-compact` was the full detail mark under a misleading name, so the
-  wing stripes smudged at 34x26. Replaced with `#tav-micro`: ink silhouette plus the three
-  solid stripes, no interior bars, no outline stroke, no eye.
+## ⚠️ Git
 
-## Not yet decided
-
-The real site is **Next.js + Tailwind v4 + MDX** per the brief, but it is blocked on the ❌
-rows in `docs/FACTS.md` - SlotDesk is not listed on CodeCanyon yet, so there is no URL,
-price, item id or launch version, and no demo instance or support details. Do not scaffold
-the app until those exist. This directory stays static HTML until then.
-
-No git repo has been initialised here. That is the user's call.
+The user runs all git operations. There is one repository, rooted **here**, with an `origin` remote,
+and there is **no root `.gitignore`**, so the private directories above are inside it and stageable.
+See the note at the end of `site/README.md` for the two ways to resolve it.

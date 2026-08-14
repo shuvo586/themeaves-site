@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="ThemeAves">
+  <title>ThemeAves</title>
+  <!--
+    Maskable source. The same silhouette as favicon.svg at 68% of its size, so
+    the whole bird sits inside the 80% safe circle that Android and any other
+    masking platform may crop to. The field is full bleed and square with no
+    corner radius: the mask cuts the plane, and the platform supplies whatever
+    corner it wants.
+
+    Do not use this file as the favicon. At tab size the safe-zone padding
+    throws away the pixels the bird needs.
+  -->
+  <rect width="32" height="32" fill="#243D59"/>
+  <g fill="#FFFFFF" transform="translate(6.82 8.802) scale(0.027393) translate(670.25 0) scale(-1 1) translate(-16.76 -9.13)">
+    <path d="M222.72,416.74 L114.8,150.11 L687.01,150.11 Z"/>
+    <path d="m175.44,32.66C114.8-10.99,65.39,13.17,48.18,47.88l-27.06,54.6-4.36,8.79c9.51-2.2,21.38-.35,32.24,5.03l66.3,32.86-.49.96,107.92,266.62-86.28,117.93h132.27l66.1-182.3,17.54-202.25L175.44,32.66Z"/>
+    <path d="m286.71,121.37h12.2L131.68,17.23S58.41,8.54,44.58,55.15h0c73.33,43.35,156.95,66.22,242.14,66.22Z"/>
+    <path d="M203.92,482.71 L180.1,534.66 L268.71,534.66 L305.83,432.3 Z"/>
+  </g>
+</svg>

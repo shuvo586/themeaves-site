@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="ThemeAves">
+  <title>ThemeAves</title>
+  <!--
+    The bird on a pinned accent field. Authored on a 32 unit grid where
+    1 unit = 1px at the 32px size, so the drawing is judged at the size it is
+    drawn at. Corner radius 2 is --radius exactly at that reference size.
+
+    The bird faces RIGHT, matching the live ThemeForest identity. The mirror is
+    the `translate(670.25 0) scale(-1 1)` pair in the transform chain, applied
+    after the bbox is shifted to the origin, so it reflects inside the measured
+    box and leaves the fitted 27 units and the padding untouched.
+
+    The four shapes are the same ones bird-compact.svg unions, but WITHOUT its
+    three wing bars: at 16px the bars have merged and the field is a solid
+    accent plane, so there is nothing behind them to knock out to. A favicon is
+    the one place a bare silhouette is the right answer. Fitted to 27 of the 32
+    units wide. The
+    bird is 1.275:1, so a square field cannot carry equal padding on all four
+    sides; 25, 27 and 29 were rendered at 16, 32 and 128px and compared. 29
+    crowded the corners at 128, 25 gave away presence at 16, 27 held both.
+    The transform is computed from the measured bbox rather than nudged.
+
+    Reversed out of the accent plane rather than drawn in ink, and that is the
+    decision that makes one file serve every context. The plane is pinned
+    identically in light and dark, so this favicon is correct against a light
+    tab strip, a dark tab strip, a bookmark bar and a home screen. An ink bird
+    on a transparent field would have disappeared into dark browser chrome,
+    which is the failure mode most hand-built favicons ship with.
+
+    The two hexes are hardcoded and that is correct rather than a violation of
+    the no-hardcoded-hex rule. A favicon renders with no stylesheet and no
+    custom properties, so it cannot read a token. Both are PINNED tokens:
+    #243D59 is --color-accent-plane, #FFFFFF is --color-on-accent, and the
+    pair measures 11.13:1.
+
+    Generated assets come from this file. Run `node tools/icons.cjs` after any
+    edit; never touch a PNG by hand.
+  -->
+  <rect width="32" height="32" rx="2" fill="#243D59"/>
+  <g fill="#FFFFFF" transform="translate(2.5 5.415) scale(0.040284) translate(670.25 0) scale(-1 1) translate(-16.76 -9.13)">
+    <path d="M222.72,416.74 L114.8,150.11 L687.01,150.11 Z"/>
+    <path d="m175.44,32.66C114.8-10.99,65.39,13.17,48.18,47.88l-27.06,54.6-4.36,8.79c9.51-2.2,21.38-.35,32.24,5.03l66.3,32.86-.49.96,107.92,266.62-86.28,117.93h132.27l66.1-182.3,17.54-202.25L175.44,32.66Z"/>
+    <path d="m286.71,121.37h12.2L131.68,17.23S58.41,8.54,44.58,55.15h0c73.33,43.35,156.95,66.22,242.14,66.22Z"/>
+    <path d="M203.92,482.71 L180.1,534.66 L268.71,534.66 L305.83,432.3 Z"/>
+  </g>
+</svg>
