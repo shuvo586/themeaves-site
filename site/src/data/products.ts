@@ -33,6 +33,8 @@ export type Product = {
   category: string;
   /** One line. What it does, not how it feels. */
   pitch: string;
+  /** The product's own app icon. File lives in public/products/<slug>/. */
+  icon: Maybe<string>;
   itemUrl: Maybe<string>;
   itemId: Maybe<string>;
   demoUrl: Maybe<string>;
@@ -76,11 +78,12 @@ export const products: Product[] = [
       'Bookings that arrive over WhatsApp and land on your calendar, running on your own server.',
     /* Not listed yet. Every one of these is a ❌ row in docs/FACTS.md and each
        renders as a visible placeholder until it is real. */
+    icon: '/products/slotdesk-ai/icon.svg',
     itemUrl: PENDING,
     itemId: PENDING,
     demoUrl: PENDING,
     docsUrl: PENDING,
-    price: PENDING,
+    price: 59,
     currency: 'USD',
     version: PENDING,
     lastUpdated: PENDING,
@@ -101,6 +104,7 @@ export const products: Product[] = [
     marketplace: 'themeforest',
     category: 'Site Templates, Technology',
     pitch: 'An app landing page in eight background treatments, built on Bootstrap 4 and Sass.',
+    icon: '/products/aonomy/icon.svg',
     itemUrl: 'https://themeforest.net/item/aonomy-app-landing-page/21460999',
     itemId: '21460999',
     /* FACTS.md flags this: the ThemeForest preview URL may no longer resolve.

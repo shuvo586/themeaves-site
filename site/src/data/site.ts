@@ -31,7 +31,7 @@ export const site = {
 
   /* Positioning, not tenure. Brief section 2.1 rule 1: no founding year, no
      "since", no years-of-experience figure, anywhere, including the footer. */
-  positioning: 'Self-hosted software for people who would rather own their stack.',
+  positioning: "Web products on Envato's marketplaces, sold under a licence you keep.",
 
   /* Marketplace names appear as plain text links. No Envato logos, no badges,
      no layout implying partnership. Brief section 2.2. */

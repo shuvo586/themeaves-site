@@ -5,7 +5,7 @@ import { ProductsIndex } from './ProductsIndex';
 
 export const metadata: Metadata = {
   title: 'Products',
-  description: 'Self-hosted software from ThemeAves, sold on CodeCanyon and ThemeForest.',
+  description: 'Web products from ThemeAves, sold on CodeCanyon and ThemeForest.',
 };
 
 export default function ProductsPage() {

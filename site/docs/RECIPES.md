@@ -107,6 +107,10 @@ and screenshot it before trusting it.
 Product images go in `public/products/<slug>/`. Until real captures exist, `<ImageSlot>` reserves
 the right aspect ratio and the page looks finished empty.
 
+The product's app icon goes in the same folder and is pointed at by the `icon` field in
+`src/data/products.ts` (e.g. `icon: '/products/slotdesk-ai/icon.svg'`). The homepage catalogue
+cards render it at 40px when the field is known and skip it entirely while it is `PENDING`.
+
 ---
 
 ## Publish the documentation

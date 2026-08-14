@@ -121,7 +121,7 @@ export function Footer() {
               <span className="tabular">© {new Date().getFullYear()}</span> {site.name} · All rights
               reserved
             </p>
-            <p className="label label-sm tracking-[0.06em]">PHP / Laravel / MySQL · Self-hosted</p>
+            <p className="label label-sm tracking-[0.06em]">ThemeForest · CodeCanyon · Envato author</p>
           </div>
         </div>
       </Container>

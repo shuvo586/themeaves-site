@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     template: '%s · ThemeAves',
   },
   description:
-    'ThemeAves builds self-hosted software. Your server, your data, documented before you buy.',
+    "ThemeAves ships web products on Envato's marketplaces, documented before you buy.",
   icons: {
     icon: [
       { url: '/brand/favicon.svg', type: 'image/svg+xml' },
@@ -96,7 +96,7 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <a
           href="#main"
           className="label sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-100 focus:rounded-[var(--radius)] focus:border focus:border-line-strong focus:bg-surface focus:px-4 focus:py-3 focus:text-ink"

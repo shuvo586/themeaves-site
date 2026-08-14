@@ -22,6 +22,7 @@ import { isPending, known, site } from '@/data/site';
    render yet. Omitting a section beats filling it. */
 
 const flagship = products.find((p) => p.slug === 'slotdesk-ai')!;
+const aonomy = products.find((p) => p.slug === 'aonomy')!;
 
 const STEPS = [
   {
@@ -61,7 +62,6 @@ const TRUST = [
 
 export default function Home() {
   const hasDemo = !isPending(site.demo.url);
-  const hasItem = !isPending(flagship.itemUrl);
 
   return (
     <>
@@ -70,7 +70,7 @@ export default function Home() {
              248px hatch, and a 150px phone pulled up 60px. ---------------- */}
       <Container>
         <div className="rail" style={{ paddingBlock: '14px 6px' }}>
-          <span>Home · Self-hosted software</span>
+          <span>Home · Envato marketplace author</span>
         </div>
 
         <div className="relative grid gap-12 pt-14 pb-16 lg:grid-cols-2">
@@ -85,53 +85,40 @@ export default function Home() {
                 so it can be a mark but never a word on a light ground. The
                 stripe is `.eyebrow` in globals.css, shared with every other
                 sub heading on the site. */}
-            <p className="eyebrow label text-accent">Self-hosted software</p>
+            <p className="eyebrow label text-accent">ThemeForest · CodeCanyon</p>
             <Display as="h1" className="mt-5">
               We build software and document every change.
             </Display>
             <p className="mt-[22px] max-w-[46ch] text-[18px] leading-[1.6] text-muted">
-              SlotDesk AI turns a WhatsApp message into a confirmed booking, on your own server.
-              Every release is dated and on the record.
+              ThemeAves is an independent Envato author. We ship templates and self-hosted software
+              on ThemeForest and CodeCanyon, with every release dated and on the record.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3.5">
-              {hasDemo ? (
-                <Button href={site.demo.url as string} variant="accent" external>
-                  Try the SlotDesk demo
-                </Button>
-              ) : (
-                <Button href={`/products/${flagship.slug}`} variant="accent">
-                  See what SlotDesk does
-                </Button>
-              )}
-              {hasItem ? (
-                <Button href={flagship.itemUrl as string} variant="outline" external>
-                  Get SlotDesk AI on CodeCanyon
-                </Button>
-              ) : (
-                <Button href="/products" variant="outline">
-                  Browse both products
-                </Button>
-              )}
+              <Button href="/products" variant="accent">
+                See what we build
+              </Button>
+              <Button href="/demos" variant="outline">
+                Try a live demo
+              </Button>
             </div>
 
             <p className="label mt-[34px] border-t border-line pt-3.5 tracking-[0.06em]">
-              PHP / Laravel / MySQL · Self-hosted · Support 6 mo
+              ThemeForest · CodeCanyon · One licence, kept
             </p>
           </div>
 
-          {/* The phone is a flex sibling pulled up by a negative margin, not
-              an absolute overlay. That is how the prototype does it and it is
-              why the two frames stay locked together at every width. */}
-          {/* The phone is anchored to the browser frame rather than flowing
-              after it: top at 100% - 60px puts its head 60px inside the
-              frame's foot, which is the overlap the prototype draws. The
-              column reserves the overhang so nothing below it moves. */}
+          {/* The Aonomy frame is anchored to the SlotDesk browser frame rather
+              than flowing after it: top at 100% - 60px puts its head 60px
+              inside the frame's foot, the overlap the prototype draws with
+              its phone. The column reserves the overhang so nothing below it
+              moves. */}
           {/* The overhang is reserved at every width, not only below lg. The
-              phone is 228 tall and hangs 168 below the frame it is anchored
-              to, so without that reserve at lg the frame centred itself and
-              the phone crossed the band boundary into how-it-works. */}
-          <div className="relative flex flex-col justify-center pb-[168px]">
+              Aonomy frame is 297 tall and hangs 237 below the frame it is
+              anchored to, so without that reserve at lg the frame centred
+              itself and the second frame crossed the band boundary into
+              how-it-works. */}
+          <div className="relative flex flex-col justify-center pb-[237px]">
             <div className="relative w-full">
               <figure className="w-full border border-line-strong bg-surface">
               <div className="flex items-center gap-2 border-b border-line-strong px-3 py-[9px]">
@@ -158,18 +145,30 @@ export default function Home() {
             </figure>
 
               <figure
-                style={{ top: 'calc(100% - 60px)', insetInlineEnd: 12 }}
-                className="absolute w-[150px] rounded-[14px] border border-ink bg-surface p-1.5"
+                style={{
+                  top: 'calc(100% - 60px)',
+                  insetInlineEnd: 12,
+                  width: 'min(400px, calc(100% - 12px))',
+                }}
+                className="absolute border border-line-strong bg-surface"
               >
-                {/* The customer's half of the same product: the public booking
-                    page, shot on a 390 phone. The frame is the site's, so the
-                    image is the screen only and carries no device chrome. */}
-                <div className="relative h-[214px] overflow-hidden rounded-[9px]">
+                {/* The template half of the same studio: Aonomy, shot from the
+                    item banner, in the same browser chrome as the flagship
+                    frame above it. Wider than the phone it replaced: a
+                    landing page needs width to read as a landing page. */}
+                <div className="flex items-center gap-2 border-b border-line-strong px-3 py-[9px]">
+                  <span aria-hidden className="block h-[9px] w-[9px] border border-line-strong" />
+                  <span aria-hidden className="block h-[9px] w-[9px] border border-line-strong" />
+                  <span className="label ms-2 truncate normal-case tracking-normal">
+                    {known(aonomy.itemUrl)}
+                  </span>
+                </div>
+                <div className="relative h-[267px] w-full overflow-hidden">
                   <Image
-                    src="/products/slotdesk-ai/booking-mobile.png"
-                    alt="The public booking page on a phone: the business name, service categories, and services with their duration, deposit and price."
+                    src="/products/aonomy/banner.jpg"
+                    alt="The Aonomy landing page template, an app landing page in eight background treatments."
                     fill
-                    sizes="150px"
+                    sizes="400px"
                     className="object-cover object-top"
                   />
                 </div>
@@ -336,29 +335,45 @@ export default function Home() {
           </div>
 
           <ul className="grid gap-6 pt-14 pb-16 md:grid-cols-2">
-            {products.map((p) => (
-              <li key={p.slug}>
-                <Link
-                  href={`/products/${p.slug}`}
-                  className="group flex h-full flex-col border border-line-strong p-6 text-ink no-underline"
-                >
-                  <p className="label label-sm tracking-[0.1em]">
-                    {TYPE_LABEL[p.type]} ·{' '}
-                    {p.marketplace === 'codecanyon' ? 'CodeCanyon' : 'ThemeForest'}
-                  </p>
-                  <h3 className="mt-3 font-display text-[20px] leading-[1.2] font-bold tracking-[-0.01em]">
-                    {p.name}
-                  </h3>
-                  <p className="mt-2 flex-1 text-[14.5px] leading-[1.58] text-muted">{p.pitch}</p>
-                  <p className="mt-6 flex items-center justify-between">
-                    <Price value={p.price} currency={p.currency} />
-                    <span className="label label-sm inline-flex items-center gap-1 group-hover:underline">
-                      Open <ArrowUpRight size={13} aria-hidden />
-                    </span>
-                  </p>
-                </Link>
-              </li>
-            ))}
+            {products.map((p) => {
+              const icon = known(p.icon);
+              return (
+                <li key={p.slug}>
+                  <Link
+                    href={`/products/${p.slug}`}
+                    className="group flex h-full flex-col border border-line-strong p-6 text-ink no-underline"
+                  >
+                    {icon ? (
+                      <Image
+                        src={icon}
+                        alt={`${p.name} icon`}
+                        width={40}
+                        height={40}
+                        className="h-10 w-10 object-contain"
+                      />
+                    ) : null}
+                    <p
+                      className={`label label-sm tracking-[0.1em] ${
+                        icon ? 'mt-4' : ''
+                      }`}
+                    >
+                      {TYPE_LABEL[p.type]} ·{' '}
+                      {p.marketplace === 'codecanyon' ? 'CodeCanyon' : 'ThemeForest'}
+                    </p>
+                    <h3 className="mt-3 font-display text-[20px] leading-[1.2] font-bold tracking-[-0.01em]">
+                      {p.name}
+                    </h3>
+                    <p className="mt-2 flex-1 text-[14.5px] leading-[1.58] text-muted">{p.pitch}</p>
+                    <p className="mt-6 flex items-center justify-between">
+                      <Price value={p.price} currency={p.currency} />
+                      <span className="label label-sm inline-flex items-center gap-1 group-hover:underline">
+                        Open <ArrowUpRight size={13} aria-hidden />
+                      </span>
+                    </p>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </Container>
       </section>
@@ -368,9 +383,10 @@ export default function Home() {
              beside a button stack, not alone at the top of a page, and at 56
              it pushed the stack out of alignment with it.
 
-             The licence line is a plain mono note, not a rail. A dashed rule
-             here drew a second horizontal across a plane whose only job is to
-             carry one message. ------------------------------------------ */}
+             The close is the studio's, one action pointing at the catalogue.
+             The licence line and the second button moved out: licence
+             decisions live on /license, and a plane whose only job is to
+             carry one message carries one call. ------------------------- */}
       <section data-on-accent className="bg-accent-plane text-on-accent">
         <Container>
           <div className="grid items-center gap-12 py-[72px] lg:grid-cols-[1.3fr_1fr]">
@@ -379,22 +395,18 @@ export default function Home() {
                   both ends of the document, so an 88px bird on the closing
                   plane was the third statement of the same thing on one page
                   and it pushed the message down the band. */}
-              <p className="eyebrow label text-on-accent tracking-[0.14em]">Get started</p>
+              <p className="eyebrow label text-on-accent tracking-[0.14em]">The studio</p>
               <h2 className="mt-4 max-w-[20ch] font-display text-[44px] leading-[1.05] font-extrabold tracking-[-0.025em] max-sm:text-[32px]">
-                Run it on your own server today.
+                Built to be owned.
               </h2>
               <p className="mt-[18px] max-w-[48ch] text-[17px] leading-[1.6]">
-                Read the specification, check the licence, and see exactly what installs before you
-                spend anything. Six months of support is included.
+                Templates on ThemeForest, software on CodeCanyon. One licence, no subscription, and
+                every release dated and on the record.
               </p>
             </div>
 
             <div className="flex flex-col items-start gap-[14px]">
-              <Button href={`/products/${flagship.slug}`}>See the full spec</Button>
-              <Button href="/license" variant="outline">
-                Which licence do I need
-              </Button>
-              <p className="label mt-1.5">Regular licence · self-hosted · support 6 mo</p>
+              <Button href="/products">See everything we make</Button>
             </div>
           </div>
         </Container>

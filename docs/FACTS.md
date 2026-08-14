@@ -15,6 +15,7 @@ Order matters: the ✅ rows unblock the whole build, the ❌ rows in **Blocking*
 | Aonomy item URL | `https://themeforest.net/item/aonomy-app-landing-page/21460999` |
 | Aonomy Envato item id | `21460999` |
 | Aonomy price | $16 USD |
+| SlotDesk price | $59 USD |
 | Aonomy sales | 77 |
 | Aonomy reviews | 2 |
 | Aonomy category | Site Templates › Technology |
@@ -34,7 +35,6 @@ Order matters: the ✅ rows unblock the whole build, the ❌ rows in **Blocking*
 | Field | Needed for | Value |
 |---|---|---|
 | SlotDesk CodeCanyon URL | every buy button | *(item not listed yet - seed as `PENDING`, fail the production build if still `PENDING`)* |
-| SlotDesk price | product page, cards | |
 | SlotDesk Envato item id | licence verification | *(assigned at listing time)* |
 | SlotDesk version at launch | `<ProductFacts>` | *(`codecanyon/CHANGELOG.md` says **1.0.0**, dated 2026-08-08, "first public release". Confirm whether that is real or aspirational, then fill it.)* |
 | Aonomy live demo URL | the demo page's whole reason to exist | *(check whether the current ThemeForest preview URL still resolves - it may be broken)* |
