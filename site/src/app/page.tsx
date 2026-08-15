@@ -108,18 +108,17 @@ export default function Home() {
             </p>
           </div>
 
-          {/* The Aonomy frame is anchored to the SlotDesk browser frame rather
-              than flowing after it: top at 100% - 60px puts its head 60px
-              inside the frame's foot, the overlap the prototype draws with
-              its phone. The column reserves the overhang so nothing below it
-              moves. */}
-          {/* The overhang is reserved at every width, not only below lg. The
-              Aonomy frame is 297 tall and hangs 237 below the frame it is
-              anchored to, so without that reserve at lg the frame centred
-              itself and the second frame crossed the band boundary into
-              how-it-works. */}
-          <div className="relative flex flex-col justify-center pb-[237px]">
-            <div className="relative w-full">
+          {/* The Aonomy frame overlaps the SlotDesk frame by 60px and is
+              pinned to the column's foot: top 226px is the 286px dashboard
+              frame less the 60px overlap, bottom 0 is the column's bottom
+              edge. The pb reserve sizes the art to the text column's natural
+              height (466 at 1440), so both columns end on the same line and
+              the art does not stretch the hero taller than the copy. */}
+          {/* The reserve is needed at every width, not only below lg: without
+              it the art column is only as tall as its content and the Aonomy
+              frame crosses the band boundary into how-it-works. */}
+          <div className="relative flex flex-col pb-[180px]">
+            <div className="w-full">
               <figure className="w-full border border-line-strong bg-surface">
               <div className="flex items-center gap-2 border-b border-line-strong px-3 py-[9px]">
                 <span aria-hidden className="block h-[9px] w-[9px] border border-line-strong" />
@@ -146,11 +145,12 @@ export default function Home() {
 
               <figure
                 style={{
-                  top: 'calc(100% - 60px)',
+                  top: '226px',
+                  bottom: 0,
                   insetInlineEnd: 12,
                   width: 'min(400px, calc(100% - 12px))',
                 }}
-                className="absolute border border-line-strong bg-surface"
+                className="absolute flex flex-col border border-line-strong bg-surface"
               >
                 {/* The template half of the same studio: Aonomy, shot from the
                     item banner, in the same browser chrome as the flagship
@@ -163,9 +163,9 @@ export default function Home() {
                     {known(aonomy.itemUrl)}
                   </span>
                 </div>
-                <div className="relative h-[267px] w-full overflow-hidden">
+                <div className="relative w-full flex-1 overflow-hidden">
                   <Image
-                    src="/products/aonomy/banner.jpg"
+                    src="/products/aonomy/particles-thumbnail.jpg"
                     alt="The Aonomy landing page template, an app landing page in eight background treatments."
                     fill
                     sizes="400px"

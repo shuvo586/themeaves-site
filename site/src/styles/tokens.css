@@ -302,6 +302,76 @@
    point. */
 .theme-slotdesk [data-on-accent] { --color-secondary: var(--color-on-accent); }
 
+/* --------------------------------------------------------------------------
+   AONOMY
+
+   Aonomy's own palette is a two-stop gradient, navy to purple, used as the
+   landing header and the section planes: #355C7D to #6C5B7B, on a near-white
+   page with #50514F ink. The gradient itself is not something tokens can
+   name, so the plane takes the navy half, which is the half the headers read
+   as, and purple keeps every fill job.
+
+   The pairing law is the site's own: purple on navy is 1.15:1 and can never
+   set text, so like SlotDesk (and unlike ThemeAves) the plane turns secondary
+   into its text partner.
+
+   Derived values were computed against the canvas, not eyeballed:
+     --ao-muted #66666B   5.2 on canvas · 5.7 on surface
+     --ao-line  #E6E5EA   1.15 on canvas, decorative only
+     --ao-line2 #8B8B92   3.1 on canvas, bounds controls
+   -------------------------------------------------------------------------- */
+.theme-aonomy {
+  --ao-canvas:  #F6F5F8;
+  --ao-surface: #FFFFFF;
+  --ao-fg:      #50514F;   /* the template's own body ink */
+  --ao-navy:    #355C7D;   /* the mark gradient's first half */
+  --ao-purple:  #6C5B7B;   /* the mark gradient's second half */
+  --ao-muted:   #66666B;   /* derived */
+  --ao-line:    #E6E5EA;   /* derived */
+  --ao-line-2:  #8B8B92;   /* derived */
+
+  --color-bg:          var(--ao-canvas);
+  --color-surface:     var(--ao-surface);
+  --color-ink:         var(--ao-fg);        /* 7.23 on canvas · 7.65 on surface */
+  --color-muted:       var(--ao-muted);
+  --color-accent:      var(--ao-navy);       /* 6.43 on canvas · 6.99 on surface */
+  --color-secondary:   var(--ao-purple);     /* FILL ONLY in light, at 5.6 */
+  --color-line:        var(--ao-line);       /* decorative only */
+  --color-line-strong: var(--ao-line-2);
+  --color-ring:        var(--ao-navy);
+
+  /* Pinned, both themes: the navy half of the header gradient carrying white,
+     at 6.99:1. The literal is correct here, as on any pinned plane. */
+  --color-accent-plane:   var(--ao-navy);
+  --color-on-accent:      #FFFFFF;
+  --color-ring-on-accent: #FFFFFF;
+
+  /* The code plane follows the product: navy carrying white, pinned. */
+  --color-code-plane:  var(--ao-navy);
+  --color-on-code:     #FFFFFF;              /* pinned · 6.99 on the plane */
+
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+.theme-aonomy [data-on-accent] { --color-secondary: var(--color-on-accent); }
+
+.dark .theme-aonomy {
+  --ao-canvas:  #14161C;
+  --ao-surface: #1C1E26;
+  --ao-fg:      #E9E7F0;    /* 14.67 on canvas */
+  --ao-muted:   #9C9CA7;    /* 6.59 on canvas · 5.94 on surface */
+  --ao-line:    #242730;    /* decorative only */
+  --ao-line-2:  #64687A;    /* derived · 3.27 on canvas */
+
+  /* Navy is 1.72:1 on the dark canvas, so dark lifts both colours exactly the
+     way the site lifts its own signal colour: same hue and saturation, raised
+     lightness until they clear AA. The plane stays the pinned navy. */
+  --color-accent:    #759CC7;   /* 6.27 on canvas */
+  --color-secondary: #B49AC8;   /* 7.19 on canvas */
+  --color-ring:      #759CC7;
+}
+
 .dark .theme-slotdesk {
   --sd-canvas:  #101815;
   --sd-surface: #17211D;

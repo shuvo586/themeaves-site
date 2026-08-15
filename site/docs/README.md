@@ -39,10 +39,10 @@ Thirteen artefacts prerender, all reviewed in both themes at 1440 / 1024 / 768 /
 `/docs/slotdesk` · `/docs/slotdesk/before-you-start` · `/docs/slotdesk/install` · `/support` ·
 `/license` · `/licenses` · `/_dev/brand` · `404` · `/manifest.webmanifest`
 
-**The documentation is live but deliberately unlinked.** The SlotDesk manual has 2 of its 20
-chapters written; the other 18 are listed, marked "soon", and have no route. It stays out of the nav
-and the footer until enough of it is worth linking. A nav slot leading to a page of placeholders
-costs more trust than the missing slot does. Flipping it on is one line, in
+**The documentation is live but deliberately unlinked.** Two manuals are public: SlotDesk AI with
+its 20 chapters, and Aonomy with its 12. Both are reachable from `/docs`, which is the deliberate
+entry point; the nav and the footer stay off the manuals until the site has more than one product
+family of documentation worth surfacing. Flipping the nav slot on is one line, in
 [`RECIPES.md`](RECIPES.md#publish-the-documentation).
 
 ## What is not built, and why

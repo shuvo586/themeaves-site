@@ -110,7 +110,7 @@ export const products: Product[] = [
     /* FACTS.md flags this: the ThemeForest preview URL may no longer resolve.
        Confirm it before filling it in, rather than assuming. */
     demoUrl: PENDING,
-    docsUrl: PENDING,
+    docsUrl: '/docs/aonomy',
     price: 16,
     currency: 'USD',
     version: PENDING,

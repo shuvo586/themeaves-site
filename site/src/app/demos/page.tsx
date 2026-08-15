@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import {
+  ArrowLink,
   Container,
   Display,
   ExternalLink,
@@ -122,7 +123,12 @@ export default function DemosPage() {
 
         {!isPending(aonomy.docsUrl) ? (
           <p className="mt-8">
-            <ExternalLink href={aonomy.docsUrl}>Documentation</ExternalLink>
+            {/* Internal docs path: a normal link, not a new tab. */}
+            {aonomy.docsUrl.startsWith('/') ? (
+              <ArrowLink href={aonomy.docsUrl}>Documentation</ArrowLink>
+            ) : (
+              <ExternalLink href={aonomy.docsUrl}>Documentation</ExternalLink>
+            )}
           </p>
         ) : null}
       </Section>

@@ -224,7 +224,123 @@ const slotdesk: Manual = {
   ],
 };
 
-export const manuals: Manual[] = [slotdesk];
+const aonomy: Manual = {
+  slug: 'aonomy',
+  productSlug: 'aonomy',
+  title: 'Aonomy',
+  lead: 'The app landing template in eight background treatments. How the 24 pages are put together, where each effect, section and layout lives, and how the two forms connect.',
+  parts: [
+    {
+      title: 'Start here',
+      blurb: 'What the package contains and how the files are organised.',
+      chapters: [
+        {
+          slug: 'getting-started',
+          title: 'Getting started',
+          nav: 'Getting started',
+          summary: 'What Aonomy is, what the package contains, and the one tool you need to rebuild the CSS.',
+          published: true,
+        },
+        {
+          slug: 'file-structure',
+          title: 'File structure',
+          nav: 'File structure',
+          summary: 'The 24 pages, and where the stylesheets, scripts and canvas-effect JSON live.',
+          published: true,
+        },
+      ],
+    },
+    {
+      title: 'Landing page',
+      blurb: 'Seven header treatments share one markup; thirteen sections make up the page.',
+      chapters: [
+        {
+          slug: 'header-effects',
+          title: 'Landing header effects',
+          nav: 'Header effects',
+          summary: 'Bubble, particles, snow, star, parallax, video and wave: one markup, one stylesheet and one script each.',
+          published: true,
+        },
+        {
+          slug: 'sections-core',
+          title: 'Sections: work, features and the app',
+          nav: 'Work, features, app',
+          summary: 'Work, feature, video, app screen and download sections, with their markup.',
+          published: true,
+        },
+        {
+          slug: 'sections-proof',
+          title: 'Sections: prices, testimonials and statistics',
+          nav: 'Prices, testimonials, stats',
+          summary: 'App prices, testimonial, team and statistics sections, with their markup.',
+          published: true,
+        },
+        {
+          slug: 'sections-close',
+          title: 'Sections: news, subscribe, contact and footer',
+          nav: 'News, subscribe, contact',
+          summary: 'News, subscribe, contact and footer, plus the MailChimp and PHPMailer configuration.',
+          published: true,
+        },
+      ],
+    },
+    {
+      title: 'Coming soon pages',
+      blurb: 'The same seven effects on a single-purpose page.',
+      chapters: [
+        {
+          slug: 'coming-soon-header',
+          title: 'Coming soon header effects',
+          nav: 'Coming soon headers',
+          summary: 'The seven treatments again, with the countdown and the coming-soon file names.',
+          published: true,
+        },
+        {
+          slug: 'coming-soon-sections',
+          title: 'Coming soon sections',
+          nav: 'Coming soon sections',
+          summary: 'Contact and footer on a coming soon page, reusing the landing markup.',
+          published: true,
+        },
+      ],
+    },
+    {
+      title: 'Blog',
+      blurb: 'Seven archive layouts and three article layouts.',
+      chapters: [
+        {
+          slug: 'blog-layouts',
+          title: 'Blog archive layouts',
+          nav: 'Blog layouts',
+          summary: 'No sidebar at one, two and three columns, and left or right sidebar at one and two.',
+          published: true,
+        },
+        {
+          slug: 'blog-single',
+          title: 'Blog single pages',
+          nav: 'Blog single',
+          summary: 'The article page with no sidebar, or the sidebar on either side, with comments.',
+          published: true,
+        },
+      ],
+    },
+    {
+      title: 'Support',
+      blurb: 'Where the manual stops and we start.',
+      chapters: [
+        {
+          slug: 'help-and-support',
+          title: 'Help and support',
+          nav: 'Help and support',
+          summary: 'The support centre, and what to include when you write in.',
+          published: true,
+        },
+      ],
+    },
+  ],
+};
+
+export const manuals: Manual[] = [slotdesk, aonomy];
 
 export function getManual(slug: string): Manual | undefined {
   return manuals.find((m) => m.slug === slug);

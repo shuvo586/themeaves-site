@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
+  ArrowLink,
   BrowserFrame,
   Button,
   Container,
@@ -132,7 +133,15 @@ export default async function ProductPage({
 
               {!isPending(product.docsUrl) ? (
                 <p className="mt-4">
-                  <ExternalLink href={product.docsUrl}>Documentation</ExternalLink>
+                  {/* The docs live on this site, so an internal path is a
+                      normal link; only an off-site URL opens a new tab. */}
+                  {product.docsUrl.startsWith('/') ? (
+                    <ArrowLink href={product.docsUrl} className="text-accent">
+                      Documentation
+                    </ArrowLink>
+                  ) : (
+                    <ExternalLink href={product.docsUrl}>Documentation</ExternalLink>
+                  )}
                 </p>
               ) : null}
             </div>
