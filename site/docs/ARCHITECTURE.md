@@ -18,7 +18,7 @@ the parts you compose with see [`COMPONENTS.md`](COMPONENTS.md).
 
 ## Routes
 
-Thirteen artefacts prerender.
+Fourteen artefacts prerender.
 
 | Route | Source | Notes |
 |---|---|---|
@@ -26,10 +26,12 @@ Thirteen artefacts prerender.
 | `/products` | `app/products/page.tsx` → `ProductsIndex.tsx` | Client-side facet filtering over `products` |
 | `/products/[slug]` | `app/products/[slug]/page.tsx` | `generateStaticParams` over `products`; `generateMetadata` per product |
 | `/demos` | `app/demos/page.tsx` | |
+| `/changelog` | `app/changelog/page.tsx` | One section per product over `changelogs`; empty for an unreleased product. Each product rail links to its own timeline below. |
+| `/changelog/[slug]` | `app/changelog/[slug]/page.tsx` → `ChangelogEntries.tsx` | One product's timeline, the prototype layout applied to one item. `generateStaticParams` over `products`. Client-side kind filtering, live chips only. |
 | `/docs` | `app/docs/page.tsx` | Manual index. One row per manual. |
 | `/docs/[manual]` | `app/docs/[manual]/page.tsx` | Contents: every chapter with its summary |
 | `/docs/[manual]/[chapter]` | `app/docs/[manual]/[chapter]/page.tsx` | A chapter, rendered from markdown at build time |
-| `/support` | `app/support/page.tsx` | The only page built entirely from the `primitives.tsx` page grammar |
+| `/support` | `app/support/page.tsx` | Built from the `primitives.tsx` page grammar, as is `/changelog/[slug]` |
 | `/license` | `app/license/page.tsx` | Regular against Extended, plus three concrete cases |
 | `/licenses` | `app/licenses/page.tsx` → `LicenceField.tsx` | Purchase-code field; verification needs an Envato token and says so |
 | `/_dev/brand` | `app/%5Fdev/brand/page.tsx` | `robots: noindex`. Proof page for the mark and icon set. |
@@ -40,23 +42,26 @@ Thirteen artefacts prerender.
 
 ### Not built, and why
 
-`/changelog`, `/about`, `/terms`, `/privacy`, `/refunds`. All blocked on content, none on design.
+`/about`, `/terms`, `/privacy`, `/refunds`. All blocked on content, none on design.
 See `../../docs/FACTS.md`.
 
 `/docs` **was** a third case and is no longer. The SlotDesk manual is complete, 20 chapters of 20,
 and `/docs` is a real index built from `docs.ts` and `products.ts`: one row per product, linking the
 manual where one exists and saying "no manual yet" where one does not, which is Aonomy's state.
 
+`/changelog` **was** a fourth case and is no longer. Aonomy's three real ThemeForest releases are
+recorded in `changelogs` in `src/data/changelog.ts`, and the page renders a stated empty state for
+SlotDesk because the item is not listed. Nothing was invented to fill the gap.
+
 **`nav` in `site.ts` still has `Docs` at `live: false`.** That was the right call while the manual was
 two chapters of placeholders, and it is now the only thing keeping a finished manual out of the
 header. Flipping it is a decision, not a fix, so it is left alone here and flagged: the reason it was
 false has gone away.
 
-Two homepage trust claims currently have no destination: that the documentation is public and that
-every release is dated. They render without a link and with a "not published yet" marker. That is
-honest today, but real documentation and a changelog are launch blockers rather than nice-to-haves,
-because shipping a credibility band whose claims cannot be checked is the exact problem the band
-exists to solve.
+One homepage trust claim currently has no destination: that the documentation is public. It renders
+without a link, which is honest today, but real documentation is a launch blocker rather than a
+nice-to-have, because shipping a credibility band whose claims cannot be checked is the exact problem
+the band exists to solve. The changelog claim has its destination now.
 
 ## The data layer
 

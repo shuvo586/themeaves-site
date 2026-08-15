@@ -57,6 +57,7 @@
   --color-secondary: var(--bp-secondary);
   --color-on-secondary: var(--bp-mark-navy);
   --color-line: var(--bp-line-light);
+  --color-line-faint: var(--bp-line-light-0);
   --color-line-strong: var(--bp-line-light-2);
   --color-ring: var(--bp-signal);
 
@@ -100,36 +101,43 @@
 body { font-family: var(--font-body); }
 
 /* --------------------------------------------------------------------------
-   The measurement rule
+   The section rail
 
-   1a's signature device: a hairline that dimensions the section it opens,
-   ticked at both ends. It is a component rather than a utility because it
-   recurs on every route and its geometry is part of the system.
+   The handoff prototype's real signature device, and the thing that makes
+   the page read as a specification rather than a landing page: a dotted rule
+   that spans the container with a mono label at each end. The left names the
+   section, the right states a fact about it.
+
+   The prototype set these in #8a8f98, which measures 2.98:1 on paper and is
+   not in 1a's token table at all. They use --color-muted at 5.50:1 here.
    -------------------------------------------------------------------------- */
 @layer components {
-  .rule {
-    position: relative;
+  .rail {
     display: flex;
     align-items: center;
-    gap: var(--spacing-3);
-    padding-block: var(--spacing-3);
-    border-block-start: var(--border) solid var(--color-line);
+    justify-content: space-between;
+    gap: var(--spacing-4);
+    padding-block: 14px;
+    border-block-end: var(--border) dashed var(--color-line);
   }
 
-  .rule::before,
-  .rule::after {
-    content: '';
-    position: absolute;
-    inset-block-start: 0;
-    inline-size: var(--border);
-    block-size: 7px;
-    background: var(--color-line-strong);
+  .rail > * {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-muted);
   }
 
-  .rule::before { inset-inline-start: 0; }
-  .rule::after { inset-inline-end: 0; }
+  /* The end label is secondary and drops out below 640, where two mono strings
+     on one line wrap into an unreadable stack. */
+  @media (max-width: 639px) {
+    .rail > :last-child:not(:only-child) { display: none; }
+  }
 
-  /* The mono label that rides the rule. Always uppercase, always tabular.
+  /* The mono label that rides the rail. Always uppercase, always tabular.
      Its colour is a default, not a rule: on a saturated plane a utility has
      to be able to take it, which is why this is layered. */
   .label {
@@ -179,42 +187,7 @@ body { font-family: var(--font-body); }
   }
 
   /* ------------------------------------------------------------------------
-     The section rail
-
-     The handoff prototype's real signature device, and the thing that makes
-     the page read as a specification rather than a landing page: a dotted rule
-     that spans the container with a mono label at each end. The left names the
-     section, the right states a fact about it.
-
-     The prototype set these in #8a8f98, which measures 2.98:1 on paper and is
-     not in 1a's token table at all. They use --color-muted at 5.50:1 here.
-     ------------------------------------------------------------------------ */
-  .rail {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--spacing-4);
-    padding-block: 14px;
-    border-block-end: var(--border) dashed var(--color-line);
-  }
-
-  .rail > * {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-variant-numeric: tabular-nums;
-    color: var(--color-muted);
-  }
-
-  /* The end label is secondary and drops out below 640, where two mono strings
-     on one line wrap into an unreadable stack. */
-  @media (max-width: 639px) {
-    .rail > :last-child:not(:only-child) { display: none; }
-  }
-
-  /* The hatched image reservation. The prototype fills every empty screenshot
+     The hatched image reservation. The prototype fills every empty screenshot
      box with 45 degree hatching, which is what stops the page reading as
      broken while every real capture is still missing. */
   /* The prototype's hatch: 135deg, an 11px stripe of #eef0f3 against 11px of

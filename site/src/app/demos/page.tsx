@@ -24,7 +24,7 @@ export const metadata: Metadata = {
    beyond one line, no marketing copy, no FAQ. The product pages do the
    selling. */
 export default function DemosPage() {
-  const slotdesk = getProduct('slotdesk-ai')!;
+  const slotdesk = getProduct('slotdesk')!;
   const aonomy = getProduct('aonomy')!;
   const logins = known(site.demo.logins);
 
@@ -32,7 +32,7 @@ export default function DemosPage() {
     <>
       <Container>
         <div className="py-16 md:py-24">
-          <div className="rule">
+          <div className="rail">
             <span className="eyebrow label">Demos</span>
           </div>
           <Display as="h1" className="mt-8 max-w-[18ch]">
@@ -46,7 +46,15 @@ export default function DemosPage() {
 
       <Section index="01" label="SlotDesk AI">
         <div className="grid gap-8 lg:grid-cols-2">
-          <ImageSlot caption="SlotDesk dashboard · screenshot pending" ratio="16 / 10" />
+          <ImageSlot
+            caption="SlotDesk dashboard · screenshot pending"
+            ratio="16 / 10"
+            image={{
+              src: '/products/slotdesk/dashboard.png',
+              alt: 'The SlotDesk dashboard: today\'s appointments, estimated WhatsApp cost for the month, AI bookings this week, and a list of items needing attention.',
+            }}
+            sizes="(max-width: 1023px) 100vw, 600px"
+          />
           <div>
             <Heading as="h2">The full app, with data already in it.</Heading>
             <Lead className="mt-4">{slotdesk.pitch}</Lead>

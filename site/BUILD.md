@@ -131,7 +131,7 @@ enough there to look deliberate. **Check saturated planes in both themes; one of
 
 ### Step 5 and after, the routes
 
-Eleven routes prerender: `/`, `/products`, `/products/slotdesk-ai`, `/products/aonomy`, `/demos`,
+Eleven routes prerender: `/`, `/products`, `/products/slotdesk`, `/products/aonomy`, `/demos`,
 `/support`, `/license`, `/licenses`, `/_dev/brand`, `/manifest.webmanifest`, `404`. (This said
 twelve and listed eleven.)
 

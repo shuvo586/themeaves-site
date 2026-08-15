@@ -29,20 +29,20 @@
     font-variant-numeric: tabular-nums;
   }
 
-  /* The signature device: a ticked rule that dimensions the section it opens. */
-  .rule {
-    display: flex; align-items: center; gap: var(--spacing-3);
-    padding-block: var(--spacing-3);
-    border-top: var(--border) solid var(--color-line);
-    position: relative;
+  /* The section rail: the prototype's signature device, a dashed rule with a
+     mono label at each end. */
+  .rail {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: var(--spacing-4);
+    padding-block: 14px;
+    border-bottom: var(--border) dashed var(--color-line);
   }
-  .rule::before,
-  .rule::after {
-    content: ""; position: absolute; top: 0; width: var(--border); height: 7px;
-    background: var(--color-line-strong);
+  .rail > * {
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 400; letter-spacing: 0.14em;
+    text-transform: uppercase; font-variant-numeric: tabular-nums;
+    color: var(--color-muted);
   }
-  .rule::before { inset-inline-start: 0; }
-  .rule::after  { inset-inline-end: 0; }
 
   section { padding-block-end: var(--section-y); }
 
@@ -126,14 +126,14 @@
   </header>
 
   <section>
-    <div class="rule"><span class="label">01 · Colour · semantic, flips with theme</span></div>
+    <div class="rail"><span class="label">01 · Colour · semantic, flips with theme</span></div>
     <h2>Roles, not colours.</h2>
     <p>A component may only ever name the role. The hex behind it is free to change and does change between themes.</p>
     <div class="swatches" id="sw-semantic"></div>
   </section>
 
   <section>
-    <div class="rule"><span class="label">02 · Colour · pinned in both themes</span></div>
+    <div class="rail"><span class="label">02 · Colour · pinned in both themes</span></div>
     <h2>The plane does not flip, and neither does its text.</h2>
     <p>
       This is where the previous system broke. A fill flipped with the theme while the text on it
@@ -154,7 +154,7 @@
   </section>
 
   <section>
-    <div class="rule"><span class="label">03 · Contrast · computed, not eyeballed</span></div>
+    <div class="rail"><span class="label">03 · Contrast · computed, not eyeballed</span></div>
     <h2>The measurements.</h2>
     <div class="scroll">
       <table>
@@ -166,14 +166,14 @@
     </div>
     <p style="margin-top: var(--spacing-3);" class="note">
       The decorative rows carry no threshold on purpose. WCAG 1.4.11 governs controls and meaningful
-      graphics, not dividers, and holding a hairline to 3:1 would turn the measurement rule into a
+      graphics, not dividers, and holding a hairline to 3:1 would turn the section rail into a
       hard border and kill the drawing-sheet read. Anything that bounds a control uses
       <code style="font-family:var(--font-mono)">--color-line-strong</code> instead, which is held to 3:1.
     </p>
   </section>
 
   <section>
-    <div class="rule"><span class="label">04 · Type · Archivo and IBM Plex Mono · 3 font files of 4</span></div>
+    <div class="rail"><span class="label">04 · Type · Archivo and IBM Plex Mono · 3 font files of 4</span></div>
     <h2>Archivo speaks, Plex Mono measures.</h2>
     <p>
       Archivo is a grotesque drawn for signage and tables: even colour, tight caps, honest at 800
@@ -206,7 +206,7 @@
   </section>
 
   <section>
-    <div class="rule"><span class="label">05 · Space and grid · 8px base · 12 columns · 1200</span></div>
+    <div class="rail"><span class="label">05 · Space and grid · 8px base · 12 columns · 1200</span></div>
     <h2>The grid is visible, because it is the signature device.</h2>
     <div class="grid-demo" style="margin-block: var(--spacing-4);" aria-hidden="true">
       <span></span><span></span><span></span><span></span><span></span><span></span>
@@ -221,7 +221,7 @@
   </section>
 
   <section>
-    <div class="rule"><span class="label">06 · Shape, depth, motion</span></div>
+    <div class="rail"><span class="label">06 · Shape, depth, motion</span></div>
     <h2>No shadows exist in this system.</h2>
     <p>
       Depth is a 1px line and a one-step surface tint, nothing else. There are no shadow tokens to
@@ -281,6 +281,7 @@
     ['--color-muted', 'muted', 'secondary copy, labels'],
     ['--color-accent', 'accent', 'links and marks, text-safe'],
     ['--color-line', 'line', 'decorative rules only'],
+    ['--color-line-faint', 'line-faint', 'row separators inside a panel'],
     ['--color-line-strong', 'line-strong', 'control boundaries'],
     ['--color-ring', 'ring', 'focus, off the plane']
   ];
@@ -304,7 +305,8 @@
     ['ring-on-accent on the plane', '--color-ring-on-accent', '--color-accent-plane', 3],
     ['the plane against bg', '--color-accent-plane', '--color-bg', 3],
     ['line on bg', '--color-line', '--color-bg', 0],
-    ['line on surface', '--color-line', '--color-surface', 0]
+    ['line on surface', '--color-line', '--color-surface', 0],
+    ['line-faint on surface', '--color-line-faint', '--color-surface', 0]
   ];
   var SPACE = [
     ['--spacing-1', 'the 8px base, halved, for tick marks only'],

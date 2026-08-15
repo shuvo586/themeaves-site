@@ -35,7 +35,7 @@ failures this project has shipped were invisible in dark and obvious in light.
 
 Thirteen artefacts prerender, all reviewed in both themes at 1440 / 1024 / 768 / 390:
 
-`/` · `/products` · `/products/slotdesk-ai` · `/products/aonomy` · `/demos` · `/docs` ·
+`/` · `/products` · `/products/slotdesk` · `/products/aonomy` · `/demos` · `/docs` ·
 `/docs/slotdesk` · `/docs/slotdesk/before-you-start` · `/docs/slotdesk/install` · `/support` ·
 `/license` · `/licenses` · `/_dev/brand` · `404` · `/manifest.webmanifest`
 

@@ -36,7 +36,7 @@ export type Part = {
 };
 
 export type Manual = {
-  /** URL segment. Deliberately shorter than the product slug. */
+  /** URL segment. */
   slug: string;
   /** The product it documents, by `products.ts` slug. */
   productSlug: string;
@@ -47,7 +47,7 @@ export type Manual = {
 
 const slotdesk: Manual = {
   slug: 'slotdesk',
-  productSlug: 'slotdesk-ai',
+  productSlug: 'slotdesk',
   title: 'SlotDesk AI',
   lead: 'From server requirements to the first WhatsApp booking. Written against the running application, and public with no login required.',
   parts: [

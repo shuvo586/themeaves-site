@@ -72,7 +72,7 @@ A component may only ever name a role. These flip with the theme.
 
 ### Two line weights, and the split is not cosmetic
 
-- **`--color-line`** is decorative: dividers, the ticked rule, section edges. It is 1.31:1 against
+- **`--color-line`** is decorative: dividers, hairlines, section edges. It is 1.31:1 against
   the page and that is correct, because WCAG 1.4.11 does not govern decoration.
 - **`--color-line-strong`** bounds controls: input borders, the outline button, checkbox and radio
   edges. Those do need 3:1, so they get their own token.
@@ -244,7 +244,7 @@ scrolls horizontally**, at any width. Verify with `document.documentElement.scro
 --radius        2px      near square, everything
 --radius-full   9999px
 --border        1px
---border-strong 1.5px    the wordmark lockup and the measurement rule
+--border-strong 1.5px    the wordmark lockup
 --ring-width    2px
 --ring-offset   2px
 --duration      160ms    0ms under prefers-reduced-motion
@@ -258,11 +258,6 @@ No shadow tokens, deliberately.
 ## 5. The signature devices
 
 All are classes in `@layer components` in `globals.css`.
-
-### The measurement rule, `.rule`
-
-1a's signature: a hairline that dimensions the section it opens, ticked at both ends via `::before`
-and `::after`, carrying a mono coordinate label.
 
 ### The section rail, `.rail`
 
@@ -280,7 +275,7 @@ A 36 by 3 tide stripe on a 12px gap, before the mono sub heading that opens a su
 navy, which is how `brand/mark.svg` uses the two together.
 
 One tick per subject-opening sub heading: three on home (hero, flagship, closing plane) and one on
-each of `/products`, `/license`, `/licenses`, `/demos`. **Not** on interior section rules, not on
+each of `/products`, `/license`, `/licenses`, `/demos`. **Not** on interior rails, not on
 the three step markers, not on the product breadcrumb. Same hue at the same size in the same
 position reads as one recurring device rather than as seven colour events.
 

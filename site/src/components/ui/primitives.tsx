@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { Route } from 'next';
 import { ArrowUpRight } from 'lucide-react';
@@ -24,8 +25,8 @@ export function Container({
 /* --------------------------------------------------------------------------
    Section
 
-   Opens on the measurement rule, which is the system's signature device: a
-   hairline ticked at both ends carrying a mono coordinate label. Sections do
+   Opens on the section rail, the handoff prototype's signature device: a
+   dashed rule with a mono coordinate label at the left end. Sections do
    not open on a centred eyebrow, and nothing here is a card.
    -------------------------------------------------------------------------- */
 export function Section({
@@ -44,7 +45,7 @@ export function Section({
   return (
     <section id={id} className={`py-16 md:py-24 ${className}`}>
       <Container>
-        <div className="rule">
+        <div className="rail">
           <span className="label">
             {index} · {label}
           </span>
@@ -364,11 +365,29 @@ export function ImageSlot({
   caption,
   ratio = '16 / 10',
   className = '',
+  image,
+  sizes = '100vw',
 }: {
   caption: string;
   ratio?: string;
   className?: string;
+  /** The real capture, once one exists. Replaces the hatch and the label. */
+  image?: { src: string; alt: string };
+  sizes?: string;
 }) {
+  if (image) {
+    return (
+      <div className={`relative w-full overflow-hidden ${className}`} style={{ aspectRatio: ratio }}>
+        <Image
+          src={image.src}
+          alt={image.alt}
+          fill
+          sizes={sizes}
+          className="object-cover object-top"
+        />
+      </div>
+    );
+  }
   return (
     <div className={`slot ${className}`} style={{ aspectRatio: ratio }}>
       {/* min-w-0 so a long caption wraps inside a narrow slot such as the
@@ -383,10 +402,15 @@ export function BrowserFrame({
   url,
   caption,
   className = '',
+  image,
+  sizes = '100vw',
 }: {
   url?: string;
   caption: string;
   className?: string;
+  /** The real capture, once one exists. Replaces the hatch and the label. */
+  image?: { src: string; alt: string };
+  sizes?: string;
 }) {
   return (
     <figure className={`border border-line-strong bg-surface ${className}`}>
@@ -398,7 +422,13 @@ export function BrowserFrame({
         </span>
         <span className="label truncate">{url ?? 'demo url not announced'}</span>
       </div>
-      <ImageSlot caption={caption} ratio="16 / 10" className="border-0 border-t" />
+      <ImageSlot
+        caption={caption}
+        ratio="16 / 10"
+        className="border-0 border-t"
+        image={image}
+        sizes={sizes}
+      />
     </figure>
   );
 }

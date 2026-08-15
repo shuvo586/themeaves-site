@@ -62,10 +62,10 @@ production.
 ## Add a page
 
 1. Create `src/app/<route>/page.tsx` and export `metadata`.
-2. Open with `<PageHero>`, or the raw `.rule` plus `<Display as="h1">` pattern the other routes use.
+2. Open with `<PageHero>`, or the raw `.rail` plus `<Display as="h1">` pattern the other routes use.
    Prefer `PageHero`.
 3. Give the opening sub heading the `.eyebrow` class. **One tick per page**, on the sub heading that
-   opens the subject, not on interior rules.
+   opens the subject, not on interior rails.
 4. Alternate bands: page colour, then `<Band tint>` on `--color-surface`, then page colour. That
    alternation is what stops the document reading as one slab.
 5. Add it to `nav` in `src/data/site.ts` with `live: true`, or to `RESOURCES` / `COMPANY` in
@@ -108,7 +108,7 @@ Product images go in `public/products/<slug>/`. Until real captures exist, `<Ima
 the right aspect ratio and the page looks finished empty.
 
 The product's app icon goes in the same folder and is pointed at by the `icon` field in
-`src/data/products.ts` (e.g. `icon: '/products/slotdesk-ai/icon.svg'`). The homepage catalogue
+`src/data/products.ts` (e.g. `icon: '/products/slotdesk/icon.svg'`). The homepage catalogue
 cards render it at 40px when the field is known and skip it entirely while it is `PENDING`.
 
 ---

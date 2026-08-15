@@ -15,13 +15,14 @@ import { products } from '@/data/products';
 /* Only routes that exist are listed, and `typedRoutes` in next.config makes
    that a compile error rather than a discipline. Still to come, each blocked
    on content rather than on design:
-     /docs and /changelog   need SlotDesk to be listed
+     /docs                  needs the version question in FACTS.md settled
      /about                 needs a real name and handle
      /terms /privacy /refunds  legal text, to be written not generated */
 type FooterLink = { label: string; href: Route; live: boolean };
 
 const RESOURCES: FooterLink[] = [
   { label: 'Demos', href: '/demos', live: true },
+  { label: 'Changelog', href: '/changelog', live: true },
   { label: 'Which licence do I need', href: '/license', live: true },
 ];
 

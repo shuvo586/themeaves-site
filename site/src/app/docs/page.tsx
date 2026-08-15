@@ -30,10 +30,8 @@ export default function DocsPage() {
     <>
       <Container>
         <div className="py-16 md:py-24">
-          <div className="rule">
+          <div className="rail">
             <span className="eyebrow label">Documentation</span>
-            {/* .rule is a flex row with a gap, not space-between, so the count
-                is pushed rather than justified. */}
             <span className="label ms-auto text-muted">
               <span className="tabular">{products.length}</span> products ·{' '}
               <span className="tabular">{written}</span> {written === 1 ? 'manual' : 'manuals'}

@@ -104,9 +104,9 @@ settled. The chapter plan is `SLOTDESK-DOCS-PLAN.md`.
 From the running SlotDesk app, **both light and dark**, at 1440 wide (2× DPR) unless noted. The repo already has a Playwright helper (`_shot.cjs`) and dev credentials.
 
 - [x] Dashboard - the homepage hero's browser frame. Done 2026-08-14:
-      `site/public/products/slotdesk-ai/dashboard.png`, shot at **1120** rather than 1440, because the
+      `site/public/products/slotdesk/dashboard.png`, shot at **1120** rather than 1440, because the
       frame is 568 CSS px wide and a 1440 capture scales to 0.39 and turns every label to mush.
-- [x] The hero's phone frame. Done 2026-08-14: `site/public/products/slotdesk-ai/booking-mobile.png`,
+- [x] The hero's phone frame. Done 2026-08-14: `site/public/products/slotdesk/booking-mobile.png`,
       which is the **public booking page** at 390, not the WhatsApp thread this line originally asked
       for. The pair now reads as the two sides of the product: the operator's dashboard and the
       customer's booking screen. Both by `codecanyon/_dev/tools/_shot-marketing-hero.cjs`.
@@ -144,7 +144,7 @@ Don't write these from scratch; let the agent propose 3 options each against the
 ## Decisions still open (brief §14)
 
 1. Repo location for the site
-2. Docs single-sourcing - SlotDesk's bundled HTML docs generated from `content/docs/slotdesk-ai/**`
+2. Docs single-sourcing - SlotDesk's bundled HTML docs generated from `content/docs/slotdesk/**`
 3. PHP host for `demo.` - needs cron + a queue worker, so likely a small VPS
 4. Aonomy's contact form - delete the `.php` (default) or host Aonomy on the demo box so PHP runs
 5. Analytics vendor

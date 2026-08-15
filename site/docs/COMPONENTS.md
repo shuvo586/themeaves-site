@@ -63,8 +63,8 @@ section against the next.
 
 ### `<Section index label>`
 
-A section that opens on the measurement rule. Sections do not open on a centred eyebrow, and nothing
-here is a card.
+A section that opens on the section rail, the handoff prototype's signature device. Sections do
+not open on a centred eyebrow, and nothing here is a card.
 
 ```tsx
 <Section index="01" label="Side by side"> … </Section>
@@ -88,10 +88,47 @@ stack under `md`, where the dividers would be horizontal rules pretending to be 
 The page opener: breadcrumb rail, mono eyebrow, display heading, lead. Sits on `--color-bg`, and the
 section after it goes on `--color-surface`.
 
-> **Consistency gap worth knowing.** Only `/support` is built from `PageHero` / `Rail` / `Cols` /
-> `Band`. Every other route hand-rolls the equivalent markup with raw `.rule` and `.rail` divs,
-> because step 4, the component kit, was deliberately skipped. The grammar is correct; it is just
-> not applied everywhere yet. Prefer these components in new work.
+> **Consistency gap worth knowing.** Only `/support` and `/changelog/[slug]` are built from
+> `PageHero` / `Rail` / `Cols` / `Band`. Every other route hand-rolls the equivalent markup with raw
+> `.rail` divs, because step 4, the component kit, was deliberately skipped. The grammar
+> is correct; it is just not applied everywhere yet. Prefer these components in new work.
+
+---
+
+## Changelog
+
+### `<ReleaseEntry release>` · `components/changelog/ReleaseEntry.tsx`
+
+One release row: a `220px / 1fr` grid (stacked below `md`) with the version in IBM Plex Mono
+26px/600 in accent, the date mono 13px muted under it, then a kind chip, against the title and
+description. The change list is its own `74px / 1fr` grid per row, mono 12px labels in accent for
+`ADD` and muted for everything else. Every version, date and count is `tabular-nums`.
+
+The component renders the `li`, not the article, and the `li` carries the separator, the padding
+and the `first:` variants. Each `li` holds exactly one article, so on the article every entry is
+its own `:first-child` and the `first:` gate would open for all of them, which once shipped as
+every entry with a zeroed top border and a 40px top padding. The separator is
+`--color-line-faint`, lighter than the band edge, so a band reads as one panel with an edge
+rather than a stack of boxes; that is the prototype's `#E6E7EA`.
+
+### `<NoReleases product>` · the same file
+
+The stated empty state, rendered in place of the list. SlotDesk gets one because the item is not
+listed; nothing is invented to fill the gap.
+
+### `<ChangelogEntries product releases>` · `app/changelog/ChangelogEntries.tsx`
+
+Client-side kind filter over a product's releases. Chips render **only for kinds with a match**
+(the facet rule); `RELEASE` never gets a chip, matching the prototype. The active chip fills ink,
+inverts its text, and reports `aria-pressed`. The right-end count reads `n of m` and stands where
+the prototype had a feed link, which cannot ship honestly.
+
+The band carries two measurements from the prototype that are easy to lose: the `ul`'s `pt-2` plus
+the first `li`'s `first:pt-10` makes the 48px the prototype gives the first entry, and the `pb-6`
+under the list is the prototype's 24px closing gap. The detail hero is hand-rolled rather than
+`PageHero` because the prototype's rhythm is tighter than the component's: 18px eyebrow to heading,
+20px heading to lead, 56px top and 40px bottom padding, and the chips row directly under the lead
+with no margin, which is the prototype's 40px gap.
 
 ---
 
@@ -215,7 +252,6 @@ All in `@layer components` in `globals.css` unless noted.
 
 | Class | Is |
 |---|---|
-| `.rule` | The measurement rule: hairline, ticked at both ends via pseudo-elements |
 | `.label` / `.label-sm` | Mono label, uppercase, tabular, 400. 12px speaks, 11px files. |
 | `.eyebrow` | The tide tick before a subject-opening sub heading |
 | `.rail` | Dashed section header with a mono label at each end |

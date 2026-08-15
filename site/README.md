@@ -25,7 +25,7 @@ than by cards or shadows.
 
 **Eleven artefacts prerender**, all reviewed in both themes at 1440 / 1024 / 768 / 390:
 
-`/` · `/products` · `/products/slotdesk-ai` · `/products/aonomy` · `/demos` · `/support` ·
+`/` · `/products` · `/products/slotdesk` · `/products/aonomy` · `/demos` · `/support` ·
 `/license` · `/licenses` · `/_dev/brand` · `404` · `/manifest.webmanifest`
 
 Not built, and blocked on content rather than on design or the stack: `/docs`, `/changelog`,

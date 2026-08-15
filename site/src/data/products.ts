@@ -35,6 +35,8 @@ export type Product = {
   pitch: string;
   /** The product's own app icon. File lives in public/products/<slug>/. */
   icon: Maybe<string>;
+  /** The hero screenshot or item banner, in public/products/<slug>/. */
+  heroImage: Maybe<string>;
   itemUrl: Maybe<string>;
   itemId: Maybe<string>;
   demoUrl: Maybe<string>;
@@ -69,7 +71,7 @@ const AONOMY_DEMOS = [
 export const products: Product[] = [
   {
     name: 'SlotDesk AI',
-    slug: 'slotdesk-ai',
+    slug: 'slotdesk',
     type: 'php-script',
     presentation: 'full',
     marketplace: 'codecanyon',
@@ -78,7 +80,8 @@ export const products: Product[] = [
       'Bookings that arrive over WhatsApp and land on your calendar, running on your own server.',
     /* Not listed yet. Every one of these is a ❌ row in docs/FACTS.md and each
        renders as a visible placeholder until it is real. */
-    icon: '/products/slotdesk-ai/icon.svg',
+    icon: '/products/slotdesk/icon.svg',
+    heroImage: '/products/slotdesk/dashboard.png',
     itemUrl: PENDING,
     itemId: PENDING,
     demoUrl: PENDING,
@@ -105,6 +108,7 @@ export const products: Product[] = [
     category: 'Site Templates, Technology',
     pitch: 'An app landing page in eight background treatments, built on Bootstrap 4 and Sass.',
     icon: '/products/aonomy/icon.svg',
+    heroImage: '/products/aonomy/particles-thumbnail.jpg',
     itemUrl: 'https://themeforest.net/item/aonomy-app-landing-page/21460999',
     itemId: '21460999',
     /* FACTS.md flags this: the ThemeForest preview URL may no longer resolve.

@@ -25,7 +25,7 @@ from the same files.
 /docs/slotdesk/<chapter-slug>  the chapter
 ```
 
-The manual slug is `slotdesk`, deliberately shorter than the product slug `slotdesk-ai`. Figures live
+The manual slug is `slotdesk`, the same as the product slug. Figures live
 in `site/public/docs/slotdesk/` and are referenced from the markdown as `/docs/slotdesk/<name>.png`.
 
 Chapter order, grouping and publication state are in `site/src/data/docs.ts`. **A chapter with

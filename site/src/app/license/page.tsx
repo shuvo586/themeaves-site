@@ -45,7 +45,7 @@ export default function LicensePage() {
     <>
       <Container>
         <div className="py-16 md:py-24">
-          <div className="rule">
+          <div className="rail">
             <span className="eyebrow label">Licensing</span>
           </div>
           <Display as="h1" className="mt-8 max-w-[20ch]">

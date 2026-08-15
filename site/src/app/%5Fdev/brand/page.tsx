@@ -34,7 +34,7 @@ function Section({ label, title, children }: {
 }) {
   return (
     <section className="pb-24">
-      <div className="rule">
+      <div className="rail">
         <span className="label">{label}</span>
       </div>
       <h2 className="mt-2 mb-6 font-display text-[1.625rem] leading-[1.15] font-bold tracking-[-0.01em]">

@@ -24,6 +24,7 @@
   --bp-white:        #FFFFFF;
   --bp-ink:          #14181F;
   --bp-slate:        #5A6472;
+  --bp-line-light-0: #E6E7EA;  /* changelog entry separators, from the prototype */
   --bp-line-light:   #D3D8E0;
   --bp-line-light-2: #767D89;
 
@@ -31,6 +32,7 @@
   --bp-panel:        #141922;
   --bp-chalk:        #E8EBF0;
   --bp-ash:          #97A0AE;
+  --bp-line-dark-0:  #1C222C;  /* derived midpoint, surface to line */
   --bp-line-dark:    #232A35;
   --bp-line-dark-2:  #606A79;
 
@@ -114,15 +116,20 @@
   --color-secondary:    var(--bp-secondary);  /*  2.08 on bg · FILL ONLY */
   --color-on-secondary: var(--bp-mark-navy);  /*  4.90 on the tide plane */
 
-  /* Two line weights, and the distinction is not cosmetic.
+  /* Three line weights, and the distinction is not cosmetic.
      --color-line is decorative: dividers, the ticked measurement rule, section
      edges. It is 1.31:1 against the page and that is correct, because WCAG
      1.4.11 does not apply to decoration.
+     --color-line-faint is decorative too: the hairlines that separate rows
+     inside a panel, which the changelog prototype draws lighter than the band
+     edge. It exists so a band reads as one panel with an edge, not a stack of
+     boxes.
      --color-line-strong is for anything that bounds a control: input borders,
      the secondary button, checkbox and radio edges. Those DO need 3:1, so they
      get their own token. 1a's published table has only one line value, which
      would have put form borders at 1.31:1. */
   --color-line:        var(--bp-line-light);   /* decorative only */
+  --color-line-faint:  var(--bp-line-light-0); /* decorative only */
   --color-line-strong: var(--bp-line-light-2); /* 3.80 on bg · 4.15 on surface */
 
   --color-ring:        var(--bp-signal);     /* 10.20 on bg, clears 3:1 */
@@ -154,6 +161,7 @@
   --color-on-secondary: var(--bp-mark-navy);  /* 4.90 on the tide plane */
 
   --color-line:        var(--bp-line-dark);   /* decorative only */
+  --color-line-faint:  var(--bp-line-dark-0); /* decorative only */
   --color-line-strong: var(--bp-line-dark-2); /* 3.51 on bg · 3.22 on surface */
 
   --color-ring:        var(--bp-signal-lift); /* 6.71 on bg, clears 3:1 */
@@ -169,6 +177,7 @@
     --color-accent:      var(--bp-signal-lift);
     --color-secondary:   var(--bp-secondary);
     --color-line:        var(--bp-line-dark);
+    --color-line-faint:  var(--bp-line-dark-0);
     --color-line-strong: var(--bp-line-dark-2);
     --color-ring:        var(--bp-signal-lift);
   }

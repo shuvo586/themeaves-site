@@ -21,7 +21,7 @@ import { isPending, known, site } from '@/data/site';
    The releases section is gated on real changelog data and therefore does not
    render yet. Omitting a section beats filling it. */
 
-const flagship = products.find((p) => p.slug === 'slotdesk-ai')!;
+const flagship = products.find((p) => p.slug === 'slotdesk')!;
 const aonomy = products.find((p) => p.slug === 'aonomy')!;
 
 const STEPS = [
@@ -133,7 +133,7 @@ export default function Home() {
                   an application rather than a chart. */}
               <div className="relative h-[248px] w-full overflow-hidden">
                 <Image
-                  src="/products/slotdesk-ai/dashboard.png"
+                  src="/products/slotdesk/dashboard.png"
                   alt="The SlotDesk dashboard: today's appointments, estimated WhatsApp cost for the month, AI bookings this week, and a list of items needing attention."
                   fill
                   sizes="(max-width: 1023px) 100vw, 568px"
@@ -152,10 +152,10 @@ export default function Home() {
                 }}
                 className="absolute flex flex-col border border-line-strong bg-surface"
               >
-                {/* The template half of the same studio: Aonomy, shot from the
-                    item banner, in the same browser chrome as the flagship
-                    frame above it. Wider than the phone it replaced: a
-                    landing page needs width to read as a landing page. */}
+                {/* The template half of the same studio: Aonomy, from the item
+                    banner, in the same browser chrome as the flagship frame
+                    above it. Wider than the phone it replaced: a landing page
+                    needs width to read as a landing page. */}
                 <div className="flex items-center gap-2 border-b border-line-strong px-3 py-[9px]">
                   <span aria-hidden className="block h-[9px] w-[9px] border border-line-strong" />
                   <span aria-hidden className="block h-[9px] w-[9px] border border-line-strong" />

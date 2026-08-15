@@ -150,6 +150,18 @@ export default async function ProductPage({
               <BrowserFrame
                 url={isPending(product.demoUrl) ? undefined : product.demoUrl}
                 caption={`${product.name} · screenshot pending`}
+                image={
+                  !isPending(product.heroImage)
+                    ? {
+                        src: product.heroImage as string,
+                        alt:
+                          product.slug === 'slotdesk'
+                            ? 'The SlotDesk dashboard: today\'s appointments, estimated WhatsApp cost for the month, AI bookings this week, and a list of items needing attention.'
+                            : `The ${product.name} item banner.`,
+                      }
+                    : undefined
+                }
+                sizes="(max-width: 1023px) 100vw, 568px"
               />
             </div>
           </div>

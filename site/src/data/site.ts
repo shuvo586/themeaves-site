@@ -79,7 +79,7 @@ export const nav = [
   { label: 'Products', href: '/products', live: true },
   { label: 'Demos', href: '/demos', live: true },
   { label: 'Docs', href: '/docs', live: false },
-  { label: 'Changelog', href: '/changelog', live: false },
+  { label: 'Changelog', href: '/changelog', live: true },
   { label: 'Support', href: '/support', live: true },
 ] as const;
 

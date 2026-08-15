@@ -12,7 +12,7 @@ export default function ProductsPage() {
   return (
     <Container>
       <div className="py-16 md:py-24">
-        <div className="rule">
+        <div className="rail">
           <span className="eyebrow label">Products</span>
         </div>
         <Display as="h1" className="mt-8 max-w-[18ch]">

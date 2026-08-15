@@ -31,7 +31,7 @@ const BASE = process.argv[2] || 'http://localhost:3210';
 const ROUTES = [
   '/',
   '/products',
-  '/products/slotdesk-ai',
+  '/products/slotdesk',
   '/products/aonomy',
   '/demos',
   '/docs',
