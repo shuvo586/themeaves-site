@@ -45,11 +45,11 @@ export const site = {
 
   support: {
     /* Pre-sale destination. Stated in full and copyable, never obfuscated. */
-    email: PENDING as Maybe<string>,
-    timezone: PENDING as Maybe<string>,
-    workingDays: PENDING as Maybe<string>,
-    /* Under-promise. No 24/7, no same-day. Brief section 6.11. */
-    responseWindow: PENDING as Maybe<string>,
+    email: 'support@themeaves.com',
+    timezone: 'GMT+5:30',
+    workingDays: 'Mon-Fri · 09:00-18:00',
+    /* Decided from the handoff Support prototype 2026-08-16. */
+    responseWindow: 'within one business day',
     /* Item support goes to the Envato item's comments tab. */
     itemSupportNote:
       'Item support runs through the comments tab on the marketplace item, because that is where Envato records it.',
@@ -58,7 +58,7 @@ export const site = {
 
   demo: {
     /* The SlotDesk demo instance. Brief section 9.5 and FACTS.md. */
-    url: PENDING as Maybe<string>,
+    url: 'https://slotdesk.themeaves.com',
     resetNote: PENDING as Maybe<string>,
     simulatedSubsystems: PENDING as Maybe<string[]>,
     logins: PENDING as Maybe<{ role: string; email: string; password: string }[]>,

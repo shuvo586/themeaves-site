@@ -37,13 +37,13 @@ Order matters: the ✅ rows unblock the whole build, the ❌ rows in **Blocking*
 | SlotDesk CodeCanyon URL | every buy button | *(item not listed yet - seed as `PENDING`, fail the production build if still `PENDING`)* |
 | SlotDesk Envato item id | licence verification | *(assigned at listing time)* |
 | SlotDesk version at launch | `<ProductFacts>` | *(`codecanyon/CHANGELOG.md` says **1.0.0**, dated 2026-08-08, "first public release". Confirm whether that is real or aspirational, then fill it.)* |
-| Aonomy live demo URL | the demo page's whole reason to exist | *(check whether the current ThemeForest preview URL still resolves - it may be broken)* |
+| Aonomy live demo URL | the demo page's whole reason to exist | `https://aonomy.themeaves.com` (decided 2026-08-15; serves the eight variant pages) |
 
 ### SlotDesk demo instance (brief §9.5)
 
 | Field | Value |
 |---|---|
-| Demo URL | `demo.themeaves.com` |
+| Demo URL | `slotdesk.themeaves.com` |
 | Business-owner login | email / password |
 | Super-admin login | email / password |
 | Reset time + timezone | e.g. "03:00 UTC nightly" |
@@ -79,14 +79,16 @@ also answered.
 `/docs` stays off the nav until these are written into `docs.ts` and the version question is
 settled. The chapter plan is `SLOTDESK-DOCS-PLAN.md`.
 
-### Support (brief §7.6)
+### Support (brief §7.6) - answered 2026-08-16
+
+Decided from the handoff Support prototype (`_dev/handoff/directions-preference/project/ThemeAves Support.dc.html`).
 
 | Field | Value |
 |---|---|
-| Support email | |
-| Your timezone | |
-| Working days | |
-| Honest response window | *(under-promise - no 24/7, no same-day)* |
+| Support email | `support@themeaves.com` |
+| Your timezone | `GMT+5:30` |
+| Working days | `Mon-Fri · 09:00-18:00` |
+| Honest response window | `within one business day` |
 | Pre-sale destination | email for now; `support.themeaves.com` later |
 
 ### About page (brief §7.5)
@@ -123,7 +125,7 @@ From the running SlotDesk app, **both light and dark**, at 1440 wide (2× DPR) u
 
 Seed realistic data first - a salon with staff, services, a week of bookings, and one completed AI conversation. Empty states make terrible marketing shots.
 
-**Source of truth:** the **running app**, not the design file. If a screen you want for marketing exists only in the [SlotDesk UI design project](https://claude.ai/design/p/0748ea3b-c190-4f42-9fe5-bf59042a452b?via=share) and was never shipped, export that frame as a PNG into this folder - but never present a design mockup as a screenshot of the product, because `demo.themeaves.com` is one click away and the difference will be noticed.
+**Source of truth:** the **running app**, not the design file. If a screen you want for marketing exists only in the [SlotDesk UI design project](https://claude.ai/design/p/0748ea3b-c190-4f42-9fe5-bf59042a452b?via=share) and was never shipped, export that frame as a PNG into this folder - but never present a design mockup as a screenshot of the product, because `slotdesk.themeaves.com` is one click away and the difference will be noticed.
 
 ---
 
@@ -145,7 +147,7 @@ Don't write these from scratch; let the agent propose 3 options each against the
 
 1. Repo location for the site
 2. Docs single-sourcing - SlotDesk's bundled HTML docs generated from `content/docs/slotdesk/**`
-3. PHP host for `demo.` - needs cron + a queue worker, so likely a small VPS
+3. PHP host for `slotdesk.themeaves.com` - needs cron + a queue worker, so likely a small VPS
 4. Aonomy's contact form - delete the `.php` (default) or host Aonomy on the demo box so PHP runs
 5. Analytics vendor
 6. Which `cms-theme` comes first

@@ -155,13 +155,15 @@ export function Band({
   tint = false,
   children,
   className = '',
+  id,
 }: {
   tint?: boolean;
   children: React.ReactNode;
   className?: string;
+  id?: string;
 }) {
   return (
-    <section className={`${tint ? 'bg-surface' : ''} py-16 md:py-24 ${className}`}>
+    <section id={id} className={`${tint ? 'bg-surface' : ''} py-16 md:py-24 ${className}`}>
       <Container>{children}</Container>
     </section>
   );

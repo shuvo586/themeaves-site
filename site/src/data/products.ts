@@ -84,7 +84,7 @@ export const products: Product[] = [
     heroImage: '/products/slotdesk/dashboard.png',
     itemUrl: PENDING,
     itemId: PENDING,
-    demoUrl: PENDING,
+    demoUrl: 'https://slotdesk.themeaves.com',
     docsUrl: PENDING,
     price: 59,
     currency: 'USD',
@@ -111,9 +111,8 @@ export const products: Product[] = [
     heroImage: '/products/aonomy/particles-thumbnail.jpg',
     itemUrl: 'https://themeforest.net/item/aonomy-app-landing-page/21460999',
     itemId: '21460999',
-    /* FACTS.md flags this: the ThemeForest preview URL may no longer resolve.
-       Confirm it before filling it in, rather than assuming. */
-    demoUrl: PENDING,
+    /* The demo host serves the eight variant pages, one per background. */
+    demoUrl: 'https://aonomy.themeaves.com',
     docsUrl: '/docs/aonomy',
     price: 16,
     currency: 'USD',

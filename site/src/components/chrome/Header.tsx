@@ -9,8 +9,7 @@ import { ThemeToggle } from './ThemeToggle';
 import { Container } from '@/components/ui/primitives';
 import { liveNav } from '@/data/site';
 
-/* Sticky. Start: the lockup. Nav: whatever is live. End: the theme toggle and
-   the licence action.
+/* Sticky. Start: the lockup. Nav: whatever is live. End: the theme toggle.
 
    The mobile pattern is a disclosure rather than a full-screen drawer, because
    five nav items do not need a modal. It still has to satisfy the keyboard
@@ -74,20 +73,14 @@ export function Header() {
             })}
           </nav>
 
-          {/* Prototype order: the theme control first, the licence action
-              last. Both sit at 6 by 10/12 there, roughly 29px tall. That is
-              kept from lg up, where the design was drawn; below lg they stay
-              at a 44px touch target, which the prototype never had to solve
-              because it has no small width. 29px still clears the 24px
-              minimum in WCAG 2.2 target size. */}
+          {/* Prototype order: the theme control at the end. It sits at 6 by
+              10/12 there, roughly 29px tall. That is kept from lg up, where
+              the design was drawn; below lg it stays at a 44px touch target,
+              which the prototype never had to solve because it has no small
+              width. 29px still clears the 24px minimum in WCAG 2.2 target
+              size. */}
           <div className="flex items-center gap-2.5">
             <ThemeToggle />
-            <Link
-              href="/licenses"
-              className="hidden min-h-[44px] items-center border border-ink px-3 font-mono text-[12px] text-ink sm:inline-flex lg:min-h-0 lg:py-1.5"
-            >
-              My licence
-            </Link>
             <button
               ref={triggerRef}
               type="button"
@@ -116,9 +109,6 @@ export function Header() {
                   {item.label}
                 </Link>
               ))}
-              <Link href="/licenses" className="py-4 text-ink sm:hidden">
-                My licence
-              </Link>
             </nav>
           </Container>
         </div>

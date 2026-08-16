@@ -384,9 +384,8 @@ export default function Home() {
              it pushed the stack out of alignment with it.
 
              The close is the studio's, one action pointing at the catalogue.
-             The licence line and the second button moved out: licence
-             decisions live on /license, and a plane whose only job is to
-             carry one message carries one call. ------------------------- */}
+             The licence line and the second button moved out, and a plane
+             whose only job is to carry one message carries one call. -------- */}
       <section data-on-accent className="bg-accent-plane text-on-accent">
         <Container>
           <div className="grid items-center gap-12 py-[72px] lg:grid-cols-[1.3fr_1fr]">

@@ -37,7 +37,7 @@ Thirteen artefacts prerender, all reviewed in both themes at 1440 / 1024 / 768 /
 
 `/` · `/products` · `/products/slotdesk` · `/products/aonomy` · `/demos` · `/docs` ·
 `/docs/slotdesk` · `/docs/slotdesk/before-you-start` · `/docs/slotdesk/install` · `/support` ·
-`/license` · `/licenses` · `/_dev/brand` · `404` · `/manifest.webmanifest`
+`/_dev/brand` · `404` · `/manifest.webmanifest`
 
 **The documentation is live but deliberately unlinked.** Two manuals are public: SlotDesk AI with
 its 20 chapters, and Aonomy with its 12. Both are reachable from `/docs`, which is the deliberate

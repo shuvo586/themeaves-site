@@ -18,7 +18,7 @@ the parts you compose with see [`COMPONENTS.md`](COMPONENTS.md).
 
 ## Routes
 
-Fourteen artefacts prerender.
+Thirteen artefacts prerender.
 
 | Route | Source | Notes |
 |---|---|---|
@@ -31,9 +31,8 @@ Fourteen artefacts prerender.
 | `/docs` | `app/docs/page.tsx` | Manual index. One row per manual. |
 | `/docs/[manual]` | `app/docs/[manual]/page.tsx` | Contents: every chapter with its summary |
 | `/docs/[manual]/[chapter]` | `app/docs/[manual]/[chapter]/page.tsx` | A chapter, rendered from markdown at build time |
-| `/support` | `app/support/page.tsx` | Built from the `primitives.tsx` page grammar, as is `/changelog/[slug]` |
-| `/license` | `app/license/page.tsx` | Regular against Extended, plus three concrete cases |
-| `/licenses` | `app/licenses/page.tsx` → `LicenceField.tsx` | Purchase-code field; verification needs an Envato token and says so |
+| `/support` | `app/support/page.tsx` | The handoff Support prototype, section for section: three channels, the ticket form beside the expectation plate, the FAQ. The form posts to `/api/ticket`. |
+| `/api/ticket` | `app/api/ticket/route.ts` | POST only. Forwards the support form by email via Resend when `RESEND_API_KEY` is set; a 503 with an honest message when it is not. |
 | `/_dev/brand` | `app/%5Fdev/brand/page.tsx` | `robots: noindex`. Proof page for the mark and icon set. |
 | `404` | `app/not-found.tsx` | |
 | `/manifest.webmanifest` | `app/manifest.ts` | |

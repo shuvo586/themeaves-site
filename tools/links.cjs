@@ -42,8 +42,6 @@ const ROUTES = [
   '/docs/slotdesk/guardrails-and-knowledge',
   '/docs/slotdesk/payments',
   '/support',
-  '/license',
-  '/licenses',
 ];
 
 (async () => {

@@ -23,13 +23,9 @@ type FooterLink = { label: string; href: Route; live: boolean };
 const RESOURCES: FooterLink[] = [
   { label: 'Demos', href: '/demos', live: true },
   { label: 'Changelog', href: '/changelog', live: true },
-  { label: 'Which licence do I need', href: '/license', live: true },
 ];
 
-const COMPANY: FooterLink[] = [
-  { label: 'Support', href: '/support', live: true },
-  { label: 'Check my licence', href: '/licenses', live: true },
-];
+const COMPANY: FooterLink[] = [{ label: 'Support', href: '/support', live: true }];
 
 /* Measured off the prototype footer rather than set in round numbers: an 11px
    mono column head, then links on the shared .navlist rhythm. */

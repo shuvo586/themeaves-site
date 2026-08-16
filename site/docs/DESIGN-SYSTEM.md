@@ -275,7 +275,7 @@ A 36 by 3 tide stripe on a 12px gap, before the mono sub heading that opens a su
 navy, which is how `brand/mark.svg` uses the two together.
 
 One tick per subject-opening sub heading: three on home (hero, flagship, closing plane) and one on
-each of `/products`, `/license`, `/licenses`, `/demos`. **Not** on interior rails, not on
+each of `/products`, `/demos`. **Not** on interior rails, not on
 the three step markers, not on the product breadcrumb. Same hue at the same size in the same
 position reads as one recurring device rather than as seven colour events.
 

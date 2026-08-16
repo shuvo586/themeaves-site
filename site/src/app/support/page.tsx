@@ -1,174 +1,168 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { Band, Col, Cols, ExternalLink, PageHero, Rail } from '@/components/ui/primitives';
-import { getProduct } from '@/data/products';
-import { isPending, known, site } from '@/data/site';
+import { ArrowDown } from 'lucide-react';
+import {
+  ArrowLink,
+  Band,
+  Col,
+  Cols,
+  PageHero,
+  Rail,
+} from '@/components/ui/primitives';
+import { site } from '@/data/site';
+import { TicketForm } from './TicketForm';
 
 export const metadata: Metadata = {
   title: 'Support',
-  description: 'Where to send a question about a ThemeAves product, and what to expect back.',
+  description:
+    'Tickets, docs and email. How to reach the people who wrote the product, and what to expect back.',
 };
 
-/* Built to the composition in the handoff Support prototype: crumb rail, blue
-   eyebrow, display heading, then "ways to reach us" as three divided columns.
+/* Built to the handoff Support prototype
+   (_dev/handoff/directions-preference/project/ThemeAves Support.dc.html),
+   section for section: hero with the crumb and meta rail, three channels,
+   the ticket form beside the "what to expect" plate, then the FAQ.
 
-   Two things in that prototype are not carried over.
+   Two things are deliberate departures from that drawing.
 
-   1. It ships a ticket form. Brief section 6.11 is explicit: triage only, no
-      form and no ticket UI, because a form emailing a mailbox nobody has
-      committed to watching implies a queue that does not exist. The fourth
-      block is the scope and response table instead.
-   2. It states "reply within 1 business day", "MON-FRI 09:00-18:00 GMT+5:30"
-      and support@themeaves.com. All three are ❌ rows in docs/FACTS.md. They
-      render as placeholders until they are decided. */
+   1. The form submits to /api/ticket, which forwards by email through the
+      Resend API. Until RESEND_API_KEY is set the form says the desk is not
+      connected, in words, rather than pretending a ticket was filed.
+   2. The prototype's four product footer links were the invented products;
+      the real catalogue is two, so the footer columns come from data, not
+      from this file. */
 export default function SupportPage() {
-  const aonomy = getProduct('aonomy')!;
-  const email = known(site.support.email);
-  const hours = known(site.support.workingDays);
-  const timezone = known(site.support.timezone);
-  const responseWindow = known(site.support.responseWindow);
+  const { email, timezone, workingDays, responseWindow } = site.support;
 
   return (
     <>
       <PageHero
         crumb="Support · ThemeAves"
-        meta={hours && timezone ? `${hours} · ${timezone}` : undefined}
+        meta={`${workingDays} · ${timezone}`}
         eyebrow="We answer our own code"
         title="Help from the people who built it."
         lead={
           <>
-            {site.support.includedTerm} It is answered by whoever wrote the code, not a first-line
-            script reading from a card.
+            Every licence includes six months of support, answered by whoever wrote the product,
+            not a first-line script. Most tickets get a reply {responseWindow.toLowerCase()}.
           </>
         }
       />
 
+      {/* The three channels: ticket, docs, email. Each opens on a mono label
+          and carries one way in, exactly as the prototype draws it. */}
       <Band tint>
         <Rail left="Ways to reach us" right="Three channels" />
         <div className="mt-12">
           <Cols>
-            <Col index={0} label="Item comments" title="Report a bug where it is recorded.">
+            <Col index={0} label="Ticket" title="Open a support ticket">
               <p>
-                Envato records item support on the item&apos;s comments tab, so a bug reported there
-                is on the record. Include your PHP and database versions, the exact error copied not
-                described, and whether it happens on a clean install.
-              </p>
-              {!isPending(aonomy.itemUrl) ? (
-                <p className="mt-4">
-                  <ExternalLink href={aonomy.itemUrl} className="label text-accent">
-                    Aonomy item page
-                  </ExternalLink>
-                </p>
-              ) : null}
-            </Col>
-
-            <Col index={1} label="Docs" title="Check the documentation first.">
-              <p>
-                Setup, the WhatsApp connection and configuration are covered end to end, and the
-                docs move with each release rather than after it.
-              </p>
-              <p className="label mt-4">Not published yet</p>
-            </Col>
-
-            <Col index={2} label="Email" title="Email the studio before you buy.">
-              <p>
-                Licensing, invoices and pre-sale questions do not need a purchase code, so they go
-                straight to email.
+                Best for install issues and bugs. Include your version and server details for the
+                fastest reply.
               </p>
               <p className="mt-4">
-                {email ? (
-                  <a
-                    href={`mailto:${email}`}
-                    className="label text-accent underline underline-offset-4"
-                  >
-                    {email}
-                  </a>
-                ) : (
-                  <span className="label">Address not published yet</span>
-                )}
+                <a href="#ticket" className="label text-accent underline-offset-4 hover:underline">
+                  Start a ticket
+                  <ArrowDown size={13} className="ms-1 inline" aria-hidden />
+                </a>
+              </p>
+            </Col>
+
+            <Col index={1} label="Docs" title="Check the documentation">
+              <p>
+                Setup, the WhatsApp connection and configuration are covered end to end, kept
+                current with each release.
+              </p>
+              <p className="mt-4">
+                <ArrowLink href="/docs" className="label text-accent">
+                  Read the docs
+                </ArrowLink>
+              </p>
+            </Col>
+
+            <Col index={2} label="Email" title="Email the studio">
+              <p>For licensing, invoices and pre-sales questions.</p>
+              <p className="mt-4">
+                <a
+                  href={`mailto:${email}`}
+                  className="label text-accent underline underline-offset-4"
+                >
+                  {email}
+                </a>
               </p>
             </Col>
           </Cols>
         </div>
       </Band>
 
-      <Band>
-        <Rail left="What is covered" right="Included and not" />
-        <div className="mt-12 grid gap-12 md:grid-cols-2">
+      {/* The ticket form and the expectation plate beside it. The form is a
+          real control: it posts to /api/ticket and says what happened. */}
+      <Band id="ticket" className="scroll-mt-20">
+        <Rail left="Open a ticket" right={`Reply ${responseWindow}`} />
+        <div className="mt-12 grid gap-12 lg:grid-cols-[1.4fr_1fr]">
           <div>
-            <h2 className="font-display text-[1.5rem] leading-[1.2] font-bold tracking-[-0.01em]">
-              Included
-            </h2>
-            <ul className="mt-4 space-y-2 text-muted">
-              <li>Bugs in the item, on a supported stack</li>
-              <li>Questions about features that ship with it</li>
-              <li>Help with the documented install</li>
-              <li>Updates, free for the life of the item</li>
-            </ul>
-          </div>
-          <div>
-            <h2 className="font-display text-[1.5rem] leading-[1.2] font-bold tracking-[-0.01em]">
-              Not included
-            </h2>
-            <p className="mt-4 text-muted">
-              Written down so nobody finds the line by crossing it.
-            </p>
-            <ul className="mt-4 space-y-2 text-muted">
-              <li>Customisation, or code written to your spec</li>
-              <li>Third-party plugins, themes and APIs</li>
-              <li>Server administration and hosting problems</li>
-              <li>Installing it on your server for you</li>
-            </ul>
-          </div>
-        </div>
-      </Band>
-
-      <Band tint>
-        <Rail left="What to expect" right="Response" />
-        <div className="mt-12 grid gap-12 lg:grid-cols-2">
-          <div>
-            <h2 className="max-w-[18ch] font-display text-[2rem] leading-[1.1] font-extrabold tracking-[-0.025em]">
-              A slower promise that holds beats a fast one that does not.
-            </h2>
-            <p className="mt-6 max-w-[52ch] text-muted">
-              This is one person, not a rota. There is no 24/7 line and no same-day guarantee, and
-              the figures below will say so plainly once they are set.
-            </p>
-            <p className="mt-6">
-              <Link href="/licenses" className="label text-accent underline underline-offset-4">
-                Check a licence instead
-              </Link>
-            </p>
+            <TicketForm />
+            <p className="mt-8 max-w-[52ch] text-muted">{site.support.itemSupportNote}</p>
           </div>
 
           <dl className="spec self-start">
-            <div className="spec-row">
-              <dt>Response</dt>
-              <dd className="text-muted">support</dd>
+            <div className="spec-head">
+              <span className="label label-sm">What to expect</span>
             </div>
             <div className="spec-row">
-              <dt>working days</dt>
-              <dd className={hours ? '' : 'text-muted'}>{hours ?? 'not published'}</dd>
+              <dt>first reply</dt>
+              <dd>{responseWindow}</dd>
             </div>
             <div className="spec-row">
-              <dt>timezone</dt>
-              <dd className={timezone ? '' : 'text-muted'}>{timezone ?? 'not published'}</dd>
-            </div>
-            <div className="spec-row">
-              <dt>usual reply</dt>
-              <dd className={responseWindow ? '' : 'text-muted'}>
-                {responseWindow ?? 'not published'}
-              </dd>
+              <dt>hours</dt>
+              <dd>{workingDays}</dd>
             </div>
             <div className="spec-row">
               <dt>included</dt>
-              <dd>6 months</dd>
+              <dd>6 months / licence</dd>
             </div>
             <div className="spec-row">
-              <dt>renewals</dt>
-              <dd>Through Envato</dd>
+              <dt>handled by</dt>
+              <dd>The dev team</dd>
             </div>
           </dl>
+        </div>
+      </Band>
+
+      {/* Three questions with the answer on the right, divided by hairlines,
+          the prototype's exact layout for the FAQ. */}
+      <Band tint>
+        <Rail left="Common questions" right="Before you write in" />
+        <div className="mt-4 pb-8">
+          <div className="grid gap-8 border-b border-line-faint py-6 md:grid-cols-[1fr_2fr]">
+            <h3 className="font-display text-[1.125rem] leading-[1.3] font-bold tracking-[-0.01em]">
+              Is support really included?
+            </h3>
+            <p className="max-w-[56ch] text-muted">
+              Yes. Six months from purchase, on every licence. You can extend it on CodeCanyon
+              when it runs out.
+            </p>
+          </div>
+          <div className="grid gap-8 border-b border-line-faint py-6 md:grid-cols-[1fr_2fr]">
+            <h3 className="font-display text-[1.125rem] leading-[1.3] font-bold tracking-[-0.01em]">
+              Do you access my server?
+            </h3>
+            <p className="max-w-[56ch] text-muted">
+              No. We help you fix things on your own install. We never need, or want, access to
+              your database.
+            </p>
+          </div>
+          <div className="grid gap-8 py-6 md:grid-cols-[1fr_2fr]">
+            <h3 className="font-display text-[1.125rem] leading-[1.3] font-bold tracking-[-0.01em]">
+              Something broke after an update?
+            </h3>
+            <p className="max-w-[56ch] text-muted">
+              Check the{' '}
+              <ArrowLink href="/changelog" className="text-accent">
+                changelog
+              </ArrowLink>{' '}
+              for what changed, then open a ticket with your previous and current versions.
+            </p>
+          </div>
         </div>
       </Band>
     </>
