@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /index-
+Disallow: /blog-
+Disallow: /coming-soon-
+Disallow: /assets/
+Disallow: /demo/
