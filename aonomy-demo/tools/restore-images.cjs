@@ -14,16 +14,14 @@ require('dotenv').config({ path: path.join(__dirname, '..', '.env') });
 
 const PUBLIC = path.join(__dirname, '..', 'public');
 const ZIPREF = process.env.AONOMY_ZIPREF || path.join(os.tmpdir(), 'opencode', 'aonomy-zipref');
-const MAPS_KEY = process.env.GOOGLE_MAPS_API_KEY || '';
-// GOOGLE_MAPS_API_VERSION is optional. The no-billing Maps Demo Key requires
-// v=beta; a production key should omit it (or use weekly/quarterly).
-const MAPS_VERSION = process.env.GOOGLE_MAPS_API_VERSION || '';
 // --maps-key-only skips everything that reads the original package and just
-// syncs GOOGLE_MAPS_API_KEY from .env into the 24 template pages.
+// syncs the maps loader tag across the 24 template pages.
 const MAPS_ONLY = process.argv.includes('--maps-key-only');
-const GMAPS_URL = (key) =>
-  `https://maps.googleapis.com/maps/api/js?key=${key}${MAPS_VERSION ? `&v=${MAPS_VERSION}` : ''}&loading=async&callback=initMap`;
-const GMAPS_TAG = (key) => `<script async defer src="${GMAPS_URL(key)}"></script>`;
+// The template pages never embed a Google Maps key. They include
+// assets/js/maps-loader.js, which fetches the key at runtime from the
+// site's /api/maps-key endpoint (served from GOOGLE_MAPS_API_KEY in the
+// server's .env). This file only ever writes the loader tag.
+const MAPS_LOADER_TAG = '\t<script src="assets/js/maps-loader.js"></script>';
 
 const problems = [];
 const log = (...a) => console.log(...a);
@@ -62,40 +60,31 @@ function resolveRef(cssRel, ref) {
 
 // The demo build removed the Google Maps API script that the original package
 // ships on every template page, and painted a static placeholder onto #map
-// instead. syncGmaps restores the script tag so the real map initializes
-// (initMap lives in app-*.js, which the demo never touched). The key comes
-// from .env (GOOGLE_MAPS_API_KEY) and is synced on every run, so changing the
-// key and re-running updates all 24 pages. Returns the (possibly rewritten)
-// html so callers can inspect it afterwards.
-function syncGmaps(html, page) {
+// instead. syncMapsLoader restores the loader tag so the real map initializes
+// at runtime (initMap lives in app-*.js, which the demo never touched; the
+// key is fetched from /api/maps-key, never embedded). It also strips any
+// keyed maps.googleapis.com tag a stale build or an older version of this
+// tool left behind. Returns the (possibly rewritten) html so callers can
+// inspect it afterwards.
+function syncMapsLoader(html, page) {
   if (!html.includes('<div id="map">')) return html;
-  if (!MAPS_KEY) {
-    problems.push(`${page}: #map present but GOOGLE_MAPS_API_KEY is not set in .env`);
-    return html;
-  }
-  const existing = /src="(https:\/\/maps\.googleapis\.com\/maps\/api\/js\?key=[^"]+)"/.exec(html);
-  const tag = '\t' + GMAPS_TAG(MAPS_KEY);
+  const keyedRe = /<script[^>]*src="https:\/\/maps\.googleapis\.com\/maps\/api\/js\?key=[^"]+"[^>]*><\/script>/;
+  const loaderRe = /<script[^>]*src="[^"]*maps-loader\.js"[^>]*><\/script>/;
   let out = html;
-  if (existing) {
-    const url = existing[1];
-    const urlKey = /key=([^&]+)/.exec(url)[1];
-    const stale =
-      urlKey !== MAPS_KEY ||
-      !url.includes('loading=async') ||
-      (MAPS_VERSION && !url.includes(`v=${MAPS_VERSION}`));
-    if (stale) {
-      out = out.replace(url, GMAPS_URL(MAPS_KEY));
-      fs.writeFileSync(path.join(PUBLIC, page), out);
-      gmapsAdded++;
-    }
-  } else {
+  const keyed = keyedRe.exec(out);
+  const loader = loaderRe.exec(out);
+  if (keyed) {
+    out = out.replace(keyed[0], MAPS_LOADER_TAG);
+    fs.writeFileSync(path.join(PUBLIC, page), out);
+    gmapsAdded++;
+  } else if (!loader) {
     const nl = out.includes('\r\n') ? '\r\n' : '\n';
     const marker = '<!-- Google maps JS -->';
     const at = out.indexOf(marker);
     out =
       at >= 0
-        ? out.slice(0, at + marker.length) + nl + tag + out.slice(at + marker.length)
-        : out.replace('</body>', nl + tag + nl + '</body>');
+        ? out.slice(0, at + marker.length) + nl + MAPS_LOADER_TAG + out.slice(at + marker.length)
+        : out.replace('</body>', nl + MAPS_LOADER_TAG + nl + '</body>');
     fs.writeFileSync(path.join(PUBLIC, page), out);
     gmapsAdded++;
   }
@@ -108,7 +97,7 @@ const pages = fs
   .filter((f) => f.endsWith('.html') && f !== 'index.html')
   .sort();
 
-log(MAPS_ONLY ? `=== maps key sync: ${pages.length} template pages` : `=== HTML pass: ${pages.length} template pages`);
+log(MAPS_ONLY ? `=== maps loader sync: ${pages.length} template pages` : `=== HTML pass: ${pages.length} template pages`);
 let htmlRewrites = 0;
 let gmapsAdded = 0;
 
@@ -116,7 +105,7 @@ for (const page of pages) {
   // In --maps-key-only mode this is the only thing that runs.
   if (MAPS_ONLY) {
     const demoHtml = fs.readFileSync(path.join(PUBLIC, page), 'utf8');
-    const out = syncGmaps(demoHtml, page);
+    const out = syncMapsLoader(demoHtml, page);
     if (out.includes('placeholders/')) problems.push(`${page}: placeholder refs remain`);
     continue;
   }
@@ -170,7 +159,7 @@ for (const page of pages) {
     fs.writeFileSync(path.join(PUBLIC, page), out);
     htmlRewrites += rewrites.length;
   }
-  out = syncGmaps(out, page);
+  out = syncMapsLoader(out, page);
   log(
     `${page}: ${demoSlots.length} slots, ${rewrites.length} rewritten${kept.length ? `, ${kept.length} kept (${kept.join('; ')})` : ''}${
       unmatched.length ? `, UNMATCHED: ${unmatched.join(' | ')}` : ''
