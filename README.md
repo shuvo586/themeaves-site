@@ -70,8 +70,8 @@ Prompt v2 section 0 opens "There is no logo. There is no existing brand identity
 false and always was. Everything else in the brief survives the correction intact and still governs
 voice, the fact rules and accessibility.
 
-## ⚠️ Git
+## ✅ Git
 
-The user runs all git operations. There is one repository, rooted **here**, with an `origin` remote,
-and there is **no root `.gitignore`**, so the private directories above are inside it and stageable.
-See the note at the end of `site/README.md` for the two ways to resolve it.
+The user runs all git operations. Two repositories since 2026-08-16: `site/` is its own repo (the
+one Vercel deploys, root `/`), and this repo holds everything else with no root `.gitignore`, so
+the private directories above are inside it and stageable.

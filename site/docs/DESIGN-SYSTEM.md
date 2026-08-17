@@ -160,8 +160,9 @@ excluded: its plane is navy and its tick is tide, which is the mark's own pairin
 
 ### Contrast is computed, never eyeballed
 
-`site/_dev/tokens.html` recomputes every ratio live from the resolved custom properties, on load and
-on every theme change. Open it after touching a colour token.
+`site/_dev/tokens.html` used to recompute every ratio live from the resolved custom properties, on
+load and on every theme change. That checker was removed 2026-08-17; recompute any changed token by
+hand with the WCAG relative-luminance formula before shipping it.
 
 A saturated colour that passes as text on paper does **not** automatically pass as a background
 under text. Those are two different tests.

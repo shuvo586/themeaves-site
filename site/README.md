@@ -81,7 +81,6 @@ src/
   styles/
     tokens.css            the token layer, the source of truth
     brand.css             the lockup and the mark's colour modes
-_dev/tokens.html          recomputes every contrast ratio live
 public/
   brand/
     bird.svg              the master in full. Above 64px, and the chrome
@@ -112,14 +111,13 @@ downscaling, so 16px gets the browser's own hinting.
   and the screenshot tooling. That work is candid about what failed and what is still unknown, which
   is useful internally and unhelpful in public.
 
-## ⚠️ The separation is not structural yet
+## ✅ The separation is structural
 
-There is one git repository and its root is `/var/www/html/themeaves`, one level up. There is no
-`.git` in this directory and no `.gitignore` at the repository root, so `../_dev`, `../docs`,
-`../brand` and `../shots` are all inside the repository and stageable, and the repository has an
-`origin` remote.
+This directory is its own git repository, separate from the one at
+`/var/www/html/themeaves` that holds `_dev/`, `docs/`, `brand/` and `shots/`. Nothing private can
+be staged here accidentally, and `site/` is the repository you connect to Vercel with a root
+directory of `/`.
 
-Until that is resolved, the separation is a matter of discipline rather than structure. Resolving it
-is a git operation and therefore the user's to run. The two options are to make this directory its
-own repository, or to add a root `.gitignore` that excludes the private directories and confirm
-nothing private is already in the history.
+One consequence: the outer repository now sees this directory as an embedded repo, so its contents
+are no longer tracked there. Commit `site/` inside this repository; the user runs every git
+operation.

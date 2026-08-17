@@ -213,7 +213,8 @@ not install Playwright at the repo root; fix the resolve path instead.
 | `tools/shot.cjs <file-or-url> [slug]` | Shoots 1440 / 1024 / 768 / 390 in both themes, tiled into viewport-height slices so nothing is scaled away. Output to `shots/`. |
 | `tools/icons.cjs` | Regenerates the icon set. Run after any `favicon.svg` edit. |
 | `tools/verify-home.cjs` | Homepage checks. |
-| `site/_dev/tokens.html` | Recomputes every contrast ratio live from the resolved custom properties. Open it after touching a colour token. |
+
+`site/_dev/tokens.html` (the live contrast-ratio checker) was removed 2026-08-17. Recompute changed-token ratios by hand with the WCAG relative-luminance formula.
 
 `shots/` is reproducible output and is meant to be overwritten. Everything in `docs/`, `_dev/` and
 `brand/_source/` is irreplaceable and has no second copy.

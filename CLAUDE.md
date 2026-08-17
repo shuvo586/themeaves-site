@@ -170,7 +170,7 @@ cutting-edge, seamless, empower, unlock, game-changing, solution.
 
 **Never run git in this repo.** The user performs all git operations themselves.
 
-⚠️ There is one repository and its root is `/var/www/html/themeaves`, with an `origin` remote. There
-is no `.git` in `site/` and **no `.gitignore` at the repository root**, so `_dev/`, `docs/`,
-`brand/` and `shots/` are all inside it and stageable. `site/README.md` and `site/.gitignore`
-previously claimed the separation was structural. It is not, yet. Flag this rather than acting on it.
+✅ Two repositories now, split 2026-08-16. `site/` is its own repo (the one Vercel deploys, root
+directory `/`); this outer repo holds everything else, with no root `.gitignore`, so `_dev/`,
+`docs/`, `brand/` and `shots/` are inside it and stageable. The outer repo sees `site/` as an
+embedded repo and no longer tracks its contents. Flag anything that contradicts this.

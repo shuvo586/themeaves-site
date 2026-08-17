@@ -53,9 +53,8 @@ And one it can, worth automating into your check:
 document.documentElement.scrollWidth <= document.documentElement.clientWidth
 ```
 
-After touching a colour token, open `site/_dev/tokens.html`. It recomputes every ratio live from the
-resolved custom properties, so a token edited without a recheck fails there rather than in
-production.
+After touching a colour token, recompute the affected ratios with the WCAG relative-luminance
+formula. `site/_dev/tokens.html` used to do this live but was removed 2026-08-17.
 
 ---
 
@@ -155,7 +154,8 @@ wrong price a buyer can quote back at you.
 2. Mirror the name into the `@theme` block in `globals.css` if it is new. Tailwind cannot read an
    imported stylesheet, so a token needs a declaration inside `@theme` before a utility exists for
    it.
-3. Open `site/_dev/tokens.html` and read the recomputed ratios.
+3. Recompute the changed ratios with the WCAG relative-luminance formula (the live checker,
+   `site/_dev/tokens.html`, was removed 2026-08-17).
 4. Check the accent plane in **both** themes.
 
 Remember which test applies. A colour that passes as text on paper does not automatically pass as a
@@ -197,7 +197,6 @@ Everything here is content, not code.
 - [ ] Licence verification needs an Envato API token as a server secret
 - [ ] Choose an analytics vendor, privacy-friendly and `afterInteractive`
 - [ ] Remove `public/brand/mark.svg` and `mark.png`, the loose copies of the master
-- [ ] Resolve the repository separation, below
 
 **Known cosmetic issue, kept deliberately.** Aonomy's thumbnails are real screenshots of a 2018
 template with saturated photographic backgrounds, and they sit awkwardly against Blueprint's cool
@@ -205,17 +204,14 @@ neutrals. Substituting something calmer would misrepresent what a buyer receives
 
 ---
 
-## ⚠️ Repository separation
+## ✅ Repository separation
 
-There is **one** git repository and its root is `/var/www/html/themeaves`, with an `origin` remote.
-There is no `.git` in `site/` and **no `.gitignore` at the repository root**, so `_dev/`, `docs/`,
-`brand/` and `shots/` are all inside it and stageable.
+Resolved 2026-08-16: `site/` is its own git repository, separate from the one at
+`/var/www/html/themeaves` that holds `_dev/`, `docs/`, `brand/` and `shots/`. This is the repository
+that connects to Vercel, with a root directory of `/`. The outer repository now sees `site/` as an
+embedded repo and no longer tracks its contents.
 
-`site/README.md` and `site/.gitignore` previously claimed the separation was structural. It is not.
-The two ways to resolve it are to make `site/` its own repository, or to add a root `.gitignore` and
-confirm nothing private is already in the history.
-
-**Flag this rather than acting on it.** The user runs every git operation in this repo.
+**The user runs every git operation in both repositories.**
 
 ## What must never land in `site/`
 
